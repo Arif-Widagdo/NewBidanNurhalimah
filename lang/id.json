@@ -1,0 +1,371 @@
+{
+    "Dashboard" : "Dasbor",
+    "Language" : "Bahasa",
+    "Indonesian" : "Indonesia",
+    "English" : "Inggris",
+    "Settings Account" : "Pengaturan Akun",
+    "Sign Out" : "Keluar",
+    "Sign In" : "Masuk",
+    "Sign Up" : "Daftar",
+    "Log Out" : "Keluar",
+    "Login" : "Masuk",
+    "Place and date of birth" : "Tempat, Tanggal Lahir",
+    "Profile" : "Profil",
+    "Name" : "Nama",
+    "Full Name" : "Nama Lengkap",
+    "Username" : "Username",
+    "Gender" : "Jenis Kelamin",
+    "Email" : "E-mail",
+    "Number Phone" : "Nomor Telepon",
+    "Address" : "Alamat",
+    "Personal Information" : "Informasi Pribadi",
+    "Age" : "Usia",
+    "Year Old" : "Tahun",
+    "Years" : "Tahun",
+    "Months" : "Bulan",
+    "Days" : "Hari",
+    "and" : "dan",
+    "Please Enter Your Email Address and Password" : "Silakan Masukkan Alamat E-Mail dan Kata Sandi Anda",
+    "Dont have an account yet?" : "Belum memiliki akun?",
+    "Already have an account?" : "Sudah memiliki akun?",
+    "Register here" : "Daftar disini",
+    "Please enter data in the form provided!" : "Silahkan masukkan data pada formulir yang tersedia!",
+    "Select Your Gender" : "Pilih Jenis Kelamin Anda",
+    "Education" : "Lulusan",
+    "Select Your School Graduateds" : "Pilih lulusan sekolah Anda",
+    "Job" : "Pekerjaan",
+    "Select Your Job" : "Pilih Pekerjaan Anda",
+    "Place of Birthday" : "Tempat Lahir",
+    "Date of Birthday" : "Tanggal Lahir",
+    "Enter your Place of Birth" : "Masukkan Tempat Lahir Anda",
+    "Enter your Date of Birth" : "Masukkan Tanggal Lahir Anda",
+    "Enter Husbands Full Name" : "Masukan Nama Lengkap Suami",
+    "Graduateds" : "Lulusan",
+    "Select Graduate" : "Pilih Lulusan",
+    "Select Job" : "Pilih Pekerjaan",
+    "General" : "Umum",
+    "Select Job Status For" : "Pilih Status Pekerjaan Untuk",
+    "Job Status" : "Status Pekerjaan",
+    "Please complete your personal data in the form provided" : "Silahkan lengkapi data diri Anda pada form yang tersedia",
+    "Husband Information" : "Informasi Suami",
+    "Add Husband Data" : "Tambah Data Suami",
+    "Husband Names" : "Nama Suami",
+    "Husband Name" : "Nama Suami",
+    "Husband Data Information Form" : "Formulir Informasi Data Suami",
+    "Please Input Husband Data" : "Silahkan Masukan Data Suami",
+    "Example" : "Contoh",
+    "Husband Information from Mrs." : "Informasi Suami dari Nyonya. ",
+    "Number of Users" : "Jumlah Pengguna",
+    "List of Users" : "Daftar Para Pengguna",
+    "List of Users by" : "Daftar Pengguna berdasarkan",
+    "Something went wrong when updating position" : "Terjadi kesalahan saat memperbarui Posisi",
+    "Position edited successfully" : "Posisi berhasil diperbaharui",
+    "User Account Blocked" : "Akun Pengguna Diblokir",
+    "Position User Disabled" : "Posisi Pengguna Dinonaktifkan",
+    "Home" : "Beranda",
+    "About Us" : "Tentang Kami",
+    "Services" : "Pelayanan",
+    "Gallary" : "Galeri",
+    "Contact" : "Kontak",
+    "Useful Links" : "Menu",
+    "Our Services" : "Layanan Kami",
+    "Contact Us" : "Kontak Kami",
+    "Positions" : "Posisi",
+    "For" : "Untuk",
+    "Staff" : "Staf",
+    "Patient" : "Pasien",
+    "Patients" : "Pasien",
+    "List of Position Roles" : "Daftar Posisi Jabatan",
+    "Name Role Position" : "Name Posisi Jabatan",
+    "Position Staff" : "Posisi Staf",
+    "Select Status" : "Pilih Status",
+    "Number of Staff" : "Jumlah Staf",
+    "Position Code" : "Kode Posisi",
+
+    "Staff Registration" : "Pendaftaran Staf",
+    "Staff List" : "Daftar Staf",
+    "Staff Registration Form" : "Formulir Pendaftaran Staf",
+    "No" : "Tidak",
+    "Yes" : "Ya",
+    "Create an account" : "Buat sebuah akun",
+    "Select Graduated" : "Pilih Pendidikan",
+    "The password will be generated automatically using the username." : "Kata sandi akan dibuat secara otomatis menggunakan username.",
+    "Staff Data Failed to Create" : "Data Staf Gagal Dibuat",
+    "Staff Data Created Successfully" : "Data Staf Berhasil Dibuat",
+    "Hes not yet 10 years old, you cant enter the data wrong, right?" : "Umurnya belum genap 10 tahun, tidak mungkin salah input data kan?",
+    "Information" : "Informasi",
+    "Create Now" : "Buat Sekarang",
+    "Select Position Staff" : "Pilih Posisi Staf",
+   
+    "Add New Staff" : "Tambah Staf",
+    "Add New Patient" : "Tambah Pasien",
+
+
+    "Patient Registration" : "Pendaftaran Pasien",
+    "Patient List" : "Daftar Pasien",
+    "Patient Registration Form" : "Formulir Pendaftaran Pasien",
+    "Hes not yet 17 years old, you cant enter the data wrong, right?" : "Umurnya belum genap 17 tahun, tidak mungkin salah input data kan?",
+    "Patient Data Failed to Create" : "Data Pasien Gagal Dibuat",
+    "Patient Data Created Successfully" : "Data Pasien Berhasil Dibuat",
+    "No. Medical records" : "No. Rekam Medis",
+    "Account activation" : "Aktivasi Akun",
+    
+    "Couples" : "Pasangan",
+    "Couple" : "Pasangan",
+    "Registration Date" : "Tanggal Registrasi",
+    
+
+    "Password" : "Kata Sandi",
+    "Forgot your password?" : "lupa kata sandi Anda?",
+    "Register" : "Daftar",
+    "Remember Me" : "Ingatkan Saya",
+    "Enter Your Full Name" : "Masukan Nama Lengkap Anda",
+    "Enter Your Email" : "Masukan E-Mail Anda",
+    "Enter Your Username" : "Masukan Username",
+    "Enter Your Password" : "Masukan Kata Sandi Anda",
+    "Retype Your Password" : "Masukan Ulang Kata Sandi Anda",
+    "Confirm Password" : "Konfirmasi Password",
+ 
+
+    "List of Staff Positions" : "Daftar Posisi Staf",
+    "New Form of Staff Position": "Formulir Posisi Staff Baru",
+    "Create New Staff Position" : "Buat Baru Posisi Staf",
+    "Something went wrong while creating a staff position" : "Terjadi kesalahan pada saat membuat posisi staf",
+    "New staff position created successfully" : "Posisi Staf baru berhasil dibuat",
+    "Staff Position Edit Form" : "Formulir Edit Posisi Staf",
+    "Something went wrong when updating staff position" : "Terjadi kesalahan pada saat merubah posisi staf",
+    "Staff Position edited successfully" : "Posisi Staf berhasil diperbaharui",
+    "Staff Position successfully deleted" : "Posisi Staf berhasil dihapus",
+    "Staff Position Data Deletion Failed" : "Posisi Staf Pekerjaan gagal dihapus",
+
+
+    "Job List" : "Daftar Pekerjaan",
+    "Create New a Job" : "Buat Pekerjaan Baru",
+    "Job Names" : "Nama Pekerjaan",
+    "Job Name" : "Nama Pekerjaan",
+    "Something went wrong while creating a job" : "Terjadi kesalahan pada saat membuat pekerjaan",
+    "New job created successfully" : "Pekerjaan berhasil dibuat",
+    "Job Data Deletion Failed" : "Data Pekerjaan gagal dihapus",
+    "Job successfully deleted" : "Pekerjaan berhasil dihapus",
+    "Job Data Edit Form" : "Formulir Edit Data Pekerjaan",
+    "Something went wrong when updating job" : "Terjadi kesalahan pada saat merubah pekerjaan",
+    "Job edited successfully" : "Pekerjaan berhasil diperbaharui",
+    "New Job Data Form":"Formulir Data Pekerjaan Baru",
+
+
+
+    "Graduated List" : "Daftar Lulusan",
+    "Create New a Graduated" : "Buat Baru Lulusan",
+    "Graduated Names" : "Nama Lulusan",
+    "Graduated Name" : "Nama Lulusan",
+    "New Forms of Graduated" : "Formulir Baru Lulusan",
+    "Something went wrong while creating a graduated" : "Terjadi kesalahan pada saat membuat Lulusan",
+    "New Graduated created successfully" : "Lulusan berhasil dibuat",
+    "Graduated Data Edit Form" : "Formulir Edit Data Lulusan",
+    "Something went wrong when updating Graduated" : "Terjadi kesalahan pada saat merubah Lulusan",
+    "Graduated edited successfully" : "Lulusan berhasil diperbaharui",
+    "Graduated successfully deleted" : "Lulusan berhasil dihapus",
+    "Graduated Data Deletion Failed" : "Data Lulusan gagal dihapus",
+    "Search by date range" : "Cari menurut rentang tanggal",
+    
+
+
+
+
+
+
+   
+    
+   
+    "Change Password" : "Ganti Kata Sandi",
+    "Active" : "Aktif",
+    "Not Active" : "Tidak Aktif",
+    "Users Management" : "Manajemen Pengguna",
+    "User Positions" : "Posisi Pengguna",
+    "Users" : "Para Pengguna",
+    "User" : "Pengguna",
+    "Sallary" : "Gaji",
+    "Old Password" : "Kata Sandi Lama",
+    "New Password" : "Kata Sandi Baru",
+    "Confirm New Password" : "Konfirmasi Kata Sandi Baru",
+    "isIncorrectPassword" : "Kata sandi saat ini salah",
+    "User Positions Management" : "Manajemen Posisi Pengguna",
+    "Position Names" : "Nama Posisi",
+    "Position Name" : "Nama Posisi",
+    "Created date" : "Tanggal dibuat",
+    "Status" : "Status",
+    "Actions" : "Aksi",
+    "Create New Position" : "Buat Posisi Baru",
+    "Delete All Selected" : "Hapus Semua yang Dipilih",
+    "Show" : "Lihat",
+    "Edit" : "Edit",
+    "Remove" : "Hapus",
+    "Automatically" : "Secara Otomatis",
+    "Submit" : "Kirim",
+    "New User Position Form" : "Formulir Posisi Pengguna Baru",
+    "Choose Status" : "Pilih Status",
+    "Press" : "Tekan",
+    "or switch columns to insert slug values automatically" : "atau berpindah kolom untuk menyisipkan nilai slug secara otomatis",
+    "Position Edit Form" : "Formulir Edit Posisi",
+    "Please complete the input on the form provided" : "Mohon lengkapi inputan pada formulir yang disediakan",
+    "Something went wrong while creating a new position" : "Ada yang salah pada saat membuat Posisi baru",
+    "New Position Created Successfully" : "Posisi Baru Berhasil dibuat",
+   
+    "Position successfully deleted" : "Posisi berhasil dihapus",
+    "Failed position deleted" : "Posisi gagal dihapus",
+    "The selected position failed to delete" : "Posisi yang dipilih gagal dihapus",
+    "The selected position successfully deleted" : "Posisi yang dipilih berhasil dihapus",
+    "Registration user successfully" : "Pendaftaran Pengguna berhasil!",
+    "Somethin went Wrong, creating user" : "Ada yang salah pada saat mendaftarkan Pengguna!",
+    "User successfully deleted" : "Pengguna berhasil dihapus!",
+    "Are you sure?" : "Anda Yakin?",
+    "User Management" : "Manajemen Pengguna",
+   
+    "Create new user" : "Buat Pengguna Baru",
+    "User Names" : "Nama Pengguna",
+    "Email Address" : "Alamat E-Mail",
+    
+    "New User Registration Form" : "Formulir Pendaftaran Pengguna Baru",
+    "Data is Empty" : "Data Kosong",
+    "Enter" : "Masukan",
+    "Select User Position" : "Pilih Posisi Pengguna",
+    "Select Gender" : "Pilih Jenis Kelamin",
+    "Male" : "Laki - Laki",
+    "Female" : "Perempuan",
+    "User Position" : "Posisi Pengguna",
+    "Save Changes" : "Simpan Perubahan",
+    "Update Password" : "Perbaharui Password",
+
+
+
+
+
+  
+    "Call" : "Hubungi",
+    "Now" : "Sekarang",
+
+
+    
+    "Position" : "Posisi",
+    "Change Position As" : "Ubah Posisi Sebagai",
+    "Activation Status" : "Status Aktivasi",
+    "Blocked" : "Diblokir",
+    "Change Activation Status" : "Ubah Status Aktivasi",
+    "User Edit Form" : "Formulir Edit Pengguna",
+    "Change Picture" : "Ganti Gambar",
+    "Delete Picture" : "Hapus Gambar",
+    "* required fileds" : "* Kolom wajib diisi",
+
+
+
+
+
+
+    "Page not found" : "Halaman tidak Ditekmukan",
+    "404 - PAGE NOT FOUND" : "404 - HALAMAN TIDAK DITEMUKAN",
+    "500 - Internal Server Error." : "500 - Internal Server Error.",
+    "The page you are looking for might have been removed had its name changed or is temporarily unavailable" : "Halaman yang Anda cari mungkin telah dihapus jika namanya diubah atau untuk sementara tidak tersedia",
+    "Wait a few moments to try again" : "Tunggu beberapa saat untuk mencobanya lagi",
+    "Back" : "Kembali",
+    
+  
+    "Data Added Successfully" : "Data Berhasil Ditambahkan",
+    "Data Failed to Add" : "Data Gagal Ditambahkan",
+    "The data has already been taken" : "Isi data sebelumnya sudah ada!",
+    "Data Updated Successfully" : "Data Berhasil Diperbaharui",
+    "Data Update Failed" : "Data Gagal Diperbaharui",
+    "Data deleted successfully" : "Data berhasil dihapus",
+    "Failed to delete data" : "Data gagal dihapus",
+   
+    
+    
+  
+
+    "Date" : "Tanggal",
+    "From" : "Dari",
+    "To" : "Untuk",
+    "Save" : "Simpan",
+    "Search" : "Cari",
+
+    
+    "Send" : "Kirim",
+   
+   
+    "January" : "JAN",
+    "February" : "FEB",
+    "March": "MAR",
+    "April" : "APRIL",
+    "May" : "MEI",
+    "June" : "JUN",
+    "July": "JUL",
+    "August" : "AGUS",
+    "September" : "SEP",
+    "October" : "OKT",
+    "November" : "NOV",
+    "December": "DES",
+   
+
+
+
+
+
+    
+    "Quick Search" : "Pencarian Cepat:",
+    "DataTableLengthMenu" : "Tampilkan _MENU_ Data",
+    "All" : "Semua",
+    "DataTableInfo" : "Menampilkan _START_ sampai _END_ dari _TOTAL_ Data",
+    "DataTableInfoEmpty" : "Menampilkan 0 sampai 0 dari 0 Data",
+    "DataTabelInfoFiltered" : "(Di filter dari total _MAX_ Data)",
+    "Previous" : "Sebelumnya",
+    "Next" : "Selanjutnya",
+
+    "Save Change" : "Simpan Perubahan",
+    
+  
+    
+    "Forgot Password" : "Lupa Kata Sandi",
+    "Reset Password" : "Atur Ulang Kata Sandi",
+    "Verify Email" : "Verifikasi E-Mail",
+    "Verify link has been sent" : "Verifikasi tautan telah dikirim",
+    "Resend Verification Email" : "Kirim Ulang E-Mail Verifikasi",
+    "Thanks for signing up! Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didnt receive the email, we will gladly send you another." : "Terima kasih telah mendaftar! Sebelum memulai, dapatkah Anda memverifikasi alamat email Anda dengan mengeklik tautan yang baru saja kami kirimkan melalui email kepada Anda? Jika Anda tidak menerima email tersebut, kami dengan senang hati akan mengirimkan email lain kepada Anda.",
+    "This is a secure area of the application. Please confirm your password before continuing." : "Ini adalah area aplikasi yang aman. Harap konfirmasi kata sandi Anda sebelum melanjutkan.",
+    "Reset Password Notification" : "Pemberitahuan Atur Ulang Kata Sandi",
+    "You are receiving this email because we received a password reset request for your account." : "Anda menerima email ini karena kami menerima permintaan pengaturan ulang kata sandi untuk akun Anda.",
+    "This password reset link will expire in :count minutes." : "Tautan pengaturan ulang kata sandi ini akan kedaluwarsa dalam :count menit.",
+    "If you did not request a password reset, no further action is required." : "Jika Anda tidak meminta pengaturan ulang kata sandi, tidak diperlukan tindakan lebih lanjut.",
+    "Verify Email Address" : "Verifikasi Alamat Email",
+    "Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one." : "lupa kata sandi Anda? Tidak masalah. Beri tahu kami alamat email Anda dan kami akan mengirimi Anda tautan setel ulang kata sandi melalui email yang memungkinkan Anda memilih yang baru.",
+    "Email Password Reset Link" : "Kirim Email Atur Ulang Kata Sandi",
+    "Please click the button below to verify your email address." : "Klik tombol di bawah untuk memverifikasi alamat email Anda.",
+    "If you did not create an account, no further action is required." : "Jika Anda tidak membuat akun, tidak diperlukan tindakan lebih lanjut.",
+    "Regards" : "Salam",
+    "All rights reserved." : "Seluruh hak cipta.",
+    "into your web browser:" : "ke browser web Anda:",
+    "If you're having trouble clicking the \":actionText\" button, copy and paste the URL below\ninto your web browser:" : "Jika Anda kesulitan mengeklik tombol \":actionText\", salin dan tempel URL di bawah\nke browser web Anda:",
+   
+
+
+
+
+
+
+    "Something went wrong, updating personal information" : "Terjadi kesalahan pada saat memperbarui informasi pribadi!",
+    "Your profile info has been updated successfully" : "Info profil Anda telah berhasil diperbaharui.",
+    "Your password has been changed successfully" : "Kata sandi Anda telah berhasil diubah",
+    "Something went wrong when changing the password" : "Ada yang salah pada saat mengganti password",
+    "Something Wrong, At the time of uploading a new image!" : "Ada yang Salah, Pada saat mengunggah gambar baru!",
+    "Your profile picture has been updated successfully" : "Gambar profil Anda telah berhasil diperbaharui.",
+    "Something went wrong while deleting your profile picture" : "Terjadi kesalahan saat menghapus gambar profil Anda!",
+    "Your profile picture has been deleted successfully" : "Gambar profil Anda telah berhasil dihapus.",
+    "Are You Sure" : "Apa Kamu Yakin?",
+    "You wont be able to revert this" : "Anda tidak akan dapat mengembalikan ini!",
+    "Yes, deleted it" : "Ya, Hapus ini",
+    "Cancel" : "Batalkan",
+    "Wait a few minutes to try again" : "Tunggu beberapa menit untuk mencoba lagi!",
+    "User successfully updated" : "Pengguna berhasil diperbaharui",
+    "User failed update" : "Pengguna gagal diperbaharui"
+
+
+
+}
