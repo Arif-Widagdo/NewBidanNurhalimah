@@ -52,17 +52,17 @@
                                     <td>
                                        {{ $staff->position->name }}
                                     </td>
-                                    <td class="text-center d-flex align-items-center justify-content-center">
+                                    <td class="text-right d-flex align-items-center justify-content-between">
                                         @if($staff->account)
-                                        @if($staff->account->status == 'actived')
-                                        <i class="fas fa-check-circle text-success text-lg shadow rounded-circle mr-2"></i>
-                                        @else
-                                        <i class="fas fa-times-circle text-danger text-lg shadow rounded-circle mr-2"></i>
-                                        @endif
-                                        <small class="d-flex flex-column">
-                                            <span>{{ __('Created date') }}</span>
-                                            <span>{{ $staff->account->created_at }}</span>
-                                        </small>
+                                            @if($staff->account->status == 'actived')
+                                            <i class="fas fa-check-circle text-success text-lg shadow rounded-circle mr-2"></i>
+                                            @else
+                                            <i class="fas fa-times-circle text-danger text-lg shadow rounded-circle mr-2"></i>
+                                            @endif
+                                            <small class="d-flex flex-column">
+                                                <span>{{ __('Created date') }}</span>
+                                                <span>{{ $staff->account->created_at }}</span>
+                                            </small>
                                         @else
                                         -
                                         @endif

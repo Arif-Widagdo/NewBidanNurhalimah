@@ -34,6 +34,7 @@
     "Education" : "Lulusan",
     "Select Your School Graduateds" : "Pilih lulusan sekolah Anda",
     "Job" : "Pekerjaan",
+    "Jobs" : "Pekerjaan",
     "Select Your Job" : "Pilih Pekerjaan Anda",
     "Place of Birthday" : "Tempat Lahir",
     "Date of Birthday" : "Tanggal Lahir",
@@ -169,9 +170,21 @@
     "Search by date range" : "Cari menurut rentang tanggal",
     
 
-
-
-
+    "List of Types of Birth Control" : "Daftar Jenis Alat KB",
+    "Add Types of Birth Control" : "Tambah Alat KB",
+    "Name of Birth Control Type" : "Nama Jenis KB",
+    "Name of Birth Control Types" : "Nama Jenis KB",
+    "Birth Controls" : "Alat KB",
+    "Birth Control" : "Alat KB",
+    "New Type of Birth Control Form" : "Formulir KB Jenis Baru",
+    "New Type Has Been Added" : "Jenis Baru Telah Ditambahkan",
+    "New Type Failed to Add" : "Jenis Baru Bagal Ditambahkan",
+    "Type of Birth Control Successfully Removed" : "Data Jenis KB Berhasil Dihapus",
+    "Type Failed to Delete Birth Control" : "Data Jenis KB Gagal Dihapus",
+    "Something went wrong when updating Birth Control Type" : "Terjadi kesalahan pada saat merubah Jenis KB",
+    "Type of Birth Control Updated Successfully" : "Jenis KB Berhasil Diperbarui",
+    "Birth Control Type Edit Form" : "Formulir Edit Data Jenis KB",
+    
 
 
    

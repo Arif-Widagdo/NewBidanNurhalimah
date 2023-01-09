@@ -34,6 +34,7 @@
     "Education" : "Education",
     "Select Your School Graduated" : "Select Your School Graduated",
     "Job" : "Job",
+    "Jobs" : "Jobs",
     "Select Your Job" : "Select Your Job",
     "Place of Birthday" : "Place of Birthday",
     "Date of Birthday" : "Date of Birthday",
@@ -168,6 +169,21 @@
     "Graduated Data Deletion Failed" : "Education Data Deletion Failed",
     "Search by date range" : "Search by date range",
 
+
+    "List of Types of Birth Control" : "List of Types of Birth Control",
+    "Add Types of Birth Control" : "Add Types of Birth Control",
+    "Name of Birth Control Type" : "Name of Birth Control Type",
+    "Name of Birth Control Types" : "Name of Birth Control Types",
+    "Birth Controls" : "Birth Controls",
+    "Birth Control" : "Birth Control",
+    "New Type of Birth Control Form" : "New Type of Birth Control Form",
+    "New Type Has Been Added" : "New Type Has Been Added",
+    "New Type Failed to Add" : "New Type Failed to Add",
+    "Type of Birth Control Successfully Removed" : "Type of Birth Control Successfully Removed",
+    "Type Failed to Delete Birth Control" : "Type Failed to Delete Birth Control",
+    "Something went wrong when updating Birth Control Type" : "Something went wrong when updating Birth Control Type",
+    "Type of Birth Control Updated Successfully" : "Type of Birth Control Updated Successfully",
+    "Birth Control Type Edit Form" : "Birth Control Type Edit Form",
 
 
     

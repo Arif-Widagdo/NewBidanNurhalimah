@@ -32,15 +32,13 @@
                         <table id="table-patient" class="table table-bordered table-hover text-nowrap">
                             <thead>
                                 <tr>
-                                    <th class="text-center"><input type="checkbox" class="selectall"
-                                            style="max-width: 15px !important; cursor: pointer;"></th>
-                                    <th class="text-center">{{ __('Actions') }}</th>
+                                    <th class="text-center"><input type="checkbox" class="selectall" style="max-width: 15px !important; cursor: pointer;"></th>
                                     <th>{{ __('No. Medical records') }}</th>
                                     <th>{{ __('Registration Date') }}</th>
                                     <th>{{ __('Name') }}</th>
                                     <th class="text-center">{{ __('Age') }}</th>
-                                    <th>{{ __('Couples') }}</th>
                                     <th class="text-center">{{ __("Account activation") }}</th>
+                                    <th class="text-center">{{ __('Actions') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -48,21 +46,17 @@
                                 @foreach ($patients as $patient)
                                 <tr>
                                     <td class="text-center" style="width: 15px !important;"><input type="checkbox" name="ids[]" class="selectbox" value="{{ $patient->id }}" style="cursor: pointer;"></td>
-                                    <td class="text-center">
-                                        <div class="btn-group">
-                                            <button type="button" class="btn btn-light btn-sm border dropdown-toggle"
-                                                data-toggle="dropdown" data-offset="-120">
-                                                <i class="fas fa-ellipsis-v"></i>
-                                            </button>
-                                            <div class="dropdown-menu" role="menu">
-                                                <a href="#" class="dropdown-item">{{ __('Show') }}</a>
-                                                <a href="#" class="dropdown-item">{{ __('Edit') }}</a>
-                                                <div class="dropdown-divider"></div>
-                                                <a href="#" class="dropdown-item">{{ __('Remove') }}</a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>#{{ $patient->no_rm }}</td>
+                                 
+                                    <td><a href="{{ route('couples.index', $patient->no_rm) }}" class="text_rm"> <span class="crash_rm">#</span>{{ $patient->no_rm }}</a></td>
+                                    <style>
+                                        .text_rm {
+                                        text-decoration: underline;
+                                        } 
+                                        .text_rm:hover .crash_rm{
+                                            color: #5A5A5A;
+                                        }
+                                        
+                                    </style>
                                     <td>
                                         {{ $patient->created_at }}
                                     </td>
@@ -72,10 +66,7 @@
                                     <td class="text-center">
                                         {{ \Carbon\Carbon::parse($patient->date_brithday)->diff(\Carbon\Carbon::now())->format('%y ' . __('Years') ) }}
                                     </td>
-                                    <td class="text-center">
-                                        <a href="{{ route('couples.index', $patient->no_rm) }}" class="btn btn-sm btn-info"><i class="fas fa-eye"></i></a>
-                                    </td>
-                                    <td class="text-center d-flex align-items-center justify-content-center">
+                                    <td class="text-right d-flex align-items-center justify-content-between">
                                         @if($patient->account)
                                         @if($patient->account->status == 'actived')
                                         <i class="fas fa-check-circle text-success text-lg shadow rounded-circle mr-2"></i>
@@ -89,6 +80,20 @@
                                         @else
                                         -
                                         @endif
+                                    </td>
+                                    <td class="text-center">
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-light btn-sm border dropdown-toggle"
+                                                data-toggle="dropdown" data-offset="-120">
+                                                <i class="fas fa-ellipsis-v"></i>
+                                            </button>
+                                            <div class="dropdown-menu" role="menu">
+                                                <a href="#" class="dropdown-item">{{ __('Show') }}</a>
+                                                <a href="#" class="dropdown-item">{{ __('Edit') }}</a>
+                                                <div class="dropdown-divider"></div>
+                                                <a href="#" class="dropdown-item">{{ __('Remove') }}</a>
+                                            </div>
+                                        </div>
                                     </td>
                                 </tr>
                                 @endforeach
@@ -115,7 +120,7 @@
             ],
             "order": [],
             "columnDefs": [{
-                "targets": [0, 1],
+                "targets": [0, 6],
                 "orderable": false,
             }],
             "oLanguage": {

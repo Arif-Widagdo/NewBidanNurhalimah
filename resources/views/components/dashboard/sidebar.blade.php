@@ -45,8 +45,8 @@
                 </li>
                 @if(auth()->user()->role->slug === 'administrator')
                 @if(auth()->user()->staff->position->slug === 'admin')
-                <li class="nav-item {{ request()->is('admin/positions') || request()->is('admin/graduateds') || request()->is('admin/works') ? 'menu-open' : '' }}">
-                    <a class="nav-link {{ request()->is('admin/positions') || request()->is('admin/graduateds') || request()->is('admin/works') ? 'active' : '' }}" style="cursor: pointer;">
+                <li class="nav-item {{ request()->is('admin/positions') || request()->is('admin/graduateds') || request()->is('admin/works') || request()->is('birth-controls') ? 'menu-open' : '' }}">
+                    <a class="nav-link {{ request()->is('admin/positions') || request()->is('admin/graduateds') || request()->is('admin/works') || request()->is('birth-controls')  ? 'active' : '' }}" style="cursor: pointer;">
                         <i class="nav-icon fas fa-laptop-medical"></i>
                         <p>{{ __('Master') }} <i class="right fas fa-angle-left"></i>
                         </p>
@@ -55,7 +55,7 @@
                         <li class="nav-item">
                             <a href="{{ route('positions.index') }}" class="nav-link {{ request()->is('admin/positions') ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>{{ __('Position') }}</p>
+                                <p>{{ __('Positions') }}</p>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -67,7 +67,13 @@
                         <li class="nav-item">
                             <a href="{{ route('works.index') }}" class="nav-link {{ request()->is('admin/works') ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>{{ __('Job') }}</p>
+                                <p>{{ __('Jobs') }}</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('birth-controls.index') }}" class="nav-link {{ request()->is('birth-controls') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>{{ __('Birth Controls') }}</p>
                             </a>
                         </li>
                     </ul>

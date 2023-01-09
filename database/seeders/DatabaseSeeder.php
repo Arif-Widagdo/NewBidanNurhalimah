@@ -4,12 +4,11 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-use Illuminate\Support\Carbon;
 use Illuminate\Database\Seeder;
 use Database\Seeders\RoleSeeder;
 use Database\Seeders\PositionSeeder;
-use Illuminate\Support\Facades\Hash;
 use Database\Seeders\GraduatedSeeder;
+use Database\Seeders\BirthControlSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -24,7 +23,6 @@ class DatabaseSeeder extends Seeder
         // CREATE ROLES
         // --------------------------------
         $this->call(RoleSeeder::class);
-
         // --------------------------------
         // CREATE POSITIONS
         // --------------------------------
@@ -34,16 +32,20 @@ class DatabaseSeeder extends Seeder
         // --------------------------------
         $this->call(GraduatedSeeder::class);
         // --------------------------------
-        // CREATE WORK
+        // CREATE WORKS
         // --------------------------------
         $this->call(WorkSeeder::class);
         // --------------------------------
-        // CREATE STAFF
+        // CREATE STAFFS
         // --------------------------------
         $this->call(StaffSeeder::class);
         // --------------------------------
-        // CREATE PATIENT 
+        // CREATE PATIENTS 
         // --------------------------------
         $this->call(PatientSeeder::class);
+        // --------------------------------
+        // CREATE BIRTH CONTROLS 
+        // --------------------------------
+        $this->call(BirthControlSeeder::class);
     }
 }

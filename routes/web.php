@@ -13,6 +13,7 @@ use App\Http\Controllers\Staff\StaffController;
 use App\Http\Controllers\Patient\PatientController;
 use App\Http\Controllers\Admin\UserManagementController;
 use App\Http\Controllers\Admin\WorkManagementController;
+use App\Http\Controllers\Crew\BCManagementController;
 use App\Http\Controllers\Crew\CoupleManagementController;
 use App\Http\Controllers\Crew\PatientManagementController;
 
@@ -97,6 +98,11 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     // -- Auth ADMIN || STAFF --
     // -------------------------
     Route::group(['middleware' => ['isCrew']], function () {
+        // Management Birth Control
+        Route::get('/birth-controls/slug', [BCManagementController::class, 'checkSlug'])->name('check.birth.control');
+        Route::resource('/birth-controls', BCManagementController::class)->except(['create', 'edit', 'show']);
+        Route::delete('/birth-controls-deleteAll', [BCManagementController::class, 'deleteAll'])->name('birth-controls.deleteAll');
+
         // Management Patient
         Route::resource('/patients', PatientManagementController::class);
         // Management Couple
