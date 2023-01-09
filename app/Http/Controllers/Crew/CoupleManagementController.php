@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Crew;
 
-use App\Http\Controllers\Controller;
+use App\Models\Couple;
 use App\Models\Patient;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class CoupleManagementController extends Controller
 {
@@ -13,9 +14,14 @@ class CoupleManagementController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($no_rm)
     {
-        //
+        $patient =  Patient::where('no_rm', '=', $no_rm)->first();
+
+        return view('crew.couple_management.index', [
+            'patient' => $patient,
+            'couples' => Couple::where('patient_id', $patient->id)->orderBy('name')->get()
+        ]);
     }
 
     /**
@@ -42,10 +48,10 @@ class CoupleManagementController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Patient  $patient
+     * @param  \App\Models\Couple  $couple
      * @return \Illuminate\Http\Response
      */
-    public function show(Patient $patient)
+    public function show(Couple $couple)
     {
         //
     }
@@ -53,10 +59,10 @@ class CoupleManagementController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Patient  $patient
+     * @param  \App\Models\Couple  $couple
      * @return \Illuminate\Http\Response
      */
-    public function edit(Patient $patient)
+    public function edit(Couple $couple)
     {
         //
     }
@@ -65,10 +71,10 @@ class CoupleManagementController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Patient  $patient
+     * @param  \App\Models\Couple  $couple
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Patient $patient)
+    public function update(Request $request, Couple $couple)
     {
         //
     }
@@ -76,10 +82,10 @@ class CoupleManagementController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Patient  $patient
+     * @param  \App\Models\Couple  $couple
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Patient $patient)
+    public function destroy(Couple $couple)
     {
         //
     }
