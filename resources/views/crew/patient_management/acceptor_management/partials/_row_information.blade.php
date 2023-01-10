@@ -24,86 +24,113 @@
                     </div>
                 </div>
                 <hr>
+                <!----- Row Patient ------>
                 <div class="row">
-                    <div class="col-lg-6">
-                        <ul class="list-group list-group-unbordered " style="list-style-type: none;">
-                            <li class="d-flex flex-column flex-lg-row align-items-center">
-                                <p class="col-lg-5 border-right">{{ __('Name') }}</p>
-                                <p class="col-lg-7 text-bold">
-                                    {{ $patient->name != '' ? $patient->name : '-' }}
-                                </p>
-                            </li>
-                            <li class="d-flex flex-column flex-lg-row align-items-center">
-                                <p class="col-lg-5 border-right">{{ __('Gender') }}</p>
-                                <p class="col-lg-7 text-bold ">
-                                    @if($patient->gender == 'M')
-                                    {{ __('Male') }}
-                                    @elseif($patient->gender == 'F')
-                                    {{ __('Female') }}
-                                    @else
-                                    -
-                                    @endif
-                                </p>
-                            </li>
-                            <li class="d-flex flex-column flex-lg-row align-items-center">
-                                <p class="col-lg-5 border-right">{{ __('Place and date of birth') }}</p>
-                                <p class="col-lg-7 text-bold">
-                                    {{ $patient->place_brithday && $patient->date_brithday != '' ? $patient->place_brithday.', '.date('d-m-Y', strtotime($patient->date_brithday))   : '-'  }} 
-                                </p>
-                            </li>
-                            <li class="d-flex flex-column flex-lg-row align-items-center">
-                                <p class="col-lg-5 border-right">{{ __('Age') }}</p>
-                                <p class="col-lg-7 text-bold ">
-                                    {{ $patient->date_brithday != '' ? $ageInYears : '-' }}
-                                </p>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-6">
-                        <ul class="list-group list-group-unbordered " style="list-style-type: none;">
-                            <li class="d-flex flex-column flex-lg-row align-items-center">
-                                <p class="col-lg-5 border-right">{{ __('Position') }}</p>
-                                <p class="col-lg-7 text-bold ">
-                                  
-                                </p>
-                            </li>
-                            <li class="d-flex flex-column flex-lg-row align-items-center ">
-                                <p class="col-lg-5 border-right">{{ __('Username') }}</p>
-                                <p class="col-lg-7 text-bold ">
-                                    {{ $patient->username != '' ? $patient->username : '-' }}
-                                </p>
-                            </li>
-                            <li class="d-flex flex-column flex-lg-row align-items-center">
-                                <p class="col-lg-5 border-right">{{ __('Email') }}</p>
-                                <p class="col-lg-7 text-bold ">
-                                    {{ $patient->email != '' ? $patient->email : '-' }}
-                                </p>
-                            </li>
-                            <li class="d-flex flex-column flex-lg-row align-items-center">
-                                <p class="col-lg-5 border-right">{{ __('Number Phone') }}</p>
-                                <p class="col-lg-7 text-bold ">
-                                    {{ $patient->phoneNumber != '' ? $patient->phoneNumber : '-' }}
-                                </p>
-                            </li>
-                            <li class="d-flex d-lg-none flex-column flex-lg-row align-items-center">
-                                <p class="col-lg-5 border-right">{{ __('Address') }}</p>
-                                <p class="col-lg-7 text-bold ">
-                                    {{ $patient->address != '' ? $patient->address : '-' }}
-                                </p>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="row d-none d-lg-flex">
-                    <div class="col-lg-12">
-                        <div class="border d-flex flex-column p-2">
-                            <p class="text-bold">{{ __('Address') }}</p>
-                            <p class="">
-                                {{ $patient->address != '' ? $patient->address : '-' }}
-                            </p>
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <ul class="list-group list-group-unbordered " style="list-style-type: none;">
+                                    <li class="d-flex flex-column flex-lg-row align-items-start">
+                                        <p class="col-lg-5 border-right">{{ __('Name') }}</p>
+                                        <p class="col-lg-7 text-bold">
+                                            {{ $patient->name != '' ? $patient->name : '-' }}
+                                        </p>
+                                    </li>
+                                    <li class="d-flex flex-column flex-lg-row align-items-start">
+                                        <p class="col-lg-5 border-right">{{ __('Gender') }}</p>
+                                        <p class="col-lg-7 text-bold ">
+                                            @if($patient->gender == 'M')
+                                            {{ __('Male') }}
+                                            @elseif($patient->gender == 'F')
+                                            {{ __('Female') }}
+                                            @else
+                                            -
+                                            @endif
+                                        </p>
+                                    </li>
+                                    <li class="d-flex flex-column flex-lg-row align-items-start">
+                                        <p class="col-lg-5 border-right">{{ __('Place and date of birth') }}</p>
+                                        <p class="col-lg-7 text-bold">
+                                            {{ $patient->place_brithday && $patient->date_brithday != '' ? $patient->place_brithday.', '.date('d-m-Y', strtotime($patient->date_brithday))   : '-'  }} 
+                                        </p>
+                                    </li>
+                                    <li class="d-flex flex-column flex-lg-row align-items-start">
+                                        <p class="col-lg-5 border-right">{{ __('Age') }}</p>
+                                        <p class="col-lg-7 text-bold ">
+                                            {{ $patient->date_brithday != '' ? $ageInYears : '-' }}
+                                        </p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-6">
+                                <ul class="list-group list-group-unbordered " style="list-style-type: none;">
+                                    <li class="d-flex flex-column flex-lg-row align-items-start">
+                                        <p class="col-lg-5 border-right">{{ __('Marital Status') }}</p>
+                                        <p class="col-lg-7 text-bold ">
+                                            @if ($patient->marital_status == 'married')
+                                            {{ __('Married') }}
+                                            @elseif($patient->marital_status == 'divorced')
+                                                {{ __('Divorced') }}
+                                            @elseif($patient->marital_status == 'dead_divorced')
+                                                {{ __('Dead Divorced') }}
+                                            @else
+                                                {{ __('Single') }}
+                                            @endif
+                                        </p>
+                                    </li>
+                                    <li class="d-flex flex-column flex-lg-row align-items-start ">
+                                        <p class="col-lg-5 border-right">{{ __('Job Status') }}</p>
+                                        <p class="col-lg-7 text-bold ">
+                                            {{ $patient->work_id != '' ? $patient->work->name : '-' }}
+                                        </p>
+                                    </li>
+                                    <li class="d-flex flex-column flex-lg-row align-items-start">
+                                        <p class="col-lg-5 border-right">{{ __('Graduate Status') }}</p>
+                                        <p class="col-lg-7 text-bold ">
+                                            {{ $patient->graduated_id != '' ? $patient->graduated->name : '-' }}
+                                        </p>
+                                    </li>
+                                    <li class="d-flex flex-column flex-lg-row align-items-start">
+                                        <p class="col-lg-5 border-right">{{ __('Number Phone') }}</p>
+                                        <p class="col-lg-7 text-bold ">
+                                            {{ $patient->phoneNumber != '' ? $patient->phoneNumber : '-' }}
+                                        </p>
+                                    </li>
+                                    <li class="d-flex d-lg-none flex-column flex-lg-row align-items-start">
+                                        <p class="col-lg-5 border-right">{{ __('Address') }}</p>
+                                        <p class="col-lg-7 text-bold ">
+                                            {{ $patient->address != '' ? $patient->address : '-' }}
+                                        </p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="row d-none d-lg-flex">
+                            <div class="col-lg-12">
+                                <div class="border d-flex flex-column p-2">
+                                    <p class="text-bold">{{ __('Address') }}</p>
+                                    <p class="">
+                                        {{ $patient->address != '' ? $patient->address : '-' }}
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <!----- Row Couple ------>
+                @if($patient->couple)
+                <hr>
+                <div>
+                    <h5 class="text-bold">{{ __('Couple Informations') }}</h5>
+                </div>
+                <hr>
+                @include('crew.patient_management.acceptor_management.partials._row_couple_Information')
+                @else
+                <hr>
+                <div class="alert alert-info">
+                    Silakan Lengkapi Informasi Pasangan
+                </div>
+                @endif
             </div>
         </div>
     </div>

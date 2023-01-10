@@ -144,7 +144,7 @@
                         </div>
                         <div class="form-group row">
                             <label for="graduated_id" class="col-md-3 col-form-label">
-                                {{ __('Graduateds') }} <span class="text-danger">*</span>
+                                {{ __('Graduate Status') }} <span class="text-danger">*</span>
                             </label>
                             <div class="col-md-9">
                                 <select class="form-control select2" style="width: 100%;" name="graduated_id" id="graduated_id">
