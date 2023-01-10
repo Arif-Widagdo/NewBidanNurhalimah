@@ -13,17 +13,17 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('couples', function (Blueprint $table) {
+        Schema::create('acceptors', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->foreignUuid('patient_id')->index()->references('id')->on('patients')->onDelete('cascade');
-            $table->foreignUuid('graduated_id')->nullable();
-            $table->foreignUuid('work_id')->nullable();
-            $table->string('name')->nullable();
-            $table->string('phoneNumber')->nullable();
-            $table->string('place_brithday')->nullable();
-            $table->date('date_brithday')->nullable();
-            $table->enum('gender', ['F', 'M'])->nullable();
-            $table->string('address')->nullable();
+            $table->foreignUuid('birthControl_id')->nullable();
+            $table->date('menstrual_date')->nullable();
+            $table->integer('weight');
+            $table->string('blood_pressure');
+            $table->string('complication')->nullable();
+            $table->string('failure')->nullable();
+            $table->text('description')->nullable();
+            $table->date('return_date')->nullable();
             $table->timestamps();
         });
     }
@@ -35,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('couples');
+        Schema::dropIfExists('acceptors');
     }
 };

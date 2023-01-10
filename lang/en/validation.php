@@ -182,7 +182,7 @@ return [
             'unique' => 'Email has already been taken.'
         ],
         'position_id' => [
-            'required' => 'Position must be filled in!',
+            'required' => 'Position Staff must be selected!',
         ],
         'name' => [
             'required' => 'Name must be filled in!',
@@ -196,6 +196,9 @@ return [
         ],
         'phoneNumber' => [
             'required' => 'Phone Number must be filled in!',
+        ],
+        'marital_status' => [
+            'required' => 'Marital Status must be selected!',
         ],
         'graduated_id' => [
             'required' => 'Graduates must be selected!',

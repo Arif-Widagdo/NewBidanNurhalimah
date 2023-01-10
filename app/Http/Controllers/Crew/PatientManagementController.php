@@ -24,7 +24,7 @@ class PatientManagementController extends Controller
     public function index()
     {
         return view('crew.patient_management.index', [
-            'patients' => Patient::orderBy('no_rm', 'ASC')->get()
+            'patients' => Patient::orderBy('no_rm', 'DESC')->get()
         ]);
     }
 
@@ -58,7 +58,9 @@ class PatientManagementController extends Controller
             'date_brithday' => ['required'],
             'phoneNumber' => ['required'],
             'address' => ['required', 'string'],
+            'marital_status' => ['required', 'in:single,married,divorced,dead_divorced'],
         ];
+
         if ($request->has('create_account')) {
             $validator['username'] = 'required|without_spaces|unique:users,username';
             $validator['email'] = ['required', 'string', 'email', 'max:255', 'unique:' . User::class];

@@ -88,34 +88,7 @@
                                 <span class="text-danger error-text gender_error"></span>
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <label for="work_id" class="col-md-3 col-form-label">
-                                {{ __('work patient') }} <span class="text-danger">*</span>
-                            </label>
-                            <div class="col-md-9">
-                                <select class="form-control select2" style="width: 100%;" name="work_id" id="work_id">
-                                    <option selected="selected" disabled >{{ __('Select Job') }}</option>
-                                    @foreach ($works as $work)
-                                        <option value="{{ $work->id }}">{{ $work->name }}</option>
-                                    @endforeach
-                                </select>
-                                <span class="text-danger error-text work_id_error"></span>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="graduated_id" class="col-md-3 col-form-label">
-                                {{ __('Graduateds') }} <span class="text-danger">*</span>
-                            </label>
-                            <div class="col-md-9">
-                                <select class="form-control select2" style="width: 100%;" name="graduated_id" id="graduated_id">
-                                    <option selected="selected" disabled >{{ __('Select Graduated') }}</option>
-                                    @foreach ($graduateds as $graduated)
-                                        <option value="{{ $graduated->id }}">{{ $graduated->name }}</option>
-                                    @endforeach
-                                </select>
-                                <span class="text-danger error-text graduated_id_error"></span>
-                            </div>
-                        </div>
+                       
                         <div class="form-group row">
                             <label for="inputPlaceBrithday" class="col-md-3 col-form-label ">
                                 {{ __('Place of Birthday') }} <span class="text-danger">*</span>
@@ -138,6 +111,49 @@
                                 </div>
                                 <small>{{ __('Example') }}: 30-12-1995</small><br>
                                 <span class="text-danger error-text date_brithday_error"></span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="marital_status" class="col-md-3 col-form-label">
+                                {{ __('Marital Status') }} <span class="text-danger">*</span>
+                            </label>
+                            <div class="col-md-9">
+                                <select class="form-control select2" style="width: 100%;" name="marital_status" id="marital_status">
+                                    <option selected="selected" disabled >{{ __('Select Marital Status') }}</option>
+                                    <option value="single">{{ __('Single') }}</option>
+                                    <option value="married">{{ __('Married') }}</option>
+                                    <option value="divorced">{{ __('Divorced') }}</option>
+                                    <option value="dead_divorced">{{ __('Dead Divorced') }}</option>
+                                </select>
+                                <span class="text-danger error-text marital_status_error"></span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="work_id" class="col-md-3 col-form-label">
+                                {{ __('Job Status') }} <span class="text-danger">*</span>
+                            </label>
+                            <div class="col-md-9">
+                                <select class="form-control select2" style="width: 100%;" name="work_id" id="work_id">
+                                    <option selected="selected" disabled >{{ __('Select Job Status') }}</option>
+                                    @foreach ($works as $work)
+                                        <option value="{{ $work->id }}">{{ $work->name }}</option>
+                                    @endforeach
+                                </select>
+                                <span class="text-danger error-text work_id_error"></span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="graduated_id" class="col-md-3 col-form-label">
+                                {{ __('Graduateds') }} <span class="text-danger">*</span>
+                            </label>
+                            <div class="col-md-9">
+                                <select class="form-control select2" style="width: 100%;" name="graduated_id" id="graduated_id">
+                                    <option selected="selected" disabled >{{ __('Select Graduated') }}</option>
+                                    @foreach ($graduateds as $graduated)
+                                        <option value="{{ $graduated->id }}">{{ $graduated->name }}</option>
+                                    @endforeach
+                                </select>
+                                <span class="text-danger error-text graduated_id_error"></span>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -171,10 +187,6 @@
             </div>
         </div>
     </div>
-
-
-
-   
     @section('scripts')
     <!-- Select 2 -->
     <script src="{{ asset('plugins/select2/js/select2.full.min.js') }}"></script>
@@ -240,6 +252,7 @@
                         confirmButtonColor: '#007BFF',
                     });
                     $('span.date_brithday_error').text("{{ __('Hes not yet 17 years old, you cant enter the data wrong, right?') }}");
+                    $('input.error_input_date_brithday').addClass('is-invalid');
                 }else {
                     $('#form_create_patient')[0].reset();
                     setTimeout(function () {

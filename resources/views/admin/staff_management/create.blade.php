@@ -67,6 +67,20 @@
                             </div>
                         </div>
                         <div class="form-group row">
+                            <label for="position_id" class="col-md-3 col-form-label">
+                                {{ __('Position Staff') }} <span class="text-danger">*</span>
+                            </label>
+                            <div class="col-md-9">
+                                <select class="form-control select2" style="width: 100%;" name="position_id" id="position_id">
+                                    <option selected="selected" disabled >{{ __('Select Position Staff') }}</option>
+                                    @foreach ($positions as $position)
+                                        <option value="{{ $position->id }}">{{ $position->name }}</option>
+                                    @endforeach
+                                </select>
+                                <span class="text-danger error-text position_id_error"></span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
                             <label for="inputName" class="col-md-3 col-form-label ">
                                 {{ __('Full Name') }} <span class="text-danger">*</span>
                             </label>
@@ -86,34 +100,6 @@
                                     <option value="F">{{ __('Female') }}</option>
                                 </select>
                                 <span class="text-danger error-text gender_error"></span>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="position_id" class="col-md-3 col-form-label">
-                                {{ __('Position Staff') }} <span class="text-danger">*</span>
-                            </label>
-                            <div class="col-md-9">
-                                <select class="form-control select2" style="width: 100%;" name="position_id" id="position_id">
-                                    <option selected="selected" disabled >{{ __('Select Position Staff') }}</option>
-                                    @foreach ($positions as $position)
-                                        <option value="{{ $position->id }}">{{ $position->name }}</option>
-                                    @endforeach
-                                </select>
-                                <span class="text-danger error-text position_id_error"></span>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="graduated_id" class="col-md-3 col-form-label">
-                                {{ __('Graduateds') }} <span class="text-danger">*</span>
-                            </label>
-                            <div class="col-md-9">
-                                <select class="form-control select2" style="width: 100%;" name="graduated_id" id="graduated_id">
-                                    <option selected="selected" disabled >{{ __('Select Graduated') }}</option>
-                                    @foreach ($graduateds as $graduated)
-                                        <option value="{{ $graduated->id }}">{{ $graduated->name }}</option>
-                                    @endforeach
-                                </select>
-                                <span class="text-danger error-text graduated_id_error"></span>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -138,6 +124,20 @@
                                 </div>
                                 <small>{{ __('Example') }}: 30-12-1995</small><br>
                                 <span class="text-danger error-text date_brithday_error"></span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="graduated_id" class="col-md-3 col-form-label">
+                                {{ __('Graduateds') }} <span class="text-danger">*</span>
+                            </label>
+                            <div class="col-md-9">
+                                <select class="form-control select2" style="width: 100%;" name="graduated_id" id="graduated_id">
+                                    <option selected="selected" disabled >{{ __('Select Graduated') }}</option>
+                                    @foreach ($graduateds as $graduated)
+                                        <option value="{{ $graduated->id }}">{{ $graduated->name }}</option>
+                                    @endforeach
+                                </select>
+                                <span class="text-danger error-text graduated_id_error"></span>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -238,6 +238,7 @@
                         confirmButtonColor: '#007BFF',
                     });
                     $('span.date_brithday_error').text("{{ __('Hes not yet 10 years old, you cant enter the data wrong, right?') }}");
+                    $('input.error_input_date_brithday').addClass('is-invalid');
                 }else {
                     $('#form_create_staff')[0].reset();
                     setTimeout(function () {

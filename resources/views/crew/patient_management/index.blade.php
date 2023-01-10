@@ -1,5 +1,14 @@
 <x-app-dashboard title=" {{ __('Patient List') }}">
 
+    <style>
+        .text_rm {
+            text-decoration: underline;
+        } 
+        .text_rm:hover .crash_rm{
+            color: #5A5A5A;
+        }
+    </style>
+
     <x-slot name="header">
         {{ __('Patient List') }}
     </x-slot>
@@ -33,12 +42,13 @@
                             <thead>
                                 <tr>
                                     <th class="text-center"><input type="checkbox" class="selectall" style="max-width: 15px !important; cursor: pointer;"></th>
+                                    <th class="text-center">{{ __('Actions') }}</th>
                                     <th>{{ __('No. Medical records') }}</th>
                                     <th>{{ __('Registration Date') }}</th>
                                     <th>{{ __('Name') }}</th>
+                                    <th>{{ __('Marital Status') }}</th>
                                     <th class="text-center">{{ __('Age') }}</th>
                                     <th class="text-center">{{ __("Account activation") }}</th>
-                                    <th class="text-center">{{ __('Actions') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -46,41 +56,6 @@
                                 @foreach ($patients as $patient)
                                 <tr>
                                     <td class="text-center" style="width: 15px !important;"><input type="checkbox" name="ids[]" class="selectbox" value="{{ $patient->id }}" style="cursor: pointer;"></td>
-                                 
-                                    <td><a href="{{ route('couples.index', $patient->no_rm) }}" class="text_rm"> <span class="crash_rm">#</span>{{ $patient->no_rm }}</a></td>
-                                    <style>
-                                        .text_rm {
-                                        text-decoration: underline;
-                                        } 
-                                        .text_rm:hover .crash_rm{
-                                            color: #5A5A5A;
-                                        }
-                                        
-                                    </style>
-                                    <td>
-                                        {{ $patient->created_at }}
-                                    </td>
-                                    <td class="fw-500">
-                                        {{ $patient->name }}
-                                    </td>
-                                    <td class="text-center">
-                                        {{ \Carbon\Carbon::parse($patient->date_brithday)->diff(\Carbon\Carbon::now())->format('%y ' . __('Years') ) }}
-                                    </td>
-                                    <td class="text-right d-flex align-items-center justify-content-between">
-                                        @if($patient->account)
-                                        @if($patient->account->status == 'actived')
-                                        <i class="fas fa-check-circle text-success text-lg shadow rounded-circle mr-2"></i>
-                                        @else
-                                        <i class="fas fa-times-circle text-danger text-lg shadow rounded-circle mr-2"></i>
-                                        @endif
-                                        <small class="d-flex flex-column">
-                                            <span>{{ __('Created date') }}</span>
-                                            <span>{{ $patient->account->created_at }}</span>
-                                        </small>
-                                        @else
-                                        -
-                                        @endif
-                                    </td>
                                     <td class="text-center">
                                         <div class="btn-group">
                                             <button type="button" class="btn btn-light btn-sm border dropdown-toggle"
@@ -94,6 +69,42 @@
                                                 <a href="#" class="dropdown-item">{{ __('Remove') }}</a>
                                             </div>
                                         </div>
+                                    </td>
+                                    <td><a href="{{ route('acceptors.index', $patient->no_rm) }}" class="text_rm"> <span class="crash_rm">#</span>{{ $patient->no_rm }}</a></td>
+                                    <td>
+                                        {{ $patient->created_at }}
+                                    </td>
+                                    <td class="fw-500">
+                                        {{ $patient->name }}
+                                    </td>
+                                    <td class="fw-500">
+                                        @if ($patient->marital_status == 'married')
+                                            {{ __('Married') }}
+                                        @elseif($patient->marital_status == 'divorced')
+                                            {{ __('Divorced') }}
+                                        @elseif($patient->marital_status == 'dead_divorced')
+                                            {{ __('Dead Divorced') }}
+                                        @else
+                                            {{ __('Single') }}
+                                        @endif
+                                    </td>
+                                    <td class="text-center">
+                                        {{ \Carbon\Carbon::parse($patient->date_brithday)->diff(\Carbon\Carbon::now())->format('%y ' . __('Years') ) }}
+                                    </td>
+                                    <td class="text-right d-flex align-items-center {{ $patient->account ? 'justify-content-between' : 'justify-content-center' }}">
+                                        @if($patient->account)
+                                        @if($patient->account->status == 'actived')
+                                        <i class="fas fa-check-circle text-success text-lg shadow rounded-circle mr-2"></i>
+                                        @else
+                                        <i class="fas fa-times-circle text-danger text-lg shadow rounded-circle mr-2"></i>
+                                        @endif
+                                        <small class="d-flex flex-column">
+                                            <span>{{ __('Created date') }}</span>
+                                            <span>{{ $patient->account->created_at }}</span>
+                                        </small>
+                                        @else
+                                        -
+                                        @endif
                                     </td>
                                 </tr>
                                 @endforeach
@@ -120,7 +131,7 @@
             ],
             "order": [],
             "columnDefs": [{
-                "targets": [0, 6],
+                "targets": [0, 1],
                 "orderable": false,
             }],
             "oLanguage": {

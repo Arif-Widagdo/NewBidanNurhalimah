@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\User;
 use App\Models\Work;
 use App\Models\Couple;
+use App\Models\Acceptor;
 use App\Models\Graduated;
 use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Model;
@@ -26,6 +27,7 @@ class Patient extends Model
         'place_brithday',
         'date_brithday',
         'gender',
+        'marital_status',
         'address',
     ];
 
@@ -78,6 +80,11 @@ class Patient extends Model
 
     public function couple()
     {
-        return $this->hasMany(Couple::class);
+        return $this->hasOne(Couple::class);
+    }
+
+    public function acceptor()
+    {
+        return $this->hasMany(Acceptor::class);
     }
 }

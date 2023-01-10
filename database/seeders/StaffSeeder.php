@@ -123,7 +123,7 @@ class StaffSeeder extends Seeder
 
 
         $position_asistant = \App\Models\Position::whereSlug('asisten')->first();
-        \App\Models\Staff::factory()->create([
+        Staff::create([
             'id' => fake()->uuid(),
             'position_id' => $position_asistant->id,
             'name' => fake()->name(),

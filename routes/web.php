@@ -13,6 +13,7 @@ use App\Http\Controllers\Staff\StaffController;
 use App\Http\Controllers\Patient\PatientController;
 use App\Http\Controllers\Admin\UserManagementController;
 use App\Http\Controllers\Admin\WorkManagementController;
+use App\Http\Controllers\Crew\AcceptorManagementController;
 use App\Http\Controllers\Crew\BCManagementController;
 use App\Http\Controllers\Crew\CoupleManagementController;
 use App\Http\Controllers\Crew\PatientManagementController;
@@ -105,8 +106,10 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
 
         // Management Patient
         Route::resource('/patients', PatientManagementController::class);
+        // Management Acceptor
+        Route::get('patient/{no_rm}/acceptors', [AcceptorManagementController::class, 'index'])->name('acceptors.index');
+        Route::resource('/acceptors', AcceptorManagementController::class)->except(['index']);
         // Management Couple
-        Route::get('/{no_rm}/couples', [CoupleManagementController::class, 'index'])->name('couples.index');
         Route::resource('/couples', CoupleManagementController::class)->except(['index']);
     });
 });

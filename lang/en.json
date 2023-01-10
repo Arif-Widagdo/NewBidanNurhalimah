@@ -46,6 +46,7 @@
     "Select Job" : "Select Job",
     "General" : "General",
     "Select Job Status For" : "Select Job Status For",
+    "Select Job Status" : "Select Job Status",
     "Job Status" : "Job Status",
     "Please complete your personal data in the form provided" : "Please complete your personal data in the form provided",
     "Husband Information" : "Husband Information",
@@ -109,6 +110,13 @@
     "Patient Data Created Successfully" : "Patient Data Created Successfully",
     "No. Medical records" : "No. Medical records",
     "Account activation" : "Account activation",
+
+    "Marital Status" : "Marital Status",
+    "Select Marital Status" : "Select Marital Status",
+    "Single" : "Single",
+    "Married" : "Married",
+    "Divorced" : "Divorced",
+    "Dead Divorced" : "Dead/Divorced",
  
     "Couples" : "Couples",
     "Couple" : "Couple",

@@ -160,7 +160,7 @@ return [
             'unique' => 'E-Mail pengguna sudah ada sebelumnya.'
         ],
         'position_id' => [
-            'required' => 'Jabatan pengguna wajib di isi!',
+            'required' => 'Posisi Staf wajib di isi!',
         ],
         'name' => [
             'required' => 'Nama wajib di isi!',
@@ -174,6 +174,9 @@ return [
         ],
         'phoneNumber' => [
             'required' => 'Nomor Telpon wajib di isi!',
+        ],
+        'marital_status' => [
+            'required' => 'Status Kawin wajib di isi!',
         ],
         'graduated_id' => [
             'required' => 'Pendidikan wajib di isi!',

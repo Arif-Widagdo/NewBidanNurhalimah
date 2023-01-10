@@ -4,8 +4,10 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\Couple;
 use Illuminate\Database\Seeder;
 use Database\Seeders\RoleSeeder;
+use Database\Seeders\AcceptorSeeder;
 use Database\Seeders\PositionSeeder;
 use Database\Seeders\GraduatedSeeder;
 use Database\Seeders\BirthControlSeeder;
@@ -43,9 +45,14 @@ class DatabaseSeeder extends Seeder
         // CREATE PATIENTS 
         // --------------------------------
         $this->call(PatientSeeder::class);
+        Couple::factory(10)->create();
         // --------------------------------
         // CREATE BIRTH CONTROLS 
         // --------------------------------
         $this->call(BirthControlSeeder::class);
+        // --------------------------------
+        // CREATE ACCEPTORS 
+        // --------------------------------
+        $this->call(AcceptorSeeder::class);
     }
 }

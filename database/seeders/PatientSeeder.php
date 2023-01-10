@@ -36,7 +36,7 @@ class PatientSeeder extends Seeder
             'name' => fake()->name('F'),
             'phoneNumber' => fake()->phoneNumber(),
             'place_brithday' => fake()->country(),
-            'date_brithday' => Carbon::today()->subDays(rand(0, 10950)),
+            'date_brithday' => Carbon::today()->subDays(rand(12250, 24500)),
             'gender' => 'F',
             'address' => fake()->address(),
         ]);
@@ -47,7 +47,7 @@ class PatientSeeder extends Seeder
             'name' => fake()->name('M'),
             'phoneNumber' => fake()->phoneNumber(),
             'place_brithday' => fake()->country(),
-            'date_brithday' => Carbon::today()->subDays(rand(0, 10950)),
+            'date_brithday' => Carbon::today()->subDays(rand(12250, 24500)),
             'gender' => 'M',
             'address' => fake()->address(),
         ]);

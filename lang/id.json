@@ -46,6 +46,7 @@
     "Select Job" : "Pilih Pekerjaan",
     "General" : "Umum",
     "Select Job Status For" : "Pilih Status Pekerjaan Untuk",
+    "Select Job Status" : "Pilih Status Pekerjaan",
     "Job Status" : "Status Pekerjaan",
     "Please complete your personal data in the form provided" : "Silahkan lengkapi data diri Anda pada form yang tersedia",
     "Husband Information" : "Informasi Suami",
@@ -110,6 +111,13 @@
     "Patient Data Created Successfully" : "Data Pasien Berhasil Dibuat",
     "No. Medical records" : "No. Rekam Medis",
     "Account activation" : "Aktivasi Akun",
+
+    "Marital Status" : "Status Kawin",
+    "Select Marital Status" : "Pilih Status Kawin",
+    "Single" : "Belum Kawin",
+    "Married" : "Kawin",
+    "Divorced" : "Cerai",
+    "Dead Divorced" : "Cerai/Meninggal Dunia",
     
     "Couples" : "Pasangan",
     "Couple" : "Pasangan",

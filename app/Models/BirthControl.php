@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Acceptor;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -30,5 +31,10 @@ class BirthControl extends Model
     public function getRouteKeyName()
     {
         return 'slug';
+    }
+
+    public function acceptor()
+    {
+        return $this->hasMany(Acceptor::class);
     }
 }

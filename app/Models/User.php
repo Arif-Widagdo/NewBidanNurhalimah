@@ -64,7 +64,7 @@ class User extends Authenticatable
         if ($value) {
             return asset('storage/users/' . $value);
         } else {
-            return asset('dist/img/users/no-image.jpeg');
+            return asset('dist/img/users/no-image2.png');
         }
     }
 

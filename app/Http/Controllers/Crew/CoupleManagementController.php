@@ -9,20 +9,20 @@ use App\Http\Controllers\Controller;
 
 class CoupleManagementController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index($no_rm)
-    {
-        $patient =  Patient::where('no_rm', '=', $no_rm)->first();
+    // /**
+    //  * Display a listing of the resource.
+    //  *
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function index($no_rm)
+    // {
+    //     $patient =  Patient::where('no_rm', '=', $no_rm)->first();
 
-        return view('crew.couple_management.index', [
-            'patient' => $patient,
-            'couples' => Couple::where('patient_id', $patient->id)->orderBy('name')->get()
-        ]);
-    }
+    //     return view('crew.couple_management.index', [
+    //         'patient' => $patient,
+    //         'couples' => Couple::where('patient_id', $patient->id)->orderBy('name')->get()
+    //     ]);
+    // }
 
     /**
      * Show the form for creating a new resource.

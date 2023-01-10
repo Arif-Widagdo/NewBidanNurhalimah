@@ -19,11 +19,12 @@ return new class extends Migration
             $table->foreignUuid('user_id')->nullable();
             $table->foreignUuid('graduated_id')->nullable();
             $table->foreignUuid('work_id')->nullable();
-            $table->string('name')->nullable();
-            $table->string('phoneNumber')->nullable();
-            $table->string('place_brithday')->nullable();
-            $table->date('date_brithday')->nullable();
+            $table->string('name');
+            $table->string('phoneNumber');
+            $table->string('place_brithday');
+            $table->date('date_brithday');
             $table->enum('gender', ['F', 'M'])->nullable();
+            $table->enum('marital_status', ['single', 'married', 'divorced', 'dead_divorced'])->default('married');
             $table->string('address')->nullable();
             $table->timestamps();
         });
