@@ -195,7 +195,17 @@
     "Birth Control Type Edit Form" : "Birth Control Type Edit Form",
 
     "Couple Informations" : "Couple Informations",
-    
+    "Registered amount" : "Registered amount",
+    "Please Complete Couple Informations" : "Please Complete Couple Informations",
+    "Couple Data Saved Successfully" : "Couple Data Saved Successfully",
+    "Couple Data Failed to Save" : "Couple Data Failed to Save",
+    "Close" : "Close",
+    "Employee ID" : "Employee ID",
+    "Staff data edited successfully" : "Staff data edited successfully",
+    "Something went wrong when updating staff data" : "Something went wrong when updating staff data",
+    "Staff Data successfully deleted" : "Staff Data successfully deleted",
+    "Staff Data Deletion Failed" : "Staff Data Deletion Failed",
+
 
 
     "Change Password" : "Change Passwordi",

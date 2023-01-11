@@ -146,7 +146,7 @@
     "Something went wrong when updating staff position" : "Terjadi kesalahan pada saat merubah posisi staf",
     "Staff Position edited successfully" : "Posisi Staf berhasil diperbaharui",
     "Staff Position successfully deleted" : "Posisi Staf berhasil dihapus",
-    "Staff Position Data Deletion Failed" : "Posisi Staf Pekerjaan gagal dihapus",
+    "Staff Position Data Deletion Failed" : "Posisi Staf gagal dihapus",
 
 
     "Job List" : "Daftar Pekerjaan",
@@ -195,10 +195,25 @@
     "Birth Control Type Edit Form" : "Formulir Edit Data Jenis KB",
     
     "Couple Informations" : "Informasi Pasangan",
+    "Registered amount" : "Jumlah terdaftar",
+    "Please Complete Couple Informations" : "Harap Lengkapi Informasi Pasangan",
+    "Couple Data Saved Successfully" : "Data Pasangan Berhasil Disimpan",
+    "Couple Data Failed to Save" : "Data Pasangan Gagal Disimpan",
+    "Close" : "Tutup",
+    "Employee ID" : "Identitas Staff",
+    "Staff data edited successfully" : "Data Staf berhasil diperbaharui",
+    "Something went wrong when updating staff data" : "Terjadi kesalahan pada saat merubah data staf",
+    "Staff Data successfully deleted" : "Data Staf berhasil dihapus",
+    "Staff Data Deletion Failed" : "Data Staf Pekerjaan gagal dihapus",
 
-   
-    
-   
+
+
+
+
+
+
+
+
     "Change Password" : "Ganti Kata Sandi",
     "Active" : "Aktif",
     "Not Active" : "Tidak Aktif",

@@ -28,7 +28,7 @@
                             <tr>
                                 <th class="text-center">No.</th>
                                 <th>{{ __('Name Role Position') }}</th>
-                                <th>Jumlah Yang Terdaftar</th>
+                                <th class="text-center">{{ __('Registered amount') }}</th>
                                 <th class="text-center">{{ __('Activation Status') }}</th>
                                 <th class="text-center">{{ __('Actions') }}</th>
                             </tr>
@@ -47,9 +47,9 @@
                                     {{ __('Staff') }} 
                                     @endif
                                 </td>
-                                <td>
+                                <td class="text-center">
                                     @if($role->slug !== 'patient')
-                                        {{ $role->user->count() }}
+                                        {{ $staffs->count() }}
                                     @else
                                         {{ $patients->count() }}
                                     @endif
@@ -69,7 +69,8 @@
                                          <i class="fas fa-ellipsis-v"></i>
                                         </button>
                                         <div class="dropdown-menu" role="menu">
-                                          <a href="#" class="dropdown-item">{{ __('Show') }}</a>
+                                          <a href="{{ $role->slug !== 'patient' ? route('staffs.index') : route('patients.index')   }}" class="dropdown-item">{{ __('Show') }}</a>
+                                          {{-- <a href="{{ $role->slug !== 'patient' ?   }}" class="dropdown-item">{{ __('Show') }}</a> --}}
                                           @if($role->slug !== 'administrator')
                                           <div class="dropdown-divider"></div>
                                           <a href="#" class="dropdown-item">{{ __('Edit') }}</a>
@@ -103,8 +104,8 @@
                         </button>
                     </div>
                 </div>
-                <div class="card-body">
-                    <table id="table-positions" class="table table-bordered table-hover">
+                <div class="card-body table-responsive">
+                    <table id="table-positions" class="table table-bordered table-hover text-nowrap">
                         <thead>
                             <tr>
                                 <th class="text-center">No.</th>
@@ -202,7 +203,7 @@
                                 <label for="name" class="col-form-label">{{ __('Position Name') }} <span class="text-danger">*</span></label>
                                 <small class="text-lg-right ">{{ __('Press') }} <kbd>Tab</kbd> {{ __('or switch columns to insert slug values automatically') }}</small>
                             </div>
-                            <input type="text" id="name_position" class="form-control error_input_name" placeholder="{{ __('Enter') }} {{ __('Position Name') }}" name="name" >
+                            <input type="text" id="name_position" class="form-control error_input_name" placeholder="{{ __('Enter') }} {{ __('Position Name') }}" name="name" required>
                             <span class="text-danger error-text name_error"></span>
                         </div>
                         <div class="form-group mb-1">
@@ -211,9 +212,8 @@
                             <span class="text-danger error-text slug_error"></span>
                         </div>
                         <div class="form-group mb-1">
-                            <label for="status" class="col-form-label"> {{ __('Activation Status') }} <span class="text-danger">*</span>
-                            </label>
-                            <select class="form-control select2 error_input_status" style="width: 100%;" name="status">
+                            <label for="status" class="col-form-label"> {{ __('Activation Status') }} <span class="text-danger">*</span></label>
+                            <select required class="form-control select2 error_input_status" style="width: 100%;" name="status">
                                 <option selected="selected" disabled>{{ __('Select Status') }}</option>
                                 <option value="actived">{{ __('Active') }}</option>
                                 <option value="blocked">{{ __('Not Active') }}</option>

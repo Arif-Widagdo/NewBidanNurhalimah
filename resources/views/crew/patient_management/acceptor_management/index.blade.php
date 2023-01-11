@@ -1,4 +1,13 @@
 <x-app-dashboard title="#{{ $patient->no_rm }}">
+    @section('links')
+    <!-- Tempusdominus Bootstrap 4 -->
+    <link rel="stylesheet" href="{{ asset('plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
+    <!-- Select2 -->
+    <link rel="stylesheet" href="{{ asset('plugins/select2/css/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
+     <!-- Data Range -->
+    <link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker.css') }}">
+    @endsection
 
     <x-slot name="header">
         {{ __('No. Medical records') }} #{{ $patient->no_rm }}
@@ -86,8 +95,27 @@
     <!-- /.row -->
 
     @section('scripts')
+     <!-- Select 2 -->
+     <script src="{{ asset('plugins/select2/js/select2.full.min.js') }}"></script>
+     <!-- date-range-picker -->
+     <script src="{{ asset('plugins/daterangepicker/daterangepicker.js') }}"></script>
+     <script src="{{ asset('plugins/moment/moment.min.js') }}"></script>
+     <!-- date-range-picker -->
+     <script src="{{ asset('plugins/daterangepicker/daterangepicker.js') }}"></script>
+     <!-- Tempusdominus Bootstrap 4 -->
+     <script src="{{ asset('plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') }}"></script>
+     <!-- Bootstrap Switch -->
+     <script src="{{ asset('plugins/bootstrap-switch/js/bootstrap-switch.min.js') }}"></script>
+   
+ 
     <script>
-       $("#table-patient").DataTable({
+        $('.select2').select2();
+
+        $('#reservationdate').datetimepicker({
+            format: 'DD-MM-YYYY'
+        });
+
+        $("#table-patient").DataTable({
             "responsive": false,
             "lengthChange": true,
             "autoWidth": false,
@@ -114,6 +142,57 @@
                 "sInfoFiltered": "{{ __('DataTabelInfoFiltered') }}"
             },
         });
+
+        $('#form_create_couple').on('submit', function (e) {
+            e.preventDefault();
+            $.ajax({
+                url: $(this).attr('action'),
+                method: $(this).attr('method'),
+                data: new FormData(this),
+                processData: false,
+                dataType: 'json',
+                contentType: false,
+                beforeSend: function () {
+                    $(document).find('span.error-text').text('');
+                },
+                success: function (data) {
+                    if (data.status == 0) {
+                        $.each(data.error, function (prefix, val) {
+                            $('span.' + prefix + '_error').text(val[0]);
+                            $('input.error_input_' + prefix).addClass('is-invalid');
+                            $('select.error_input_' + prefix).addClass('is-invalid');
+                            $('textarea.error_input_' + prefix).addClass('is-invalid');
+                            $('#'+ prefix +' + span').addClass("is-invalid");
+                        });
+                        alertToastInfo(data.msg)
+                    } else if (data.status == 'notAccept') {
+                        Swal.fire({
+                            work: 'center',
+                            icon: 'info',
+                            title: "{{ __('Information') }}",
+                            text: data.msg,
+                            showConfirmButton: true,
+                            confirmButtonColor: '#007BFF',
+                        });
+                        $('span.date_brithday_error').text("{{ __('Hes not yet 17 years old, you cant enter the data wrong, right?') }}");
+                        $('input.error_input_date_brithday').addClass('is-invalid');
+                    }else {
+                        $('#form_create_couple')[0].reset();
+                        setTimeout(function () {
+                            location.reload(true);
+                        }, 1000);
+                        alertToastSuccess(data.msg)
+                    }
+                },
+                error: function (xhr) {
+                    Swal.fire(xhr.statusText, '{{ __('Wait a few minutes to try again ') }}', 'error')
+                }
+            });
+        });
+
+       
+      
+
     </script>
     @endsection
 </x-app-dashboard>

@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\Crew;
 
+use App\Models\Work;
 use App\Models\Couple;
 use App\Models\Patient;
 use App\Models\Acceptor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use App\Http\Controllers\Controller;
+use App\Models\Graduated;
 
 class AcceptorManagementController extends Controller
 {
@@ -31,7 +33,9 @@ class AcceptorManagementController extends Controller
             'patient' => $patient,
             'ageInYears' => $ageInYears,
             'acceptors' => Acceptor::where('patient_id', $patient->id)->get(),
-            'couples' =>  Couple::where('patient_id', $patient->id)->orderBy('name')->get()
+            'couples' =>  Couple::where('patient_id', $patient->id)->orderBy('name')->get(),
+            'works' => Work::all(),
+            'graduateds' => Graduated::all(),
         ]);
     }
 

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\User;
 use App\Models\Position;
+use App\Models\Graduated;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -15,9 +16,9 @@ class Staff extends Model
     protected $fillable = [
         'id',
         'employe_id',
-        'number',
         'user_id',
         'position_id',
+        'graduated_id',
         'name',
         'phoneNumber',
         'place_brithday',

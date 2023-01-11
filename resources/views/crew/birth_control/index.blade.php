@@ -99,12 +99,12 @@
                                 <label for="name" class="col-form-label">{{ __('Name of Birth Control Type') }} <span class="text-danger">*</span></label>
                                 <small class="text-lg-right">{{ __('Press') }} <kbd>Tab</kbd> {{ __('or switch columns to insert slug values automatically') }}</small>
                             </div>
-                            <input type="text" id="name_birth" class="form-control error_input_name" placeholder="{{ __('Enter') }} {{ __('Name of Birth Control Type') }}" name="name" autofocus >
+                            <input type="text" id="name_birth" class="form-control error_input_name" placeholder="{{ __('Enter') }} {{ __('Name of Birth Control Type') }}" name="name" autofocus required>
                             <span class="text-danger error-text name_error"></span>
                         </div>
                         <div class="form-group mb-1 ">
                             <label for="slug" class="col-form-label">{{ __('Slug') }} <span class="text-danger">*</span></label>
-                            <input type="disabled" id="slug_birth" class="form-control error_input_slug" placeholder="{{ __('Automatically') }}" name="slug" disable readonly >
+                            <input type="disabled" id="slug_birth" class="form-control error_input_slug" placeholder="{{ __('Automatically') }}" name="slug" disable readonly required>
                             <span class="text-danger error-text slug_error"></span>
                         </div>
                     </div>
@@ -143,7 +143,7 @@
                                 <label for="name_edit_birth" class="col-form-label">{{ __('Name of Birth Control Type') }} <span class="text-danger">*</span></label>
                                 <small class="text-lg-right">{{ __('Press') }} <kbd>Tab</kbd> {{ __('or switch columns to insert slug values automatically') }}</small>
                             </div>
-                            <input type="text" id="name_edit_birth{{ $loop->iteration }}" class="form-control error_input_name_edit_birth" placeholder="{{ __('Enter') }} {{ __('Name of Birth Control Type') }}" name="name" value="{{ $birth_control_edit->name }}" autofocus >
+                            <input type="text" id="name_edit_birth{{ $loop->iteration }}" class="form-control error_input_name_edit_birth" placeholder="{{ __('Enter') }} {{ __('Name of Birth Control Type') }}" name="name" value="{{ $birth_control_edit->name }}" autofocus required>
                             <span class="text-danger error-text name_edit_birth_error"></span>
                         </div>
                         <div class="form-group mb-1 ">

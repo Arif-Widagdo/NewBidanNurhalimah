@@ -103,7 +103,9 @@
                                             <span>{{ $patient->account->created_at }}</span>
                                         </small>
                                         @else
-                                        -
+                                        <div class="text-center">
+                                            -
+                                        </div>
                                         @endif
                                     </td>
                                 </tr>
@@ -149,23 +151,23 @@
             },
             "buttons": [{
                     "extend": 'copy',
-                    "title": "{{ __('List of Users') }}",
+                    "title": "{{ __('Patient List') }}",
                     "exportOptions": {
-                        "columns": [1, 2, 3]
+                        "columns": [2, 3, 4, 5, 6, 7]
                     }
                 },
                 {
                     "extend": 'excel',
-                    "title": "{{ __('List of Users') }}",
+                    "title": "{{ __('Patient List') }}",
                     "exportOptions": {
-                        "columns": [1, 2, 3]
+                        "columns": [2, 3, 4, 5, 6, 7]
                     }
                 },
                 {
                     "extend": 'print',
-                    "title": "{{ __('List of Users') }}",
+                    "title": "{{ __('Patient List') }}",
                     "exportOptions": {
-                        "columns": [1, 2, 3]
+                        "columns": [2, 3, 4, 5, 6, 7]
                     }
                 },
                 "colvis"

@@ -117,7 +117,7 @@
                             </label>
                             <div class="col-md-9">
                                 <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                                    <input type="text" class="form-control datetimepicker-input error_input_date_brithday" placeholder="{{ __('Enter your Date of Birth') }}" data-target="#reservationdate" value="{{ Auth::user()->date_brithday != '' ? date('d-m-Y', strtotime(Auth::user()->date_brithday)) : '' }}" name="date_brithday">
+                                    <input type="text" class="form-control datetimepicker-input error_input_date_brithday" placeholder="{{ __('Enter your Date of Birth') }}" data-target="#reservationdate" value="" name="date_brithday">
                                     <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
                                         <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                                     </div>

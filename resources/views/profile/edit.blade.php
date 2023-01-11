@@ -335,6 +335,7 @@
                             $('input.error_input_' + prefix).addClass('is-invalid');
                             $('select.error_input_' + prefix).addClass('is-invalid');
                             $('textarea.error_input_' + prefix).addClass('is-invalid');
+                            $('#'+ prefix +' + span').addClass("is-invalid");
                         });
                         alertToastInfo(data.msg)
                     } else {

@@ -74,7 +74,8 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
         Route::delete('/works-management-deleteAll', [WorkManagementController::class, 'deleteAll'])->name('admin.work.deleteAll');
 
         // Management Staff
-        Route::resource('/staffs', StaffManagementController::class);
+        Route::resource('/staffs', StaffManagementController::class)->except(['show', 'edit']);
+        Route::delete('/staffs-management-deleteAll', [StaffManagementController::class, 'deleteAll'])->name('admin.staff.deleteAll');
     });
 
 
@@ -110,7 +111,7 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
         Route::get('patient/{no_rm}/acceptors', [AcceptorManagementController::class, 'index'])->name('acceptors.index');
         Route::resource('/acceptors', AcceptorManagementController::class)->except(['index']);
         // Management Couple
-        Route::resource('/couples', CoupleManagementController::class)->except(['index']);
+        Route::resource('/couples', CoupleManagementController::class)->except(['index', 'create']);
     });
 });
 

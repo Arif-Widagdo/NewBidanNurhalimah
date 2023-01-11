@@ -2,37 +2,17 @@
 
 namespace App\Http\Controllers\Crew;
 
+use Ramsey\Uuid\Uuid;
 use App\Models\Couple;
 use App\Models\Patient;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
 
 class CoupleManagementController extends Controller
 {
-    // /**
-    //  * Display a listing of the resource.
-    //  *
-    //  * @return \Illuminate\Http\Response
-    //  */
-    // public function index($no_rm)
-    // {
-    //     $patient =  Patient::where('no_rm', '=', $no_rm)->first();
 
-    //     return view('crew.couple_management.index', [
-    //         'patient' => $patient,
-    //         'couples' => Couple::where('patient_id', $patient->id)->orderBy('name')->get()
-    //     ]);
-    // }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -42,7 +22,47 @@ class CoupleManagementController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator =  [
+            'name' => ['required', 'string', 'max:100'],
+            'gender' => ['required', 'in:F,M'],
+            'work_id' => ['required'],
+            'graduated_id' => ['required'],
+            'place_brithday' => ['required', 'string'],
+            'date_brithday' => ['required'],
+            'phoneNumber' => ['required'],
+            'address' => ['required', 'string'],
+        ];
+
+        $validated = Validator::make($request->all(), $validator);
+
+        if (!$validated->passes()) {
+            return response()->json(['status' => 0, 'error' => $validated->errors()->toArray(), 'msg' => __('Please complete the input on the form provided')]);
+        } else {
+            $reqDate = Carbon::createFromFormat('d-m-Y', $request->date_brithday);
+            $beforeSeventeen = Carbon::now()->subYear(17);
+
+            if ($reqDate >= $beforeSeventeen) {
+                return response()->json(['status' => 'notAccept', 'msg' => __('Hes not yet 17 years old, you cant enter the data wrong, right?')]);
+            }
+            $couple = Couple::create([
+                'id' => Uuid::uuid4()->toString(),
+                'name' => $request->name,
+                'gender' => $request->gender,
+                'work_id' => $request->position_id,
+                'graduated_id' => $request->graduated_id,
+                'place_brithday' => $request->place_brithday,
+                'date_brithday' => Carbon::createFromFormat('d-m-Y', $request->date_brithday),
+                'phoneNumber' => $request->phoneNumber,
+                'address' => $request->address,
+                'patient_id' => $request->patient_id,
+            ]);
+
+            if (!$couple->save()) {
+                return response()->json(['status' => 0, 'msg' => __('Couple Data Failed to Save')]);
+            } else {
+                return response()->json(['status' => 1, 'msg' => __('Couple Data Saved Successfully')]);
+            }
+        }
     }
 
     /**

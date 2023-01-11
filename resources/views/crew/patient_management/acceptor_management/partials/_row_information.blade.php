@@ -118,19 +118,20 @@
                     </div>
                 </div>
                 <!----- Row Couple ------>
-                @if($patient->couple)
                 <hr>
-                <div>
-                    <h5 class="text-bold">{{ __('Couple Informations') }}</h5>
+                <div class="row">
+                    <div class="col-12">
+                        @if($patient->couple)
+                        <div>
+                            <h5 class="text-bold">#{{ __('Couple Informations') }}</h5>
+                            <hr>
+                            @include('crew.patient_management.acceptor_management.partials._row_couple_Information')
+                        </div>
+                        @else
+                        @include('crew.patient_management.acceptor_management.partials._row_couple_create')
+                        @endif
+                    </div>
                 </div>
-                <hr>
-                @include('crew.patient_management.acceptor_management.partials._row_couple_Information')
-                @else
-                <hr>
-                <div class="alert alert-info">
-                    Silakan Lengkapi Informasi Pasangan
-                </div>
-                @endif
             </div>
         </div>
     </div>

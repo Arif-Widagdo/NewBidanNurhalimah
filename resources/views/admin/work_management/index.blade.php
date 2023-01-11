@@ -109,18 +109,18 @@
                                 <label for="name" class="col-form-label">{{ __('Job Name') }} <span class="text-danger">*</span></label>
                                 <small class="text-lg-right">{{ __('Press') }} <kbd>Tab</kbd> {{ __('or switch columns to insert slug values automatically') }}</small>
                             </div>
-                            <input type="text" id="name_work" class="form-control error_input_name" placeholder="{{ __('Enter') }} {{ __('Job Name') }}" name="name" autofocus >
+                            <input type="text" id="name_work" class="form-control error_input_name" placeholder="{{ __('Enter') }} {{ __('Job Name') }}" name="name" autofocus required >
                             <span class="text-danger error-text name_error"></span>
                         </div>
                         <div class="form-group mb-1 ">
                             <label for="slug" class="col-form-label">{{ __('Slug') }} <span class="text-danger">*</span></label>
-                            <input type="disabled" id="slug_work" class="form-control error_input_slug" placeholder="{{ __('Automatically') }}" name="slug" disable readonly >
+                            <input type="disabled" id="slug_work" class="form-control error_input_slug" placeholder="{{ __('Automatically') }}" name="slug" disable readonly required >
                             <span class="text-danger error-text slug_error"></span>
                         </div>
                         <div class="form-group mb-1 ">
                             <label for="work_status" class="col-form-label"> {{ __('Job Status') }} <span class="text-danger">*</span>
                             </label>
-                            <select class="form-control select2 error_input_work_status" style="width: 100%;" name="work_status" id="work_status">
+                            <select required class="form-control select2 error_input_work_status" style="width: 100%;" name="work_status" id="work_status">
                                 <option selected="selected" disabled>{{ __('Select Job Status For') }}</option>
                                 @if(app()->getLocale()=='id')
                                 <option value="male">{{ __('Male') }}</option>

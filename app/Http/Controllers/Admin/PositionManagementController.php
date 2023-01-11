@@ -26,7 +26,8 @@ class PositionManagementController extends Controller
         return view('admin.position_management.index', [
             'roles' => Role::all(),
             'positions' => Position::all(),
-            'patients' => Patient::all()
+            'staffs' => Staff::all(),
+            'patients' => Patient::all(),
         ]);
     }
 
