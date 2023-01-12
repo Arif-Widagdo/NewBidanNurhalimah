@@ -12,12 +12,21 @@
             <div class="modal-body p-0">
                 <div class="card card-widget widget-user-2 shadow-none border-none" style="border: none !important; box-shadow:none !important; border-radius:0px !important;">
                     <div class="widget-user-header elevation-1">
-                        <div class="row" style="position: relative !important;">
-                            <div class="widget-user-image">
+                        <div class="row">
+                            <div class="widget-user-image" style="position: relative !important;">
                                 @if($staff_show->account)
                                     <img class="img-circle elevation-2" src="{{ $staff_show->account->picture }}" alt="{{ $staff_show->account->username }}">
                                 @else
                                     <img class="img-circle elevation-2" src="{{ asset('dist/img/users/no-image2.png') }}" alt="{{ $staff_show->name }}">
+                                @endif
+                                @if($staff_show->account)
+                                <div style="position: absolute; right:2px; top:2px;">
+                                    @if($staff_show->account->status == 'actived')
+                                    <div style="width: 16px; height:16px; border-radius:100%; background-color:#28A745"></div>
+                                    @else
+                                    <div style="width: 16px; height:16px; border-radius:100%; background-color:#DC3545"></div>
+                                    @endif
+                                </div>
                                 @endif
                             </div>
                             <div class="d-flex flex-column ml-2">

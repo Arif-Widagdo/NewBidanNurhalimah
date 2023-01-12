@@ -205,6 +205,11 @@
     "Something went wrong when updating staff data" : "Terjadi kesalahan pada saat merubah data staf",
     "Staff Data successfully deleted" : "Data Staf berhasil dihapus",
     "Staff Data Deletion Failed" : "Data Staf Pekerjaan gagal dihapus",
+    
+    "Patient data edited successfully" : "Data Pasien berhasil diperbaharui",
+    "Something went wrong when updating Patient data" : "Terjadi kesalahan pada saat merubah data Pasien",
+    "Patient Data successfully deleted" : "Data Pasien berhasil dihapus",
+    "Patient Data Deletion Failed" : "Data Pasien Pekerjaan gagal dihapus",
 
 
 

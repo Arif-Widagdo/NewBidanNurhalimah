@@ -106,7 +106,8 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
         Route::delete('/birth-controls-deleteAll', [BCManagementController::class, 'deleteAll'])->name('birth-controls.deleteAll');
 
         // Management Patient
-        Route::resource('/patients', PatientManagementController::class);
+        Route::resource('/patients', PatientManagementController::class)->except(['show', 'edit']);
+        Route::delete('/patients-management-deleteAll', [PatientManagementController::class, 'deleteAll'])->name('patient.deleteAll');
         // Management Acceptor
         Route::get('patient/{no_rm}/acceptors', [AcceptorManagementController::class, 'index'])->name('acceptors.index');
         Route::resource('/acceptors', AcceptorManagementController::class)->except(['index']);

@@ -131,8 +131,6 @@
     <script src="{{ asset('plugins/daterangepicker/daterangepicker.js') }}"></script>
     <!-- Tempusdominus Bootstrap 4 -->
     <script src="{{ asset('plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') }}"></script>
-    {{-- <!-- Bootstrap Switch -->
-    <script src="{{ asset('plugins/bootstrap-switch/js/bootstrap-switch.min.js') }}"></script> --}}
 
     <script>
        //    -------- Data Table
@@ -189,12 +187,14 @@
 
         $('.select2').select2();
 
-        $('#reservationdate').datetimepicker({
-            format: 'DD-MM-YYYY'
-        });
+       
 
         const countStaff = document.querySelector('#countStaff');
         for (let i = 1; i <= countStaff.value; i++) {
+
+            $('#reservationdate'+i).datetimepicker({
+                format: 'DD-MM-YYYY'
+            });
 
             $('#form_edit_staff' + i).on('submit', function (e) {
                 e.preventDefault();

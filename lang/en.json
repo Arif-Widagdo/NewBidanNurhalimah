@@ -42,7 +42,7 @@
     "Enter your Date of Birth" : "Enter your Date of Birth",
     "Enter Husbands Full Name" : "Enter Husband's Full Name",
     "Graduateds" : "Graduateds",
-    "Graduate Status" : "Graduate Status",
+    "Graduate Status" : "Graduated Status",
     "Select Graduate" : "Select Graduate",
     "Select Job" : "Select Job",
     "General" : "General",
@@ -205,6 +205,12 @@
     "Something went wrong when updating staff data" : "Something went wrong when updating staff data",
     "Staff Data successfully deleted" : "Staff Data successfully deleted",
     "Staff Data Deletion Failed" : "Staff Data Deletion Failed",
+
+
+    "Patient data edited successfully" : "Patient data edited successfully",
+    "Something went wrong when updating Patient data" : "Something went wrong when updating Patient data",
+    "Patient Data successfully deleted" : "Patient Data successfully deleted",
+    "Patient Data Deletion Failed" : "Patient Data Deletion Failed",
 
 
 
@@ -375,7 +381,7 @@
     "Something went wrong while deleting your profile picture" : "Something went wrong while deleting your profile picture!",
     "Your profile picture has been deleted successfully" : "Your profile picture has been deleted successfully.",
     "Are You Sure" : "Are You Sure?",
-    "You wont be able to revert this" : "You won't be able to revert this!",
+    "You wont be able to revert this" : "You wont be able to revert this!",
     "Yes, deleted it" : "Yes, deleted it",
     "Cancel" : "Cancel",
     "Wait a few minutes to try again" : "Wait a few minutes to try again!",

@@ -216,7 +216,6 @@ class StaffManagementController extends Controller
      */
     public function destroy(Staff $staff)
     {
-
         $user = User::where('id', $staff->user_id)->first();
 
         if ($user) {

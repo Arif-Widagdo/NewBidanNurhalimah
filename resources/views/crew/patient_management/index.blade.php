@@ -1,4 +1,13 @@
 <x-app-dashboard title=" {{ __('Patient List') }}">
+    @section('links')
+    <!-- Tempusdominus Bootstrap 4 -->
+    <link rel="stylesheet" href="{{ asset('plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
+    <!-- Select2 -->
+    <link rel="stylesheet" href="{{ asset('plugins/select2/css/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
+     <!-- Data Range -->
+    <link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker.css') }}">
+    @endsection
 
     <style>
         .text_rm {
@@ -15,7 +24,7 @@
 
     <div class="row d-none">
         <div class="col-12">
-            <input type="text" id="countwork" class="w-100" value="{{ $patients->count() }}">
+            <input type="text" id="countPatient" class="w-100" value="{{ $patients->count() }}">
         </div>
     </div>
 
@@ -30,7 +39,7 @@
                         <a class="btn btn-danger float-left" id="btn_delete_all" hidden>
                             <i class="fas fa-solid fa-trash-alt"></i> {{ __('Delete All Selected') }}
                         </a>
-                        <button formaction="" class="d-none" type="submit" id="form_deleteAll_work">
+                        <button formaction="{{ route('patient.deleteAll') }}" class="d-none" type="submit" id="form_deleteAll_Staff">
                             {{ __('Delete All Selected') }}
                         </button>
                         <a href="{{ route('patients.create') }}" class="btn btn-primary float-right">
@@ -63,14 +72,21 @@
                                                 <i class="fas fa-ellipsis-v"></i>
                                             </button>
                                             <div class="dropdown-menu" role="menu">
-                                                <a href="#" class="dropdown-item">{{ __('Show') }}</a>
-                                                <a href="#" class="dropdown-item">{{ __('Edit') }}</a>
+                                                <a class="dropdown-item" href="{{ route('acceptors.index', $patient->no_rm) }}" target="_blank" >{{ __('Show') }}</a>
+                                                <a href="#" class="dropdown-item"  data-toggle="modal" data-target="#modal_edit_patient{{ $patient->no_rm }}">{{ __('Edit') }}</a>
                                                 <div class="dropdown-divider"></div>
-                                                <a href="#" class="dropdown-item">{{ __('Remove') }}</a>
+                                                <a class="dropdown-item" id="btn_delete_patient{{ $loop->iteration }}" style="cursor: pointer">{{ __('Remove') }}</a>
+                                                <form method="post" class="d-none">
+                                                    @method('delete')
+                                                    @csrf
+                                                    <button formaction="{{ route('patients.destroy', $patient->no_rm) }}" class="d-none" id="form_delete_patient{{ $loop->iteration }}">
+                                                        {{ __('Remove') }} <i class="fas fa-solid fa-trash-alt ml-2"></i>
+                                                    </button>
+                                                </form>
                                             </div>
                                         </div>
                                     </td>
-                                    <td><a href="{{ route('acceptors.index', $patient->no_rm) }}" class="text_rm"> <span class="crash_rm">#</span>{{ $patient->no_rm }}</a></td>
+                                    <td><a href="{{ route('acceptors.index', $patient->no_rm) }}" target="_blank" class="text_rm"> <span class="crash_rm">#</span>{{ $patient->no_rm }}</a></td>
                                     <td>
                                         {{ $patient->created_at }}
                                     </td>
@@ -120,7 +136,19 @@
     </div>
     <!-- /.row -->
 
+    @include('crew.patient_management._modal_edit')
+
     @section('scripts')
+    <!-- Select 2 -->
+    <script src="{{ asset('plugins/select2/js/select2.full.min.js') }}"></script>
+    <!-- date-range-picker -->
+    <script src="{{ asset('plugins/daterangepicker/daterangepicker.js') }}"></script>
+    <script src="{{ asset('plugins/moment/moment.min.js') }}"></script>
+    <!-- date-range-picker -->
+    <script src="{{ asset('plugins/daterangepicker/daterangepicker.js') }}"></script>
+    <!-- Tempusdominus Bootstrap 4 -->
+    <script src="{{ asset('plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') }}"></script>
+
     <script>
         //    -------- Data Table
         $("#table-patient").DataTable({
@@ -174,25 +202,104 @@
             ]
         }).buttons().container().appendTo('#table-patient_wrapper .col-md-6:eq(0)');
 
+        $('.select2').select2();
 
-        // $('#btn_delete_all').on('click',function(e){
-        //     e.preventDefault();
-        //     swal.fire({
-        //         title: "{{ __('Are you sure?') }}",
-        //         text: "{{ __('You wont be able to revert this') }}",
-        //         icon: 'warning',
-        //         iconColor: '#FD7E14',
-        //         showCancelButton: true,
-        //         confirmButtonColor: '#007BFF',
-        //         cancelButtonColor: '#DC3545',
-        //         confirmButtonText: "{{ __('Yes, deleted it') }}",
-        //         cancelButtonText: "{{ __('Cancel') }}"
-        //     }).then((result) => {
-        //         if (result.isConfirmed){
-        //             $("#form_deleteAll_work").click();
-        //         }
-        //     });
-        // });
+       
+
+        const countPatient = document.querySelector('#countPatient');
+        for (let i = 1; i <= countPatient.value; i++) {
+
+            $('#reservationdate'+i).datetimepicker({
+                format: 'DD-MM-YYYY'
+            });
+
+            $('#form_edit_patient' + i).on('submit', function (e) {
+                e.preventDefault();
+                $.ajax({
+                    url: $(this).attr('action'),
+                    method: $(this).attr('method'),
+                    data: new FormData(this),
+                    processData: false,
+                    dataType: 'json',
+                    contentType: false,
+                    beforeSend: function () {
+                        $(document).find('span.error-text').text('');
+                    },
+                    success: function (data) {
+                        if (data.status == 0) {
+                            $.each(data.error, function (prefix, val) {
+                                $('span.' + prefix + '_error').text(val[0]);
+                                $('input.error_input_' + prefix).addClass('is-invalid');
+                                $('select.error_input_' + prefix).addClass('is-invalid');
+                                $('textarea.error_input_' + prefix).addClass('is-invalid');
+                                $('#'+ prefix + i+' + span').addClass("is-invalid");
+                            });
+                            alertToastInfo(data.msg)
+                        } else if (data.status == 'notAccept') {
+                            Swal.fire({
+                                position: 'center',
+                                icon: 'info',
+                                title: "{{ __('Information') }}",
+                                text: data.msg,
+                                showConfirmButton: true,
+                                confirmButtonColor: '#007BFF',
+                            });
+                            $('span.date_brithday_error').text("{{ __('Hes not yet 17 years old, you cant enter the data wrong, right?') }}");
+                            $('input.error_input_date_brithday').addClass('is-invalid');
+                        } else {
+                            $('#form_edit_patient' + i)[0].reset();
+                            setTimeout(function () {
+                                location.reload(true);
+                            }, 1000);
+                            alertToastSuccess(data.msg)
+                        }
+                    },
+                    error: function (xhr) {
+                        Swal.fire(xhr.statusText, '{{ __('Wait a few minutes to try again ') }}', 'error')
+                    }
+                });
+            });
+
+            $('#btn_delete_patient' + i).on('click', function (e) {
+                e.preventDefault();
+                swal.fire({
+                    title: "{{ __('Are you sure?') }}",
+                    text: "{{ __('You wont be able to revert this') }}",
+                    icon: 'warning',
+                    iconColor: '#FD7E14',
+                    showCancelButton: true,
+                    confirmButtonColor: '#007BFF',
+                    cancelButtonColor: '#DC3545',
+                    confirmButtonText: "{{ __('Yes, deleted it') }}",
+                    cancelButtonText: "{{ __('Cancel') }}"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $("#form_delete_patient" + i).click();
+                    }
+                });
+            });
+        }
+
+        $('#btn_delete_all').on('click',function(e){
+            e.preventDefault();
+            swal.fire({
+                title: "{{ __('Are you sure?') }}",
+                text: "{{ __('You wont be able to revert this') }}",
+                icon: 'warning',
+                iconColor: '#FD7E14',
+                showCancelButton: true,
+                confirmButtonColor: '#007BFF',
+                cancelButtonColor: '#DC3545',
+                confirmButtonText: "{{ __('Yes, deleted it') }}",
+                cancelButtonText: "{{ __('Cancel') }}"
+            }).then((result) => {
+                if (result.isConfirmed){
+                    $("#form_deleteAll_Staff").click();
+                }
+            });
+        });
+
+        
     </script>
     @endsection
 </x-app-dashboard>
