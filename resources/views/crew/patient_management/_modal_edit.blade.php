@@ -149,7 +149,7 @@
                                                 </label>
                                                 <div class="col-lg-8">
                                                     <div class="input-group date" id="reservationdate{{ $loop->iteration }}" data-target-input="nearest">
-                                                        <input type="text" class="form-control datetimepicker-input error_input_date_brithday" placeholder="{{ __('Enter your Date of Birth') }}" data-target="#reservationdate" value="{{ $patient_edit->date_brithday != '' ? date('d-m-Y', strtotime($patient_edit->date_brithday)) : '' }}" name="date_brithday">
+                                                        <input type="text" class="form-control datetimepicker-input error_input_date_brithday" placeholder="{{ __('Enter your Date of Birth') }}" data-target="#reservationdate{{ $loop->iteration }}" value="{{ $patient_edit->date_brithday != '' ? date('d-m-Y', strtotime($patient_edit->date_brithday)) : '' }}" name="date_brithday">
                                                         <div class="input-group-append" data-target="#reservationdate{{ $loop->iteration }}" data-toggle="datetimepicker">
                                                             <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                                                         </div>

@@ -41,6 +41,7 @@
                                 </div>
                             </div>
                         </div>
+                        <!-------- Account ----->
                         <div id="form-user" style="display: none" class="card">
                             <div class="card-header bg-primary d-flex align-items-lg-center align-items-start">
                                 <i class="fas fa-info-circle mr-2 mt-1 mt-lg-0"></i> <span>{{ __('The password will be generated automatically using the username.') }}</span>
@@ -66,6 +67,7 @@
                                 </div>
                             </div>
                         </div>
+                        <!-------- Full Name ----->
                         <div class="form-group row">
                             <label for="inputName" class="col-md-3 col-form-label ">
                                 {{ __('Full Name') }} <span class="text-danger">*</span>
@@ -75,6 +77,7 @@
                                 <span class="text-danger error-text name_error"></span>
                             </div>
                         </div>
+                        <!-------- Gender ----->
                         <div class="form-group row">
                             <label for="gender" class="col-md-3 col-form-label">
                                 {{ __('Gender') }} <span class="text-danger">*</span>
@@ -88,7 +91,7 @@
                                 <span class="text-danger error-text gender_error"></span>
                             </div>
                         </div>
-                       
+                        <!-------- Place of Birthday ----->
                         <div class="form-group row">
                             <label for="inputPlaceBrithday" class="col-md-3 col-form-label ">
                                 {{ __('Place of Birthday') }} <span class="text-danger">*</span>
@@ -98,6 +101,7 @@
                                 <span class="text-danger error-text place_brithday_error"></span>
                             </div>
                         </div>
+                        <!-------- Date of Birthday ----->
                         <div class="form-group row align-items-center">
                             <label for="inputDateBrithday" class="col-md-3 col-form-label">
                                 {{ __('Date of Birthday') }} <span class="text-danger">*</span>
@@ -113,6 +117,7 @@
                                 <span class="text-danger error-text date_brithday_error"></span>
                             </div>
                         </div>
+                        <!-------- Marital Status ----->
                         <div class="form-group row">
                             <label for="marital_status" class="col-md-3 col-form-label">
                                 {{ __('Marital Status') }} <span class="text-danger">*</span>
@@ -128,6 +133,7 @@
                                 <span class="text-danger error-text marital_status_error"></span>
                             </div>
                         </div>
+                        <!-------- Job Status ----->
                         <div class="form-group row">
                             <label for="work_id" class="col-md-3 col-form-label">
                                 {{ __('Job Status') }} <span class="text-danger">*</span>
@@ -142,6 +148,7 @@
                                 <span class="text-danger error-text work_id_error"></span>
                             </div>
                         </div>
+                        <!-------- Graduate Status ----->
                         <div class="form-group row">
                             <label for="graduated_id" class="col-md-3 col-form-label">
                                 {{ __('Graduate Status') }} <span class="text-danger">*</span>
@@ -156,6 +163,7 @@
                                 <span class="text-danger error-text graduated_id_error"></span>
                             </div>
                         </div>
+                        <!-------- Phone Number ----->
                         <div class="form-group row">
                             <label for="phoneNumber" class="col-md-3 col-form-label">
                                 {{ __('Number Phone') }} <span class="text-danger">*</span>
@@ -170,6 +178,7 @@
                                 <span class="text-danger error-text phoneNumber_error"></span>
                             </div>
                         </div>
+                        <!-------- Address ----->
                         <div class="form-group row">
                             <label for="InputAddress" class="col-md-3 col-form-label">
                                 {{ __('Address') }} <span class="text-danger">*</span>
@@ -187,6 +196,8 @@
             </div>
         </div>
     </div>
+
+    
     @section('scripts')
     <!-- Select 2 -->
     <script src="{{ asset('plugins/select2/js/select2.full.min.js') }}"></script>

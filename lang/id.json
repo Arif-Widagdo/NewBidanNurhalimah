@@ -211,6 +211,12 @@
     "Patient Data successfully deleted" : "Data Pasien berhasil dihapus",
     "Patient Data Deletion Failed" : "Data Pasien Pekerjaan gagal dihapus",
 
+    "Form Edit Couple" : "Formulir Edit Pasangan",
+    "Same with Couple" : "Sama dengan Pasangan",
+   
+    "Couple data edited successfully" : "Data Pasangan berhasil diperbaharui",
+    "Something went wrong when updating Couple data" : "Terjadi kesalahan pada saat merubah data Pasangan",
+
 
 
 

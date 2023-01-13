@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Patient;
 use App\Models\BirthControl;
+use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -24,6 +25,15 @@ class Acceptor extends Model
         'description',
         'return_date',
     ];
+
+    public function getCreatedAtAttribute()
+    {
+        return Carbon::parse($this->attributes['created_at'])->translatedFormat('l, d F Y');
+    }
+    public function getReturnDateAttribute()
+    {
+        return Carbon::parse($this->attributes['return_date'])->translatedFormat('l, d F Y');
+    }
 
     public function patient()
     {

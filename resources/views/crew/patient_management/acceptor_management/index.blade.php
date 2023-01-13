@@ -7,6 +7,13 @@
     <link rel="stylesheet" href="{{ asset('plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
      <!-- Data Range -->
     <link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker.css') }}">
+
+    {{-- <style>
+        .td_row{
+            vertical-align: middle !important;
+        }
+    </style> --}}
+
     @endsection
 
     <x-slot name="header">
@@ -22,34 +29,40 @@
 
     @include('crew.patient_management.acceptor_management.partials._row_information')
 
+
+    <h4 class="font-weight-bold" style="font-family: 'Nunito';">Data Pemeriksaan</h4>
+    
     <!-- Main row -->
     <div class="row">
         <div class="col-md-12">
             <div class="card card-primary card-outline">
-                <div class="card-body table-responsive p-0 py-4 px-1">
-                    <table id="table-patient" class="table table-bordered table-hover text-nowrap">
+                <div class="card-header align-items-center">
+                    <a class="btn btn-danger float-left" id="btn_delete_all" hidden>
+                        <i class="fas fa-solid fa-trash-alt"></i> {{ __('Delete All Selected') }}
+                    </a>
+                    <button formaction="" class="d-none" type="submit" id="form_deleteAll_Staff">
+                        {{ __('Delete All Selected') }}
+                    </button>
+                    <a href="" class="btn btn-primary float-right">
+                        Tambah Data <i class="fas fa-plus-circle"></i>
+                    </a>
+                </div>
+                <div class="card-body table-responsive">
+                    <table id="table-patient" class="table table-bordered table-hover text-nowrap"  style="width:100%">
                         <thead>
-                            {{-- <tr>
-                                <th colspan="4" rowspan="1">
-
-                                </th>
-                                <th colspan="2" class="text-center">
-                                    Akibat Penggunaan KB
-                                </th>
-                                <th colspan="3">
-
-                                </th>
-                            </tr> --}}
                             <tr>
-                                <th>Tanggal Datang</th>
-                                <th>Tanggal Haid Terakhir</th>
-                                <th>Berat Badan</th>
-                                <th>Tekan Darah</th>
+                                <th rowspan="2">Tanggal Datang</th>
+                                <th rowspan="2">Tanggal Haid Terakhir</th>
+                                <th rowspan="2">Berat Badan</th>
+                                <th colspan="2" class="text-center">Akibat</th>
+                                <th rowspan="2">Kegagalan</th>
+                                <th rowspan="2">{{ __('Birth Controls') }}</th>
+                                <th rowspan="2">Deskripsi</th>
+                                <th rowspan="2">Tanggal Kunjugan Ulang</th>
+                            </tr>
+                            <tr>
                                 <th>Komplikasi Berat</th>
                                 <th>Kegagalan</th>
-                                <th>{{ __('Birth Controls') }}</th>
-                                <th>Deskripsi</th>
-                                <th>Tanggal Kunjugan Ulang</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -94,6 +107,12 @@
     </div>
     <!-- /.row -->
 
+
+
+
+
+    
+
     @section('scripts')
      <!-- Select 2 -->
      <script src="{{ asset('plugins/select2/js/select2.full.min.js') }}"></script>
@@ -113,6 +132,18 @@
 
         $('#reservationdate').datetimepicker({
             format: 'DD-MM-YYYY'
+        });
+
+        $('#reservationdate_edit_couple').datetimepicker({
+            format: 'DD-MM-YYYY'
+        });
+
+        $('#sameAddress').change(function() {
+            if (this.checked) {
+                document.getElementById("inputAddressCouple2").value = document.getElementById("inputAddressCouple1").value;
+            } else{
+                document.getElementById("inputAddressCouple2").value = ''
+            }
         });
 
         $("#table-patient").DataTable({
@@ -191,6 +222,52 @@
         });
 
        
+        $('#form_create_couple_edit').on('submit', function (e) {
+            e.preventDefault();
+            $.ajax({
+                url: $(this).attr('action'),
+                method: $(this).attr('method'),
+                data: new FormData(this),
+                processData: false,
+                dataType: 'json',
+                contentType: false,
+                beforeSend: function () {
+                    $(document).find('span.error-text').text('');
+                },
+                success: function (data) {
+                    if (data.status == 0) {
+                        $.each(data.error, function (prefix, val) {
+                            $('span.' + prefix + '_error').text(val[0]);
+                            $('input.error_input_' + prefix).addClass('is-invalid');
+                            $('select.error_input_' + prefix).addClass('is-invalid');
+                            $('textarea.error_input_' + prefix).addClass('is-invalid');
+                            $('#'+ prefix +' + span').addClass("is-invalid");
+                        });
+                        alertToastInfo(data.msg)
+                    } else if (data.status == 'notAccept') {
+                        Swal.fire({
+                            work: 'center',
+                            icon: 'info',
+                            title: "{{ __('Information') }}",
+                            text: data.msg,
+                            showConfirmButton: true,
+                            confirmButtonColor: '#007BFF',
+                        });
+                        $('span.date_brithday_error').text("{{ __('Hes not yet 17 years old, you cant enter the data wrong, right?') }}");
+                        $('input.error_input_date_brithday').addClass('is-invalid');
+                    }else {
+                        $('#form_create_couple_edit')[0].reset();
+                        setTimeout(function () {
+                            location.reload(true);
+                        }, 1000);
+                        alertToastSuccess(data.msg)
+                    }
+                },
+                error: function (xhr) {
+                    Swal.fire(xhr.statusText, '{{ __('Wait a few minutes to try again ') }}', 'error')
+                }
+            });
+        });
       
 
     </script>

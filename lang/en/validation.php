@@ -243,8 +243,37 @@ return [
             'required' => 'Worker must be required!',
         ],
         'slug' => [
-            'required' => 'Fill in the previous Columns, then press Tab to insert slug values ​​automatically!',
+            'required' => 'Fill in the previous Columns, then press Tab to insert slug values automatically!',
         ],
+
+
+        'name_edit' => [
+            'required' => 'Name must be filled in!',
+            'unique' => 'The name is already in use',
+        ],
+        'place_brithday_edit' => [
+            'required' => 'Name must be filled in!',
+        ],
+        'date_brithday_edit' => [
+            'required' => 'Date of Birth must be filled in!',
+        ],
+        'phoneNumber_edit' => [
+            'required' => 'Phone Number must be filled in!',
+        ],
+        'gender_edit' => [
+            'required' => 'Gender must be selected!',
+        ],
+        'work_id_edit' => [
+            'required' => 'Job must be selected!',
+        ],
+        'graduated_id_edit' => [
+            'required' => 'Graduates must be selected!',
+        ],
+        'address_edit' => [
+            'required' => 'Addess must be filled in!',
+        ],
+
+
     ],
 
     /*

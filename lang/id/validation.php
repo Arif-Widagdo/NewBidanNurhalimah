@@ -193,7 +193,6 @@ return [
         'gender' => [
             'required' => 'Jenis Kelamin wajib dipilih!',
         ],
-
         'nameHusband' => [
             'required' => 'Nama Suami wajib di isi!',
         ],
@@ -215,8 +214,6 @@ return [
         'addressHusband' => [
             'required' => 'Alamat Suami wajib di isi!',
         ],
-
-
         'id_user' => [
             'required' => 'Pekerja wajib di isi!',
         ],
@@ -225,6 +222,31 @@ return [
         ],
 
 
+        'name_edit' => [
+            'required' => 'Nama wajib di isi!',
+            'unique' => 'Nama sudah digunakan.'
+        ],
+        'place_brithday_edit' => [
+            'required' => 'Tempat Lahir wajib di isi!',
+        ],
+        'date_brithday_edit' => [
+            'required' => 'Tanggal Lahir wajib di isi!',
+        ],
+        'phoneNumber_edit' => [
+            'required' => 'Nomor Telpon wajib di isi!',
+        ],
+        'gender_edit' => [
+            'required' => 'Jenis Kelamin wajib dipilih!',
+        ],
+        'work_id_edit' => [
+            'required' => 'Pekerjaan wajib di isi!',
+        ],
+        'graduated_id_edit' => [
+            'required' => 'Pendidikan wajib di isi!',
+        ],
+        'address_edit' => [
+            'required' => 'Alamat wajib di isi!',
+        ],
 
     ],
 

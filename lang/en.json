@@ -16,7 +16,7 @@
     "Username" : "Username",
     "Gender" : "Gender",
     "Email" : "Email",
-    "Number Phone" : "Number Phone",
+    "Number Phone" : "Phone Number",
     "Address" : "Address",
     "Personal Information" : "Personal Information",
     "Age" : "Age",
@@ -211,6 +211,12 @@
     "Something went wrong when updating Patient data" : "Something went wrong when updating Patient data",
     "Patient Data successfully deleted" : "Patient Data successfully deleted",
     "Patient Data Deletion Failed" : "Patient Data Deletion Failed",
+
+    "Form Edit Couple" : "Form Edit Couple",
+    "Same with Couple" : "Same with Couple",
+
+    "Couple data edited successfully" : "Couple data edited successfully",
+    "Something went wrong when updating Couple data" : "Something went wrong when updating Couple data",
 
 
 

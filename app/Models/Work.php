@@ -18,7 +18,7 @@ class Work extends Model
         'id',
         'name',
         'slug',
-        'job_status',
+        'work_status',
     ];
 
     public function getRouteKeyName()

@@ -34,6 +34,9 @@
         <!-- Sidebar Menu -->
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+               
+                @if(auth()->user()->role->slug === 'administrator')
+                @if(auth()->user()->staff->position->slug === 'admin')
                 <li class="nav-item">
                     <a href="{{ route('dashboard') }}"
                         class="nav-link {{ request()->is('admin/dashboard') ? 'active' : '' }}">
@@ -43,8 +46,6 @@
                         </p>
                     </a>
                 </li>
-                @if(auth()->user()->role->slug === 'administrator')
-                @if(auth()->user()->staff->position->slug === 'admin')
                 <li class="nav-item {{ request()->is('admin/positions') || request()->is('admin/graduateds') || request()->is('admin/works') || request()->is('birth-controls') ? 'menu-open' : '' }}">
                     <a class="nav-link {{ request()->is('admin/positions') || request()->is('admin/graduateds') || request()->is('admin/works') || request()->is('birth-controls')  ? 'active' : '' }}" style="cursor: pointer;">
                         <i class="nav-icon fas fa-laptop-medical"></i>
@@ -115,13 +116,27 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('birth-controls.index') }}" class="nav-link {{ request()->is('birth-controls') ? 'active' : '' }}">
+                        <i class="fas fa-prescription-bottle-alt nav-icon"></i>
+                        <p>{{ __('Birth Controls') }}</p>
+                    </a>
+                </li>
                 @endif
 
                 @else
                 <!----------------------------------------
                 --- End Admin & Midwife/ Start Patient ---
                 ------------------------------------------>
-
+                <li class="nav-item">
+                    <a href="{{ route('dashboard') }}"
+                        class="nav-link {{ request()->is('admin/dashboard') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>
+                            {{ __('Dashboard') }}
+                        </p>
+                    </a>
+                </li>
                 @endif
             </ul>
         </nav>

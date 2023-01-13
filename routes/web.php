@@ -112,7 +112,7 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
         Route::get('patient/{no_rm}/acceptors', [AcceptorManagementController::class, 'index'])->name('acceptors.index');
         Route::resource('/acceptors', AcceptorManagementController::class)->except(['index']);
         // Management Couple
-        Route::resource('/couples', CoupleManagementController::class)->except(['index', 'create']);
+        Route::resource('/couples', CoupleManagementController::class)->except(['index', 'create', 'show', 'edit', 'destroy']);
     });
 });
 

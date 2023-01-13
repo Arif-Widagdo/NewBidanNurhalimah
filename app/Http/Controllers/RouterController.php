@@ -12,7 +12,8 @@ class RouterController extends Controller
             if (auth()->user()->staff->position->slug === 'admin') {
                 return redirect(route('admin.dashboard'));
             } else {
-                return redirect(route('staff.dashboard'));
+                return redirect(route('patients.index'));
+                // return redirect(route('staff.dashboard'));
             }
         } else {
             return redirect(route('patient.dashboard'));
