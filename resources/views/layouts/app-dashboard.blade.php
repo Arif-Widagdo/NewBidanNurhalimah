@@ -165,6 +165,19 @@
             }
         });
 
+        function formatBlood(element) {
+            $(element).inputmask("numeric", {
+                radixPoint: ",",
+                groupSeparator: "/",
+                digits: 3,
+                autoGroup: true,
+                prefix: ' ',
+                rightAlign: false,
+                nullable: false,
+                clearMaskOnLostFocus: true
+            });
+        }
+
         function format(element) {
             $(element).inputmask("numeric", {
                 radixPoint: ",",

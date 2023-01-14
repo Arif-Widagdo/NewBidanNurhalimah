@@ -274,6 +274,34 @@ return [
         ],
 
 
+        'attendance_date' => [
+            'required' => 'Date of Attendance is required!',
+        ],
+        'menstrual_date' => [
+            'required' => 'Date of Last Menstruation is required!',
+        ],
+        'weight' => [
+            'required' => 'Weight is required!',
+        ],
+        'blood_pressure' => [
+            'required' => 'Blood Pressure is mandatory!',
+        ],
+        'complication' => [
+            'required' => 'Severe Complications are required!',
+        ],
+        'failure' => [
+            'required' => 'Failure is required!',
+        ],
+        'birthControl_id' => [
+            'required' => 'Birth Control Device is a must choose!',
+        ],
+        'return_date' => [
+            'required' => 'Return Visit Date is required!',
+        ],
+        'description' => [
+            'required' => 'Required information!',
+        ],
+
     ],
 
     /*

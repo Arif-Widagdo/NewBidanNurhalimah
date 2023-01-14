@@ -151,41 +151,41 @@ return [
             'same' => 'Kata sandi baru dan Konfirmasi kata sandi harus cocok'
         ],
         'username' => [
-            'required' => 'Username wajib di isi!',
+            'required' => 'Username wajib diisi!',
             'accepted' => 'Username tidak mengandung spasi',
             'unique' => 'Username sudah ada sebelumnya.'
         ],
         'email' => [
-            'required' => 'E-Mail Pengguna wajib di isi!',
+            'required' => 'E-Mail Pengguna wajib diisi!',
             'unique' => 'E-Mail pengguna sudah ada sebelumnya.'
         ],
         'position_id' => [
-            'required' => 'Posisi Staf wajib di isi!',
+            'required' => 'Posisi Staf wajib diisi!',
         ],
         'name' => [
-            'required' => 'Nama wajib di isi!',
+            'required' => 'Nama wajib diisi!',
             'unique' => 'Nama sudah digunakan.'
         ],
         'place_brithday' => [
-            'required' => 'Tempat Lahir wajib di isi!',
+            'required' => 'Tempat Lahir wajib diisi!',
         ],
         'date_brithday' => [
-            'required' => 'Tanggal Lahir wajib di isi!',
+            'required' => 'Tanggal Lahir wajib diisi!',
         ],
         'phoneNumber' => [
-            'required' => 'Nomor Telpon wajib di isi!',
+            'required' => 'Nomor Telpon wajib diisi!',
         ],
         'marital_status' => [
-            'required' => 'Status Kawin wajib di isi!',
+            'required' => 'Status Kawin wajib diisi!',
         ],
         'graduated_id' => [
-            'required' => 'Pendidikan wajib di isi!',
+            'required' => 'Pendidikan wajib diisi!',
         ],
         'work_id' => [
-            'required' => 'Pekerjaan wajib di isi!',
+            'required' => 'Pekerjaan wajib diisi!',
         ],
         'address' => [
-            'required' => 'Alamat wajib di isi!',
+            'required' => 'Alamat wajib diisi!',
         ],
         'work_status' => [
             'required' => 'Status Pekerjaan wajib dipilih!',
@@ -194,28 +194,28 @@ return [
             'required' => 'Jenis Kelamin wajib dipilih!',
         ],
         'nameHusband' => [
-            'required' => 'Nama Suami wajib di isi!',
+            'required' => 'Nama Suami wajib diisi!',
         ],
         'place_brithdayHusband' => [
-            'required' => 'Tempat Lahir Suami wajib di isi!',
+            'required' => 'Tempat Lahir Suami wajib diisi!',
         ],
         'date_brithdayHusband' => [
-            'required' => 'Tanggal Lahir Suami wajib di isi!',
+            'required' => 'Tanggal Lahir Suami wajib diisi!',
         ],
         'phoneNumberHusband' => [
-            'required' => 'Nomor Telpon Suami wajib di isi!',
+            'required' => 'Nomor Telpon Suami wajib diisi!',
         ],
         'job_idHusband' => [
-            'required' => 'Pekerjaan Suami wajib di isi!',
+            'required' => 'Pekerjaan Suami wajib diisi!',
         ],
         'graduated_idHusband' => [
-            'required' => 'Pendidikan Suami wajib di isi!',
+            'required' => 'Pendidikan Suami wajib diisi!',
         ],
         'addressHusband' => [
-            'required' => 'Alamat Suami wajib di isi!',
+            'required' => 'Alamat Suami wajib diisi!',
         ],
         'id_user' => [
-            'required' => 'Pekerja wajib di isi!',
+            'required' => 'Pekerja wajib diisi!',
         ],
         'slug' => [
             'required' => 'Isi Kolom sebelumnya, lalu tekan Tab untuk memasukkan nilai slug secara otomatis!',
@@ -223,29 +223,58 @@ return [
 
 
         'name_edit' => [
-            'required' => 'Nama wajib di isi!',
+            'required' => 'Nama wajib diisi!',
             'unique' => 'Nama sudah digunakan.'
         ],
         'place_brithday_edit' => [
-            'required' => 'Tempat Lahir wajib di isi!',
+            'required' => 'Tempat Lahir wajib diisi!',
         ],
         'date_brithday_edit' => [
-            'required' => 'Tanggal Lahir wajib di isi!',
+            'required' => 'Tanggal Lahir wajib diisi!',
         ],
         'phoneNumber_edit' => [
-            'required' => 'Nomor Telpon wajib di isi!',
+            'required' => 'Nomor Telpon wajib diisi!',
         ],
         'gender_edit' => [
             'required' => 'Jenis Kelamin wajib dipilih!',
         ],
         'work_id_edit' => [
-            'required' => 'Pekerjaan wajib di isi!',
+            'required' => 'Pekerjaan wajib diisi!',
         ],
         'graduated_id_edit' => [
-            'required' => 'Pendidikan wajib di isi!',
+            'required' => 'Pendidikan wajib diisi!',
         ],
         'address_edit' => [
-            'required' => 'Alamat wajib di isi!',
+            'required' => 'Alamat wajib diisi!',
+        ],
+
+
+        'attendance_date' => [
+            'required' => 'Tanggal Kedatangan wajib diisi!',
+        ],
+        'menstrual_date' => [
+            'required' => 'Tanggal Menstruasi Terakhir wajib diisi!',
+        ],
+        'weight' => [
+            'required' => 'Berat Badan wajib diisi!',
+        ],
+        'blood_pressure' => [
+            'required' => 'Tekanan Darah wajib diisi!',
+        ],
+        'complication' => [
+            'required' => 'Komplikasi Berat wajib diisi!',
+        ],
+        'failure' => [
+            'required' => 'Kegagalan wajib diisi!',
+        ],
+        'birthControl_id' => [
+            'required' => 'Alat Kontrol Kelahiran wajib dipilih',
+        ],
+        'return_date' => [
+            'required' => 'Tanggal Kunjungan Kembali wajib diisi!',
+        ],
+        'description' => [
+            'required' => 'Keterangan wajib diisi!',
         ],
 
     ],

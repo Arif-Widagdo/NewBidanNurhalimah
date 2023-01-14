@@ -218,6 +218,20 @@
     "Couple data edited successfully" : "Couple data edited successfully",
     "Something went wrong when updating Couple data" : "Something went wrong when updating Couple data",
 
+    "Coming Date" : "Coming Date",
+    "Date of Last Menstruation" : "Date of Last Menstruation",
+    "B Weight" : "Weight",
+    "Blood Pressure" : "Blood Pressure",
+    "Effect" : "Effect",
+    "Failure" : "Failure",
+    "Description" : "Description",
+    "Return Visit Date" : "Return Visit Date",
+    "Serious Complications" : "Severe Complications",
+    "Select Birth Control" : "Select Birth Control",
+    "New Inspection Data Form" : "New Inspection Data Form",
+    "Return Visit Date must be after the current date" : "Return Visit Date must be after the current date",
+    "Examination Data" : "Examination Data",
+    "Add New Data" : "Add New Data",
 
 
     "Change Password" : "Change Passwordi",

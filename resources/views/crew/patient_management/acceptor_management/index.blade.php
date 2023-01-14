@@ -8,7 +8,6 @@
      <!-- Data Range -->
     <link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker.css') }}">
     <link rel="stylesheet" href="{{ asset('plugins/datatables-fixedcolumns/css/fixedColumns.bootstrap4.min.css') }}">
-
     {{-- <style>
         .td_row{
             vertical-align: middle !important;
@@ -17,7 +16,6 @@
     {{-- <style>
           th, td { white-space: nowrap; }
     </style> --}}
-
     @endsection
 
     <x-slot name="header">
@@ -34,212 +32,112 @@
     @include('crew.patient_management.acceptor_management.partials._row_information')
 
 
-    <h4 class="font-weight-bold" style="font-family: 'Nunito';">Data Pemeriksaan</h4>
+    <h3 class="font-weight-bold my-4" style="font-family: 'Nunito';">{{ __('Examination Data') }}</h3>
     
     <!-- Main row -->
     <div class="row">
         <div class="col-md-12">
+            <input type="hidden" id="countAcceptor" class="w-100" value="{{ $acceptors->count() }}">
             <div class="card card-primary card-outline">
-                <div class="card-header align-items-center">
-                    <a class="btn btn-danger float-left" id="btn_delete_all" hidden>
-                        <i class="fas fa-solid fa-trash-alt"></i> {{ __('Delete All Selected') }}
-                    </a>
-                    <button formaction="" class="d-none" type="submit" id="form_deleteAll_Staff">
-                        {{ __('Delete All Selected') }}
-                    </button>
-                    <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#modal_create_acceptors">
-                        Tambah Data <i class="fas fa-plus-circle"></i>
-                    </button>
-                </div>
-                <div class="card-body ">
-                    <table id="table-patient" class="table table-bordered text-nowrap"  style="width:100%">
-                        <thead>
-                            <tr>
-                                <th rowspan="2">Tanggal Datang</th>
-                                <th rowspan="2">Tanggal Haid Terakhir</th>
-                                <th rowspan="2">Berat Badan</th>
-                                <th colspan="2" class="text-center">Akibat</th>
-                                <th rowspan="2">Kegagalan</th>
-                                <th rowspan="2">{{ __('Birth Controls') }}</th>
-                                <th rowspan="2">Deskripsi</th>
-                                <th rowspan="2">Tanggal Kunjugan Ulang</th>
-                            </tr>
-                            <tr>
-                                <th>Komplikasi Berat</th>
-                                <th>Kegagalan</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @if($patient->acceptor->count() > 0)
-                            @foreach ($acceptors as $acceptor)
-                            <tr>
-                                <td>
-                                    {{ $acceptor->attendance_date }}
-                                </td>
-                                <td>
-                                    {{ $acceptor->menstrual_date }}
-                                </td>
-                                <td>
-                                    {{ $acceptor->weight }}
-                                </td>
-                                <td>
-                                    {{ $acceptor->blood_pressure }}
-                                </td>
-                                <td>
-                                    {{ $acceptor->complication }}
-                                </td>
-                                <td>
-                                    {{ $acceptor->failure }}
-                                </td>
-                                <td>
-                                    {{ $acceptor->birthControl_id != '' ? $acceptor->birthControl->name : '-' }}
-                                </td>
-                                <td>
-                                    {{ $acceptor->description }}
-                                </td>
-                                <td>
-                                    {{ $acceptor->return_date }}
-                                </td>
-                            </tr>
-                            @endforeach
-                            @endif
-                        </tbody>
-                    </table>
-                </div>
+                <form method="post">
+                @method('delete')
+                @csrf
+                    <div class="card-header align-items-center">
+                        <a class="btn btn-danger float-left" id="btn_delete_all" hidden>
+                            <i class="fas fa-solid fa-trash-alt"></i> {{ __('Delete All Selected') }}
+                        </a>
+                        <button formaction="{{ route('acceptor.deleteAll') }}" class="d-none" type="submit" id="form_deleteAll_acceptor">
+                            {{ __('Delete All Selected') }}
+                        </button>
+                        <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#modal_create_acceptors">
+                            {{ __('Add New Data') }} <i class="fas fa-plus-circle"></i>
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <table id="table-acceptor" class="table table-bordered text-nowrap"  style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th rowspan="2" class="text-center"><input type="checkbox" class="selectall" style="max-width: 15px !important; cursor: pointer;"></th>
+                                    <th rowspan="2">{{ __('Coming Date') }}</th>
+                                    <th rowspan="2">{{ __('Date of Last Menstruation') }}</th>
+                                    <th rowspan="2">{{ __('B Weight') }}</th>
+                                    <th rowspan="2">{{ __('Blood Pressure') }}</th>
+                                    <th colspan="2" class="text-center">{{ __('Effect') }}</th>
+                                    <th rowspan="2">{{ __('Birth Controls') }}</th>
+                                    <th rowspan="2">{{ __('Description') }}</th>
+                                    <th rowspan="2">{{ __('Return Visit Date') }}</th>
+                                    <th rowspan="2">{{ __('Actions') }}</th>
+                                </tr>
+                                <tr>
+                                    <th class="text-center">{{ __('Serious Complications') }}</th>
+                                    <th class="text-center">{{ __('Failure') }}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if($patient->acceptor->count() > 0)
+                                @foreach ($acceptors as $acceptor)
+                                <tr>
+                                    <td class="text-center" style="width: 15px !important;"><input type="checkbox" name="ids[]" class="selectbox" value="{{ $acceptor->id }}" style="cursor: pointer;"></td>
+                                    <td>
+                                        {{ $acceptor->attendance_date }}
+                                    </td>
+                                    <td>
+                                        {{ $acceptor->menstrual_date != '' ? $acceptor->menstrual_date : '-' }}
+                                    </td>
+                                    <td class="text-center">
+                                        {{ $acceptor->weight }}
+                                    </td>
+                                    <td class="text-center">
+                                        {{ $acceptor->blood_pressure }}
+                                    </td>
+                                    <td class="text-center">
+                                        {{ $acceptor->complication != '' ? $acceptor->complication : '-' }}
+                                    </td>
+                                    <td class="text-center">
+                                        {{ $acceptor->failure != '' ? $acceptor->failure : '-' }}
+                                    </td>
+                                    <td>
+                                        {{ $acceptor->birthControl_id != '' ? $acceptor->birthControl->name : '-' }}
+                                    </td>
+                                    <td>
+                                        {{ $acceptor->description != '' ? $acceptor->description : '-' }}
+                                    </td>
+                                    <td>
+                                        {{ $acceptor->return_date != '' ? $acceptor->return_date : '-' }}
+                                    </td>
+                                    <td class="text-center">
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-light btn-sm border dropdown-toggle" data-toggle="dropdown" data-offset="-120">
+                                            <i class="fas fa-ellipsis-v"></i>
+                                            </button>
+                                            <div class="dropdown-menu" role="menu">
+                                            <a href="#" class="dropdown-item" data-toggle="modal" data-target="#modal-edit-staff">{{ __('Edit') }}</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" id="btn_delete_acceptor{{ $loop->iteration }}" style="cursor: pointer">{{ __('Remove') }}</a>
+                                                <form method="post" class="d-none">
+                                                    @method('delete')
+                                                    @csrf
+                                                    <button formaction="{{ route('acceptors.destroy', $acceptor->id) }}" class="d-none" id="form_delete_acceptor{{ $loop->iteration }}">
+                                                        {{ __('Remove') }}
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                @endforeach
+                                @endif
+                            </tbody>
+                        </table>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
     <!-- /.row -->
 
     <!--- Modal Create -->
-    <div class="modal fade" id="modal_create_acceptors">
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content">
-                <div class="modal-header bg-primary">
-                    <h5 class="modal-title"><i class="fas fa-pencil-alt"></i> {{ __('New Form of Staff Position') }}</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <form class="form-horizontal" method="POST" action="" id="form_create_position">
-                    @csrf
-                    <div class="modal-body">
-                        <div class="border-bottom text-danger mb-4" style="border-color: #007BFF !important">
-                            {{ __('* required fileds') }}
-                        </div>
-                        <div class="form-group row align-items-center">
-                            <label for="inputDateBrithday" class="col-md-3 col-form-label">
-                                {{ __('Date of Birthday') }} <span class="text-danger">*</span>
-                            </label>
-                            <div class="col-md-9">
-                                <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                                    <input type="text" class="form-control datetimepicker-input error_input_date_brithday" placeholder="{{ __('Enter your Date of Birth') }}" data-target="#reservationdate" value="" name="date_brithday">
-                                    <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
-                                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                                    </div>
-                                </div>
-                                <span class="text-danger error-text date_brithday_error"></span>
-                            </div>
-                        </div>
-                        <div class="form-group row align-items-center">
-                            <label for="inputDateBrithday" class="col-md-3 col-form-label">
-                                Tanggal Haid Terakhir <span class="text-danger">*</span>
-                            </label>
-                            <div class="col-md-9">
-                                <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                                    <input type="text" class="form-control datetimepicker-input error_input_date_brithday" placeholder="{{ __('Enter your Date of Birth') }}" data-target="#reservationdate" value="" name="date_brithday">
-                                    <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
-                                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                                    </div>
-                                </div>
-                                <span class="text-danger error-text date_brithday_error"></span>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="inputName" class="col-md-3 col-form-label ">
-                                Berat Badan <span class="text-danger">*</span>
-                            </label>
-                            <div class="col-md-9">
-                                <input type="text" class="form-control error_input_name" id="inputName" placeholder="{{ __('Enter') }} {{ __('Full Name') }}" name="name">
-                                <span class="text-danger error-text name_error"></span>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="inputName" class="col-md-3 col-form-label ">
-                                Tekanan Darah <span class="text-danger">*</span>
-                            </label>
-                            <div class="col-md-9">
-                                <input type="text" class="form-control error_input_name" id="inputName" placeholder="{{ __('Enter') }} {{ __('Full Name') }}" name="name">
-                                <span class="text-danger error-text name_error"></span>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="inputName" class="col-md-3 col-form-label ">
-                                Komplikasi Berat <span class="text-danger">*</span>
-                            </label>
-                            <div class="col-md-9">
-                                <input type="text" class="form-control error_input_name" id="inputName" placeholder="{{ __('Enter') }} {{ __('Full Name') }}" name="name">
-                                <span class="text-danger error-text name_error"></span>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="inputName" class="col-md-3 col-form-label ">
-                                Kegagalan <span class="text-danger">*</span>
-                            </label>
-                            <div class="col-md-9">
-                                <input type="text" class="form-control error_input_name" id="inputName" placeholder="{{ __('Enter') }} {{ __('Full Name') }}" name="name">
-                                <span class="text-danger error-text name_error"></span>
-                            </div>
-                        </div>
-                        <!-------- Job Status Couple Create ----->
-                        <div class="form-group row">
-                            <label for="work_id" class="col-md-3 col-form-label">
-                                Cara KB <span class="text-danger">*</span>
-                            </label>
-                            <div class="col-md-9">
-                                <select class="form-control select2" style="width: 100%;" name="work_id" id="work_id">
-                                    <option selected="selected" disabled >{{ __('Select Job Status') }}</option>
-                                    @foreach ($birthControls as $birthControl)
-                                        <option value="{{ $birthControl->id }}">{{ $birthControl->name }}</option>
-                                    @endforeach
-                                </select>
-                                <span class="text-danger error-text work_id_error"></span>
-                            </div>
-                        </div>
-                        <div class="form-group row align-items-center">
-                            <label for="inputDateBrithday" class="col-md-3 col-form-label">
-                                Tanggal Kunjungan Ulang <span class="text-danger">*</span>
-                            </label>
-                            <div class="col-md-9">
-                                <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                                    <input type="text" class="form-control datetimepicker-input error_input_date_brithday" placeholder="{{ __('Enter your Date of Birth') }}" data-target="#reservationdate" value="" name="date_brithday">
-                                    <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
-                                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                                    </div>
-                                </div>
-                                <span class="text-danger error-text date_brithday_error"></span>
-                            </div>
-                        </div>
-                        <!-------- Address Couple Create ----->
-                        <div class="form-group row">
-                            <label for="InputAddress" class="col-md-3 col-form-label">
-                                keterangan <span class="text-danger">*</span>
-                            </label>
-                            <div class="col-md-9">
-                                <textarea class="d-none" id="inputAddressCouple1">{{ $patient->address }}</textarea>
-                                <textarea class="form-control error_input_address" id="inputAddressCouple2" name="address" cols="30" rows="2" placeholder="{{ __('Enter') }} {{ __('Address') }}"></textarea>
-                                <span class="text-danger error-text address_error"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer justify-content-between">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">{{ __('Cancel') }}</button>
-                        <button type="submit" class="btn btn-primary">{{ __('Submit') }}</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
+    @include('crew.patient_management.acceptor_management.partials.modals._modal_create')
     <!-- /.modal -->
 
 
@@ -259,7 +157,7 @@
      <script src="{{ asset('plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') }}"></script>
      <!-- Bootstrap Switch -->
      <script src="{{ asset('plugins/bootstrap-switch/js/bootstrap-switch.min.js') }}"></script>
-    <script src="{{ asset('plugins/datatables-fixedcolumns/js/dataTables.fixedColumns.min.js') }}"></script>
+     <script src="{{ asset('plugins/datatables-fixedcolumns/js/dataTables.fixedColumns.min.js') }}"></script>
     
  
     <script>
@@ -281,12 +179,12 @@
             }
         });
 
-        $("#table-patient").DataTable({
+        $("#table-acceptor").DataTable({
             // "scrollY": "300px",  
             "scrollX": true,
             "scrollCollapse": true,
             "fixedColumns": {
-                leftColumns:1,
+                leftColumns:2,
                 rightColumns:1,
             },
             "responsive": false,
@@ -295,7 +193,7 @@
             "lengthMenu": [[-1, 5, 10, 25, 50 , 100], ["{{ __('All') }}", 5, 10, 25, 50, 100]],
             "order": [],
             "columnDefs": [{
-                "targets": [0, 2],
+                "targets": [0, 10],
                 "orderable": false,
             }],
             "oLanguage": {
@@ -359,7 +257,6 @@
                 }
             });
         });
-
        
         $('#form_create_couple_edit').on('submit', function (e) {
             e.preventDefault();
@@ -404,6 +301,109 @@
                 },
                 error: function (xhr) {
                     Swal.fire(xhr.statusText, '{{ __('Wait a few minutes to try again ') }}', 'error')
+                }
+            });
+        });
+
+        // ----- Aceptors Create
+        $('#attendance').datetimepicker({
+            format: 'DD-MM-YYYY'
+        });
+        $('#menstrual').datetimepicker({
+            format: 'DD-MM-YYYY'
+        });
+        $('#returnDate').datetimepicker({
+            format: 'DD-MM-YYYY'
+        });
+
+        $('#form_create_acceptor').on('submit', function (e) {
+            e.preventDefault();
+            $.ajax({
+                url: $(this).attr('action'),
+                method: $(this).attr('method'),
+                data: new FormData(this),
+                processData: false,
+                dataType: 'json',
+                contentType: false,
+                beforeSend: function () {
+                    $(document).find('span.error-text').text('');
+                },
+                success: function (data) {
+                    if (data.status == 0) {
+                        $.each(data.error, function (prefix, val) {
+                            $('span.' + prefix + '_error').text(val[0]);
+                            $('input.error_input_' + prefix).addClass('is-invalid');
+                            $('select.error_input_' + prefix).addClass('is-invalid');
+                            $('textarea.error_input_' + prefix).addClass('is-invalid');
+                            $('#'+ prefix +' + span').addClass("is-invalid");
+                        });
+                        alertToastInfo(data.msg)
+                    } 
+                    else if (data.status == 'notAccept') {
+                        Swal.fire({
+                            work: 'center',
+                            icon: 'info',
+                            title: "{{ __('Information') }}",
+                            text: data.msg,
+                            showConfirmButton: true,
+                            confirmButtonColor: '#007BFF',
+                        });
+                        $('span.return_date_error').text(data.msg);
+                        $('input.error_input_return_date').addClass('is-invalid');
+                    }
+                    else {
+                        $('#form_create_acceptor')[0].reset();
+                        setTimeout(function () {
+                            location.reload(true);
+                        }, 1000);
+                        alertToastSuccess(data.msg)
+                    }
+                },
+                error: function (xhr) {
+                    Swal.fire(xhr.statusText, '{{ __('Wait a few minutes to try again ') }}', 'error')
+                }
+            });
+        });
+
+        // ----- Aceptors Delete
+        const countAcceptor = document.querySelector('#countAcceptor');
+        for (let i = 1; i <= countAcceptor.value; i++) {
+      
+            $('#btn_delete_acceptor' + i).on('click', function (e) {
+                e.preventDefault();
+                swal.fire({
+                    title: "{{ __('Are you sure?') }}",
+                    text: "{{ __('You wont be able to revert this') }}",
+                    icon: 'warning',
+                    iconColor: '#FD7E14',
+                    showCancelButton: true,
+                    confirmButtonColor: '#007BFF',
+                    cancelButtonColor: '#DC3545',
+                    confirmButtonText: "{{ __('Yes, deleted it') }}",
+                    cancelButtonText: "{{ __('Cancel') }}"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $("#form_delete_acceptor" + i).click();
+                    }
+                });
+            });
+        }
+
+        $('#btn_delete_all').on('click',function(e){
+            e.preventDefault();
+            swal.fire({
+                title: "{{ __('Are you sure?') }}",
+                text: "{{ __('You wont be able to revert this') }}",
+                icon: 'warning',
+                iconColor: '#FD7E14',
+                showCancelButton: true,
+                confirmButtonColor: '#007BFF',
+                cancelButtonColor: '#DC3545',
+                confirmButtonText: "{{ __('Yes, deleted it') }}",
+                cancelButtonText: "{{ __('Cancel') }}"
+            }).then((result) => {
+                if (result.isConfirmed){
+                    $("#form_deleteAll_acceptor").click();
                 }
             });
         });
