@@ -7,11 +7,15 @@
     <link rel="stylesheet" href="{{ asset('plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
      <!-- Data Range -->
     <link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/datatables-fixedcolumns/css/fixedColumns.bootstrap4.min.css') }}">
 
     {{-- <style>
         .td_row{
             vertical-align: middle !important;
         }
+    </style> --}}
+    {{-- <style>
+          th, td { white-space: nowrap; }
     </style> --}}
 
     @endsection
@@ -43,12 +47,12 @@
                     <button formaction="" class="d-none" type="submit" id="form_deleteAll_Staff">
                         {{ __('Delete All Selected') }}
                     </button>
-                    <a href="" class="btn btn-primary float-right">
+                    <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#modal_create_acceptors">
                         Tambah Data <i class="fas fa-plus-circle"></i>
-                    </a>
+                    </button>
                 </div>
-                <div class="card-body table-responsive">
-                    <table id="table-patient" class="table table-bordered table-hover text-nowrap"  style="width:100%">
+                <div class="card-body ">
+                    <table id="table-patient" class="table table-bordered text-nowrap"  style="width:100%">
                         <thead>
                             <tr>
                                 <th rowspan="2">Tanggal Datang</th>
@@ -67,10 +71,10 @@
                         </thead>
                         <tbody>
                             @if($patient->acceptor->count() > 0)
-                            @foreach ($patient->acceptor as $acceptor)
+                            @foreach ($acceptors as $acceptor)
                             <tr>
                                 <td>
-                                    {{ $acceptor->created_at }}
+                                    {{ $acceptor->attendance_date }}
                                 </td>
                                 <td>
                                     {{ $acceptor->menstrual_date }}
@@ -107,6 +111,136 @@
     </div>
     <!-- /.row -->
 
+    <!--- Modal Create -->
+    <div class="modal fade" id="modal_create_acceptors">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header bg-primary">
+                    <h5 class="modal-title"><i class="fas fa-pencil-alt"></i> {{ __('New Form of Staff Position') }}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form class="form-horizontal" method="POST" action="" id="form_create_position">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="border-bottom text-danger mb-4" style="border-color: #007BFF !important">
+                            {{ __('* required fileds') }}
+                        </div>
+                        <div class="form-group row align-items-center">
+                            <label for="inputDateBrithday" class="col-md-3 col-form-label">
+                                {{ __('Date of Birthday') }} <span class="text-danger">*</span>
+                            </label>
+                            <div class="col-md-9">
+                                <div class="input-group date" id="reservationdate" data-target-input="nearest">
+                                    <input type="text" class="form-control datetimepicker-input error_input_date_brithday" placeholder="{{ __('Enter your Date of Birth') }}" data-target="#reservationdate" value="" name="date_brithday">
+                                    <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
+                                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                    </div>
+                                </div>
+                                <span class="text-danger error-text date_brithday_error"></span>
+                            </div>
+                        </div>
+                        <div class="form-group row align-items-center">
+                            <label for="inputDateBrithday" class="col-md-3 col-form-label">
+                                Tanggal Haid Terakhir <span class="text-danger">*</span>
+                            </label>
+                            <div class="col-md-9">
+                                <div class="input-group date" id="reservationdate" data-target-input="nearest">
+                                    <input type="text" class="form-control datetimepicker-input error_input_date_brithday" placeholder="{{ __('Enter your Date of Birth') }}" data-target="#reservationdate" value="" name="date_brithday">
+                                    <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
+                                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                    </div>
+                                </div>
+                                <span class="text-danger error-text date_brithday_error"></span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputName" class="col-md-3 col-form-label ">
+                                Berat Badan <span class="text-danger">*</span>
+                            </label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control error_input_name" id="inputName" placeholder="{{ __('Enter') }} {{ __('Full Name') }}" name="name">
+                                <span class="text-danger error-text name_error"></span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputName" class="col-md-3 col-form-label ">
+                                Tekanan Darah <span class="text-danger">*</span>
+                            </label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control error_input_name" id="inputName" placeholder="{{ __('Enter') }} {{ __('Full Name') }}" name="name">
+                                <span class="text-danger error-text name_error"></span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputName" class="col-md-3 col-form-label ">
+                                Komplikasi Berat <span class="text-danger">*</span>
+                            </label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control error_input_name" id="inputName" placeholder="{{ __('Enter') }} {{ __('Full Name') }}" name="name">
+                                <span class="text-danger error-text name_error"></span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputName" class="col-md-3 col-form-label ">
+                                Kegagalan <span class="text-danger">*</span>
+                            </label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control error_input_name" id="inputName" placeholder="{{ __('Enter') }} {{ __('Full Name') }}" name="name">
+                                <span class="text-danger error-text name_error"></span>
+                            </div>
+                        </div>
+                        <!-------- Job Status Couple Create ----->
+                        <div class="form-group row">
+                            <label for="work_id" class="col-md-3 col-form-label">
+                                Cara KB <span class="text-danger">*</span>
+                            </label>
+                            <div class="col-md-9">
+                                <select class="form-control select2" style="width: 100%;" name="work_id" id="work_id">
+                                    <option selected="selected" disabled >{{ __('Select Job Status') }}</option>
+                                    @foreach ($birthControls as $birthControl)
+                                        <option value="{{ $birthControl->id }}">{{ $birthControl->name }}</option>
+                                    @endforeach
+                                </select>
+                                <span class="text-danger error-text work_id_error"></span>
+                            </div>
+                        </div>
+                        <div class="form-group row align-items-center">
+                            <label for="inputDateBrithday" class="col-md-3 col-form-label">
+                                Tanggal Kunjungan Ulang <span class="text-danger">*</span>
+                            </label>
+                            <div class="col-md-9">
+                                <div class="input-group date" id="reservationdate" data-target-input="nearest">
+                                    <input type="text" class="form-control datetimepicker-input error_input_date_brithday" placeholder="{{ __('Enter your Date of Birth') }}" data-target="#reservationdate" value="" name="date_brithday">
+                                    <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
+                                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                    </div>
+                                </div>
+                                <span class="text-danger error-text date_brithday_error"></span>
+                            </div>
+                        </div>
+                        <!-------- Address Couple Create ----->
+                        <div class="form-group row">
+                            <label for="InputAddress" class="col-md-3 col-form-label">
+                                keterangan <span class="text-danger">*</span>
+                            </label>
+                            <div class="col-md-9">
+                                <textarea class="d-none" id="inputAddressCouple1">{{ $patient->address }}</textarea>
+                                <textarea class="form-control error_input_address" id="inputAddressCouple2" name="address" cols="30" rows="2" placeholder="{{ __('Enter') }} {{ __('Address') }}"></textarea>
+                                <span class="text-danger error-text address_error"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">{{ __('Cancel') }}</button>
+                        <button type="submit" class="btn btn-primary">{{ __('Submit') }}</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- /.modal -->
 
 
 
@@ -125,7 +259,8 @@
      <script src="{{ asset('plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') }}"></script>
      <!-- Bootstrap Switch -->
      <script src="{{ asset('plugins/bootstrap-switch/js/bootstrap-switch.min.js') }}"></script>
-   
+    <script src="{{ asset('plugins/datatables-fixedcolumns/js/dataTables.fixedColumns.min.js') }}"></script>
+    
  
     <script>
         $('.select2').select2();
@@ -147,21 +282,25 @@
         });
 
         $("#table-patient").DataTable({
+            // "scrollY": "300px",  
+            "scrollX": true,
+            "scrollCollapse": true,
+            "fixedColumns": {
+                leftColumns:1,
+                rightColumns:1,
+            },
             "responsive": false,
             "lengthChange": true,
             "autoWidth": false,
-            "lengthMenu": [
-                [-1, 5, 10, 25, 50, 100],
-                ["{{ __('All') }}", 5, 10, 25, 50, 100]
-            ],
+            "lengthMenu": [[-1, 5, 10, 25, 50 , 100], ["{{ __('All') }}", 5, 10, 25, 50, 100]],
             "order": [],
             "columnDefs": [{
-                "targets": [],
+                "targets": [0, 2],
                 "orderable": false,
             }],
             "oLanguage": {
                 "sSearch": "{{ __('Quick Search') }}",
-                "sLengthMenu": "{{ __('DataTableLengthMenu') }}",
+                "sLengthMenu": "{{ __('DataTableLengthMenu') }}", 
                 "sInfo": "{{ __('DataTableInfo') }}",
                 "oPaginate": {
                     // "sFirst": "First page", // This is the link to the first page
@@ -170,7 +309,7 @@
                     // "sLast": "Last page" // This is the link to the last page
                 },
                 "sInfoEmpty": "{{ __('DataTableInfoEmpty') }}",
-                "sInfoFiltered": "{{ __('DataTabelInfoFiltered') }}"
+                "sInfoFiltered" : "{{ __('DataTabelInfoFiltered') }}"
             },
         });
 

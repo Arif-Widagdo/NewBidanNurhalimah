@@ -15,6 +15,7 @@ class Acceptor extends Model
     public $incrementing = false;
     protected $fillable = [
         'id',
+        'attendance_date',
         'patient_id',
         'birthControl_id',
         'menstrual_date',
@@ -26,13 +27,20 @@ class Acceptor extends Model
         'return_date',
     ];
 
-    public function getCreatedAtAttribute()
+    public function getAttendanceDateAttribute()
     {
-        return Carbon::parse($this->attributes['created_at'])->translatedFormat('l, d F Y');
+        // return Carbon::parse($this->attributes['attendance_date'])->translatedFormat('l, d F Y');
+        return Carbon::parse($this->attributes['attendance_date'])->translatedFormat('d F Y');
     }
+
+    public function getMenstrualDateAttribute()
+    {
+        return Carbon::parse($this->attributes['menstrual_date'])->translatedFormat('d F Y');
+    }
+
     public function getReturnDateAttribute()
     {
-        return Carbon::parse($this->attributes['return_date'])->translatedFormat('l, d F Y');
+        return Carbon::parse($this->attributes['return_date'])->translatedFormat('d F Y');
     }
 
     public function patient()

@@ -9,6 +9,7 @@ use App\Models\Acceptor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use App\Http\Controllers\Controller;
+use App\Models\BirthControl;
 use App\Models\Graduated;
 
 class AcceptorManagementController extends Controller
@@ -32,10 +33,11 @@ class AcceptorManagementController extends Controller
         return view('crew.patient_management.acceptor_management.index', [
             'patient' => $patient,
             'ageInYears' => $ageInYears,
-            'acceptors' => Acceptor::where('patient_id', $patient->id)->get(),
+            'acceptors' => Acceptor::where('patient_id', $patient->id)->orderBy('attendance_date', 'DESC')->get(),
             'couples' =>  Couple::where('patient_id', $patient->id)->orderBy('name')->get(),
             'works' => Work::all(),
             'graduateds' => Graduated::all(),
+            'birthControls' => BirthControl::orderBy('name')->get(),
         ]);
     }
 

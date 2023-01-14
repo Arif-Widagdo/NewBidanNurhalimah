@@ -23,6 +23,7 @@ class AcceptorSeeder extends Seeder
             foreach ($birthControls as $birthControl) {
                 Acceptor::create([
                     'id' => fake()->uuid(),
+                    'attendance_date' => Carbon::today()->subDays(rand(0, 7)),
                     'patient_id' => $patient->id,
                     'birthControl_id' => $birthControl->id,
                     'menstrual_date' => Carbon::today()->subDays(rand(0, 14)),
