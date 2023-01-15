@@ -56,44 +56,44 @@
                     <div class="card-body">
                         <table id="table-acceptor" class="table table-bordered text-nowrap"  style="width:100%">
                             <thead>
-                                <tr>
-                                    <th rowspan="2" class="text-center"><input type="checkbox" class="selectall" style="max-width: 15px !important; cursor: pointer;"></th>
+                                <tr class="text-center">
+                                    <th rowspan="2"><input type="checkbox" class="selectall" style="max-width: 15px !important; cursor: pointer;"></th>
                                     <th rowspan="2">{{ __('Coming Date') }}</th>
                                     <th rowspan="2">{{ __('Date of Last Menstruation') }}</th>
                                     <th rowspan="2">{{ __('B Weight') }}</th>
                                     <th rowspan="2">{{ __('Blood Pressure') }}</th>
-                                    <th colspan="2" class="text-center">{{ __('Effect') }}</th>
+                                    <th colspan="2">{{ __('Effect') }}</th>
                                     <th rowspan="2">{{ __('Birth Controls') }}</th>
                                     <th rowspan="2">{{ __('Description') }}</th>
                                     <th rowspan="2">{{ __('Return Visit Date') }}</th>
                                     <th rowspan="2">{{ __('Actions') }}</th>
                                 </tr>
-                                <tr>
-                                    <th class="text-center">{{ __('Serious Complications') }}</th>
-                                    <th class="text-center">{{ __('Failure') }}</th>
+                                <tr class="text-center">
+                                    <th>{{ __('Serious Complications') }}</th>
+                                    <th>{{ __('Failure') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @if($patient->acceptor->count() > 0)
                                 @foreach ($acceptors as $acceptor)
-                                <tr>
-                                    <td class="text-center" style="width: 15px !important;"><input type="checkbox" name="ids[]" class="selectbox" value="{{ $acceptor->id }}" style="cursor: pointer;"></td>
+                                <tr class="text-center">
+                                    <td style="width: 15px !important;"><input type="checkbox" name="ids[]" class="selectbox" value="{{ $acceptor->id }}" style="cursor: pointer;"></td>
                                     <td>
-                                        {{ $acceptor->attendance_date }}
+                                        {{ Carbon\Carbon::parse($acceptor->attendance_date)->translatedFormat('d F Y') }}
                                     </td>
                                     <td>
-                                        {{ $acceptor->menstrual_date != '' ? $acceptor->menstrual_date : '-' }}
+                                        {{ $acceptor->menstrual_date != '' ? Carbon\Carbon::parse($acceptor->menstrual_date)->translatedFormat('d F Y') : '-' }}
                                     </td>
-                                    <td class="text-center">
+                                    <td>
                                         {{ $acceptor->weight }}
                                     </td>
-                                    <td class="text-center">
+                                    <td>
                                         {{ $acceptor->blood_pressure }}
                                     </td>
-                                    <td class="text-center">
+                                    <td>
                                         {{ $acceptor->complication != '' ? $acceptor->complication : '-' }}
                                     </td>
-                                    <td class="text-center">
+                                    <td>
                                         {{ $acceptor->failure != '' ? $acceptor->failure : '-' }}
                                     </td>
                                     <td>
@@ -103,15 +103,17 @@
                                         {{ $acceptor->description != '' ? $acceptor->description : '-' }}
                                     </td>
                                     <td>
-                                        {{ $acceptor->return_date != '' ? $acceptor->return_date : '-' }}
+                                        {{ $acceptor->return_date != '' ? Carbon\Carbon::parse($acceptor->return_date)->translatedFormat('d F Y') : '-' }}
                                     </td>
-                                    <td class="text-center">
+                                    <td>
                                         <div class="btn-group">
                                             <button type="button" class="btn btn-light btn-sm border dropdown-toggle" data-toggle="dropdown" data-offset="-120">
                                             <i class="fas fa-ellipsis-v"></i>
                                             </button>
                                             <div class="dropdown-menu" role="menu">
-                                            <a href="#" class="dropdown-item" data-toggle="modal" data-target="#modal-edit-staff">{{ __('Edit') }}</a>
+                                            <button type="button" class="dropdown-item" data-toggle="modal" data-target="#modal_edit_acceptors{{ $acceptor->id }}">
+                                                {{ __('Edit') }}
+                                            </button>
                                             <div class="dropdown-divider"></div>
                                             <a class="dropdown-item" id="btn_delete_acceptor{{ $loop->iteration }}" style="cursor: pointer">{{ __('Remove') }}</a>
                                                 <form method="post" class="d-none">
@@ -140,7 +142,9 @@
     @include('crew.patient_management.acceptor_management.partials.modals._modal_create')
     <!-- /.modal -->
 
-
+    <!--- Modal Edit -->
+    @include('crew.patient_management.acceptor_management.partials.modals._modal_edit')
+    <!-- /.modal -->
 
 
     
@@ -384,6 +388,67 @@
                 }).then((result) => {
                     if (result.isConfirmed) {
                         $("#form_delete_acceptor" + i).click();
+                    }
+                });
+            });
+            
+            $('#attendance_edit'+i).datetimepicker({
+                format: 'DD-MM-YYYY'
+            });
+
+            $('#menstrual_edit'+i).datetimepicker({
+                format: 'DD-MM-YYYY'
+            });
+
+            $('#return_date_edit'+i).datetimepicker({
+                format: 'DD-MM-YYYY'
+            });
+
+            $('#form_edit_acceptor'+i).on('submit', function (e) {
+                e.preventDefault();
+                $.ajax({
+                    url: $(this).attr('action'),
+                    method: $(this).attr('method'),
+                    data: new FormData(this),
+                    processData: false,
+                    dataType: 'json',
+                    contentType: false,
+                    beforeSend: function () {
+                        $(document).find('span.error-text').text('');
+                    },
+                    success: function (data) {
+                        if (data.status == 0) {
+                            $.each(data.error, function (prefix, val) {
+                                $('span.' + prefix + '_error').text(val[0]);
+                                $('input.error_input_' + prefix).addClass('is-invalid');
+                                $('select.error_input_' + prefix).addClass('is-invalid');
+                                $('textarea.error_input_' + prefix).addClass('is-invalid');
+                                $('#'+ prefix +' + span').addClass("is-invalid");
+                            });
+                            alertToastInfo(data.msg)
+                        } 
+                        else if (data.status == 'notAccept') {
+                            Swal.fire({
+                                work: 'center',
+                                icon: 'info',
+                                title: "{{ __('Information') }}",
+                                text: data.msg,
+                                showConfirmButton: true,
+                                confirmButtonColor: '#007BFF',
+                            });
+                            $('span.return_date_edit_error').text(data.msg);
+                            $('input.error_input_return_date_edit').addClass('is-invalid');
+                        }
+                        else {
+                            $('#form_edit_acceptor'+i)[0].reset();
+                            setTimeout(function () {
+                                location.reload(true);
+                            }, 1000);
+                            alertToastSuccess(data.msg)
+                        }
+                    },
+                    error: function (xhr) {
+                        Swal.fire(xhr.statusText, '{{ __('Wait a few minutes to try again ') }}', 'error')
                     }
                 });
             });

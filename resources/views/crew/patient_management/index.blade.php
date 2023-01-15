@@ -1,4 +1,4 @@
-<x-app-dashboard title=" {{ __('Patient List') }}">
+<x-app-dashboard title=" {{ __('Acceptor List') }}">
     @section('links')
     <!-- Tempusdominus Bootstrap 4 -->
     <link rel="stylesheet" href="{{ asset('plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
@@ -21,7 +21,7 @@
     </style>
 
     <x-slot name="header">
-        {{ __('Patient List') }}
+        {{ __('Acceptor List') }}
     </x-slot>
 
     <div class="row d-none">
@@ -191,21 +191,21 @@
         //     },
         //     "buttons": [{
         //             "extend": 'copy',
-        //             "title": "{{ __('Patient List') }}",
+        //             "title": "{{ __('Acceptor List') }}",
         //             "exportOptions": {
         //                 "columns": [2, 3, 4, 5, 6, 7]
         //             }
         //         },
         //         {
         //             "extend": 'excel',
-        //             "title": "{{ __('Patient List') }}",
+        //             "title": "{{ __('Acceptor List') }}",
         //             "exportOptions": {
         //                 "columns": [2, 3, 4, 5, 6, 7]
         //             }
         //         },
         //         {
         //             "extend": 'print',
-        //             "title": "{{ __('Patient List') }}",
+        //             "title": "{{ __('Acceptor List') }}",
         //             "exportOptions": {
         //                 "columns": [2, 3, 4, 5, 6, 7]
         //             }
@@ -247,23 +247,23 @@
             },
             "buttons": [{
                     "extend": 'copy',
-                    "title": "{{ __('Patient List') }}",
+                    "title": "{{ __('Acceptor List') }}",
                     "exportOptions": {
-                        "columns": [2, 3, 4, 5, 6, 7, 8]
+                        "columns": [2, 3, 4, 5, 6, 7]
                     }
                 },
                 {
                     "extend": 'excel',
-                    "title": "{{ __('Patient List') }}",
+                    "title": "{{ __('Acceptor List') }}",
                     "exportOptions": {
-                        "columns": [2, 3, 4, 5, 6, 7, 8]
+                        "columns": [2, 3, 4, 5, 6, 7]
                     }
                 },
                 {
                     "extend": 'print',
-                    "title": "{{ __('Patient List') }}",
+                    "title": "{{ __('Acceptor List') }}",
                     "exportOptions": {
-                        "columns": [2, 3, 4, 5, 6, 7, 8]
+                        "columns": [2, 3, 4, 5, 6, 7]
                     }
                 },
                 "colvis"

@@ -232,6 +232,9 @@
     "Return Visit Date must be after the current date" : "Return Visit Date must be after the current date",
     "Examination Data" : "Examination Data",
     "Add New Data" : "Add New Data",
+    "Acceptors" : "Acceptors",
+    "Acceptor" : "Acceptor",
+    "Acceptor List" : "Acceptor List",
 
 
     "Change Password" : "Change Passwordi",

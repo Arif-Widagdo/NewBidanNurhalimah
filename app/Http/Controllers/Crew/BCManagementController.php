@@ -6,6 +6,7 @@ use Ramsey\Uuid\Uuid;
 use App\Models\BirthControl;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Acceptor;
 use Illuminate\Support\Facades\Validator;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 
@@ -89,6 +90,16 @@ class BCManagementController extends Controller
      */
     public function destroy(BirthControl $birthControl)
     {
+        $acceptors = Acceptor::where('birthControl_id', $birthControl->id)->get();
+
+        if ($acceptors) {
+            foreach ($acceptors as $acceptor) {
+                Acceptor::find($acceptor->id)->update([
+                    'birthControl_id' => ''
+                ]);
+            }
+        }
+
         $delete = BirthControl::destroy($birthControl->id);
         if ($delete) {
             return redirect()->back()->with('success', __('Type of Birth Control Successfully Removed'));
@@ -99,6 +110,19 @@ class BCManagementController extends Controller
 
     public function deleteAll(Request $request)
     {
+        if ($request->ids != '') {
+            foreach ($request->ids as $id) {
+                $acceptors = Acceptor::where('birthControl_id', $id)->get();
+                if ($acceptors) {
+                    foreach ($acceptors as $acceptor) {
+                        Acceptor::find($acceptor->id)->update([
+                            'birthControl_id' => ''
+                        ]);
+                    }
+                }
+            }
+        }
+
         $delete = BirthControl::destroy($request->ids);
         if ($delete) {
             return redirect()->back()->with('success', __('Type of Birth Control Successfully Removed'));

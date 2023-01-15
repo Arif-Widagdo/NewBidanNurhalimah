@@ -76,8 +76,6 @@ class AcceptorManagementController extends Controller
                 }
             }
 
-
-
             $store = Acceptor::create([
                 'id' => Uuid::uuid4()->toString(),
                 'patient_id' => $request->patient_id,
@@ -112,7 +110,49 @@ class AcceptorManagementController extends Controller
      */
     public function update(Request $request, Acceptor $acceptor)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'attendance_date_edit' => ['required'],
+            'weight_edit' => ['required'],
+            'blood_pressure_edit' => ['required'],
+            'birthControl_id_edit' => ['required'],
+        ]);
+        if (!$validator->passes()) {
+            return response()->json(['status' => 0, 'error' => $validator->errors()->toArray(), 'msg' => __('Please complete the input on the form provided')]);
+        } else {
+            $attendance_date = Carbon::createFromFormat('d-m-Y', $request->attendance_date_edit);
+
+            $menstrual_date = null;
+            if ($request->menstrual_date_edit) {
+                $menstrual_date = Carbon::createFromFormat('d-m-Y', $request->menstrual_date_edit);
+            }
+
+            $return_date = null;
+            if ($request->return_date_edit) {
+                $return_date = Carbon::createFromFormat('d-m-Y', $request->return_date_edit);
+
+                if ($return_date <= $attendance_date) {
+                    return response()->json(['status' => 'notAccept', 'msg' => __('Return Visit Date must be after the current date')]);
+                }
+            }
+
+            $update = Acceptor::find($acceptor->id)->update([
+                'attendance_date' =>  $attendance_date,
+                'menstrual_date' => $menstrual_date,
+                'weight' => $request->weight_edit,
+                'blood_pressure' => $request->blood_pressure_edit,
+                'complication' => $request->complication_edit,
+                'failure' => $request->failure_edit,
+                'birthControl_id' => $request->birthControl_id_edit,
+                'return_date' => $return_date,
+                'description' => $request->description_edit
+            ]);
+
+            if (!$update) {
+                return response()->json(['status' => 0, 'msg' => __('Data Update Failed')]);
+            } else {
+                return response()->json(['status' => 1, 'msg' => __('Data Updated Successfully')]);
+            }
+        }
     }
 
     /**

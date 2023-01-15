@@ -91,7 +91,7 @@
                     <a href="{{ route('patients.index') }}" class="nav-link {{ request()->is('patients') || request()->is('patients/create') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-hospital-user"></i>
                         <p>
-                            {{ __('Patient') }}
+                            {{ __('Acceptors') }}
                         </p>
                     </a>
                 </li>
@@ -112,7 +112,7 @@
                     <a href="{{ route('patients.index') }}" class="nav-link {{ request()->is('patients') || request()->is('patients/create') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-hospital-user"></i>
                         <p>
-                            {{ __('Patients') }}
+                            {{ __('Acceptors') }}
                         </p>
                     </a>
                 </li>
