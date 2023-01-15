@@ -6,6 +6,7 @@
 
     <div class="row d-none">
         <div class="col-12">
+            <input type="text" id="countRoles" class="w-100" value="{{ $roles->count() }}">
             <input type="text" id="countPosition" class="w-100" value="{{ $positions->count() }}">
         </div>
     </div>
@@ -69,11 +70,13 @@
                                          <i class="fas fa-ellipsis-v"></i>
                                         </button>
                                         <div class="dropdown-menu" role="menu">
-                                          <a href="{{ $role->slug !== 'patient' ? route('staffs.index') : route('patients.index')   }}" class="dropdown-item">{{ __('Show') }}</a>
+                                          <a href="{{ $role->slug !== 'patient' ? route('staffs.index') : route('patients.index')   }}" class="dropdown-item"><i class="fas fa-eye mr-2"></i> {{ __('Show') }}</a>
                                           {{-- <a href="{{ $role->slug !== 'patient' ?   }}" class="dropdown-item">{{ __('Show') }}</a> --}}
                                           @if($role->slug !== 'administrator')
                                           <div class="dropdown-divider"></div>
-                                          <a href="#" class="dropdown-item">{{ __('Edit') }}</a>
+                                          <a data-toggle="modal" data-target="#modal-edit-role{{ $role->slug }}" class="dropdown-item" style="cursor: pointer">
+                                            <i class="fas fa-edit mr-2"></i> {{ __('Edit') }} 
+                                          </a>
                                           @endif
                                         </div>
                                     </div>
@@ -151,7 +154,7 @@
                                          <i class="fas fa-ellipsis-v"></i>
                                         </button>
                                         <div class="dropdown-menu" role="menu">
-                                            <a href="#" class="dropdown-item"><i class="fas fa-eye mr-2"></i> {{ __('Show') }}</a>
+                                            <a href="{{ route('positions.show', $position->slug) }}" class="dropdown-item"><i class="fas fa-eye mr-2"></i> {{ __('Show') }}</a>
                                             @if($position->slug !== 'admin')
                                             <a data-toggle="modal" data-target="#modal-edit{{ $position->slug }}" class="dropdown-item" style="cursor: pointer">
                                                 <i class="fas fa-edit mr-2"></i> {{ __('Edit') }} 
@@ -232,7 +235,7 @@
     <!-- /.modal -->
 
     
-    <!--- Modal Edit -->
+    <!--- Modal Edit Position -->
     @foreach ($positions as $position_edit)
     <div class="modal fade" id="modal-edit{{ $position_edit->slug }}">
          <div class="modal-dialog modal-lg">
@@ -266,7 +269,7 @@
                              <span class="text-danger error-text slug_edit_position_error"></span>
                          </div>
                          <div class="form-group mb-1">
-                             <label for="position_status_edit" class="col-form-label"> {{ __('Job Status') }} <span class="text-danger">*</span></label>
+                             <label for="position_status_edit" class="col-form-label"> {{ __('Activation Status') }} <span class="text-danger">*</span></label>
                              <select class="form-control error_input_position_status_edit_edit_position_error" style="width: 100%;" name="position_status_edit">
                                 <option selected="selected">{{ __('Select Status') }}</option>
                                  @if($position_edit->status === 'actived')
@@ -293,6 +296,59 @@
     @endforeach
     <!-- /.modal -->
 
+
+    <!--- Modal Edit Role -->
+    @foreach ($roles as $role_edit)
+    <div class="modal fade" id="modal-edit-role{{ $role_edit->slug }}">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-danger">
+                    <h5 class="modal-title">
+                        <i class="fas fa-edit"></i> {{ __('Position Edit Form') }}
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form class="form-horizontal" method="POST" action="{{ route('admin.role.update', $role_edit->id) }}" id="form_edit_role{{ $loop->iteration }}">
+                    @csrf
+                    @method('PATCH')
+                    <div class="modal-body">
+                        <div class="border-bottom border-danger text-danger">
+                            {{ __('* required fileds') }}
+                        </div>
+                        <div class="form-group mb-1 ">
+                            <label for="name" class="col-form-label">{{ __('Name Role Position') }} <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control error_input_name_edit_role" name="name" value="{{ $role_edit->name }}" disabled readonly >
+                            <span class="text-danger error-text name_edit_role_error"></span>
+                        </div>
+                        <div class="form-group mb-1">
+                            <label for="role_status_edit" class="col-form-label"> {{ __('Activation Status') }} <span class="text-danger">*</span></label>
+                            <select class="form-control error_input_role_status_edit_error" style="width: 100%;" name="role_status_edit">
+                                <option selected="selected">{{ __('Select Status') }}</option>
+                                @if($role_edit->status === 'actived')
+                                <option value="actived" selected="selected">{{ __('Active') }}</option> 
+                                <option value="blocked">{{ __('Not Active') }}</option> 
+                                @else
+                                <option value="actived">{{ __('Active') }}</option>
+                                <option value="blocked" selected="selected">{{ __('Not Active') }}</option>
+                                @endif
+                            </select>
+                            <span class="text-danger error-text role_status_edit_error"></span>
+                        </div>
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">{{ __('Cancel') }}</button>
+                        <button type="submit" class="btn btn-danger">{{ __('Save Change') }}</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    @endforeach
+    <!-- /.modal -->
+
+    
 
 
     @section('scripts')
@@ -405,6 +461,41 @@
             });
         }
 
+        const countRoles = document.querySelector('#countRoles');
+        for (let i = 1; i <= countRoles.value; i++) {
+            $('#form_edit_role' + i).on('submit', function (e) {
+                e.preventDefault();
+                $.ajax({
+                    url: $(this).attr('action'),
+                    method: $(this).attr('method'),
+                    data: new FormData(this),
+                    processData: false,
+                    dataType: 'json',
+                    contentType: false,
+                    beforeSend: function () {
+                        $(document).find('span.error-text').text('');
+                    },
+                    success: function (data) {
+                        if (data.status == 0) {
+                            $.each(data.error, function (prefix, val) {
+                                $('span.role_status_edit_error').text(val[0]);
+                                $('select.error_input_role_status_edit_error').addClass('is-invalid');
+                            });
+                            alertToastInfo(data.msg)
+                        } else {
+                            $('#form_edit_role' + i)[0].reset();
+                            setTimeout(function () {
+                                location.reload(true);
+                            }, 1000);
+                            alertToastSuccess(data.msg)
+                        }
+                    },
+                    error: function (xhr) {
+                        Swal.fire(xhr.statusText, '{{ __('Wait a few minutes to try again ') }}', 'error')
+                    }
+                });
+            });
+        }
        
     </script>
     @endsection

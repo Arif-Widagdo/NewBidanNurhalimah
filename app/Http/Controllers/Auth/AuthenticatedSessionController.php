@@ -29,7 +29,40 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+        if (auth()->user()->role->status === 'actived') {
+
+            if (auth()->user()->role->slug === 'patient' && auth()->user()->status === 'actived') {
+                return redirect()->intended(RouteServiceProvider::HOME);
+            } elseif (auth()->user()->role->slug === 'administrator') {
+                if (auth()->user()->staff->position->status === 'actived') {
+                    if (auth()->user()->status === 'actived') {
+                        return redirect()->intended(RouteServiceProvider::HOME);
+                    } else {
+                        Auth::guard('web')->logout();
+                        $request->session()->invalidate();
+                        $request->session()->regenerateToken();
+                        return redirect('/login')->with('status', __('User Account Blocked'));
+                    }
+                } else {
+                    Auth::guard('web')->logout();
+                    $request->session()->invalidate();
+                    $request->session()->regenerateToken();
+                    return redirect('/login')->with('status', __('Position User Disabled'));
+                }
+            } else {
+                Auth::guard('web')->logout();
+                $request->session()->invalidate();
+                $request->session()->regenerateToken();
+                return redirect('/login')->with('status', __('User Account Blocked'));
+            }
+        } else {
+            Auth::guard('web')->logout();
+            $request->session()->invalidate();
+            $request->session()->regenerateToken();
+            return redirect('/login')->with('status', __('Position User Disabled'));
+        }
+
+        // return redirect()->intended(RouteServiceProvider::HOME);
     }
 
     /**

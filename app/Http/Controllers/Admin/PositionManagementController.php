@@ -8,6 +8,7 @@ use App\Models\Staff;
 use Ramsey\Uuid\Uuid;
 use App\Models\Patient;
 use App\Models\Position;
+use App\Models\Graduated;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -30,7 +31,6 @@ class PositionManagementController extends Controller
             'patients' => Patient::all(),
         ]);
     }
-
 
     /**
      * Store a newly created resource in storage.
@@ -70,18 +70,12 @@ class PositionManagementController extends Controller
      */
     public function show(Position $position)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Position  $position
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Position $position)
-    {
-        //
+        return view('admin.position_management.show', [
+            'staffs' => Staff::where('position_id', $position->id)->orderBy('employe_id')->get(),
+            'position' => $position,
+            'positions' => Position::orderBy('name')->get(),
+            'graduateds' => Graduated::orderBy('name')->get()
+        ]);
     }
 
     /**
@@ -153,6 +147,9 @@ class PositionManagementController extends Controller
         }
     }
 
+    /**
+     * Check Slug.
+     */
     public function checkSlug(Request $request)
     {
         $slug = SlugService::createSlug(Position::class, 'slug', $request->name);

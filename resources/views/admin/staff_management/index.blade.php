@@ -39,7 +39,7 @@
                             {{ __('Add New Staff') }}  <i class="fas fa-plus-circle"></i>
                         </a>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body table-responsive">
                         <table id="table-staff" class="table table-bordered table-hover text-nowrap" style="width: 100%">
                             <thead>
                                 <tr>
@@ -148,12 +148,12 @@
         
         $("#table-staff").DataTable({
             // "scrollY": "300px",  
-            "scrollX": true,
-            "scrollCollapse": true,
-            "fixedColumns": {
-                leftColumns:2,
-                rightColumns:1,
-            },
+            // "scrollX": true,
+            // "scrollCollapse": true,
+            // "fixedColumns": {
+            //     leftColumns:2,
+            //     rightColumns:1,
+            // },
             "responsive": false,
             "lengthChange": true,
             "autoWidth": false,

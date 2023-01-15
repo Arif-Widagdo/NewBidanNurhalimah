@@ -60,7 +60,12 @@
 </head>
 
 {{-- <body class="hold-transition sidebar-closed sidebar-collapse" style="font-family: 'Nunito';"> --}}
-<body class="hold-transition sidebar-mini {{  (request()->is('patient/**/acceptors')) ? 'sidebar-collapse' : ''  }}" style="font-family: 'Nunito';">
+<body class="hold-transition sidebar-mini 
+{{  (request()->is('patient/**/acceptors')) 
+|| (request()->is('admin/positions/**'))
+|| (request()->is('admin/graduateds/**'))
+ ? 'sidebar-collapse' : ''  }}" 
+style="font-family: 'Nunito';">
     <!-- Site wrapper -->
     <div class="wrapper">
 

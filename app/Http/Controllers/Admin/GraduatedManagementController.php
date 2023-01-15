@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Staff;
 use Ramsey\Uuid\Uuid;
 use App\Models\Graduated;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Patient;
+use App\Models\Position;
 use Illuminate\Support\Facades\Validator;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 
@@ -59,7 +62,14 @@ class GraduatedManagementController extends Controller
      */
     public function show(Graduated $graduated)
     {
-        //
+        $staffs = Staff::where('graduated_id', $graduated->id)->orderBy('employe_id')->get();
+        $patients = Patient::where('graduated_id', $graduated->id)->orderBy('no_rm')->get();
+
+        return view('admin.graduated_management.show', [
+            'staffs' => $staffs,
+            'patients' => $patients,
+            'graduated' => $graduated
+        ]);
     }
 
     /**

@@ -46,21 +46,21 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-item {{ request()->is('admin/positions') || request()->is('admin/graduateds') || request()->is('admin/works') || request()->is('birth-controls') ? 'menu-open' : '' }}">
-                    <a class="nav-link {{ request()->is('admin/positions') || request()->is('admin/graduateds') || request()->is('admin/works') || request()->is('birth-controls')  ? 'active' : '' }}" style="cursor: pointer;">
+                <li class="nav-item {{ request()->is('admin/positions') || request()->is('admin/graduateds') || request()->is('admin/works') || request()->is('birth-controls')  || request()->is('admin/positions/**') || request()->is('admin/graduateds/**')  ? 'menu-open' : '' }}">
+                    <a class="nav-link {{ request()->is('admin/positions') || request()->is('admin/graduateds') || request()->is('admin/works') || request()->is('birth-controls') || request()->is('admin/positions/**') || request()->is('admin/graduateds/**')  ? 'active' : '' }}" style="cursor: pointer;">
                         <i class="nav-icon fas fa-laptop-medical"></i>
                         <p>{{ __('Master') }} <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ route('positions.index') }}" class="nav-link {{ request()->is('admin/positions') ? 'active' : '' }}">
+                            <a href="{{ route('positions.index') }}" class="nav-link {{ request()->is('admin/positions') || request()->is('admin/positions/**')  ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>{{ __('Positions') }}</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('graduateds.index') }}" class="nav-link {{ request()->is('admin/graduateds') ? 'active' : '' }}">
+                            <a href="{{ route('graduateds.index') }}" class="nav-link {{ request()->is('admin/graduateds') || request()->is('admin/graduateds/**')  ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>{{ __('Graduateds') }}</p>
                             </a>

@@ -53,6 +53,8 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     // ------------------
     Route::group(['prefix' => 'admin', 'middleware' => 'isAdmin'], function () {
         Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+        Route::patch('/management-roles/{role:id}', [AdminController::class, 'roleUpdate'])->name('admin.role.update');
+
         Route::get('/profile', [ProfileController::class, 'edit'])->name('admin.profile.edit');
 
         // ----- Users Management
