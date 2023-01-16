@@ -3,8 +3,9 @@
 <div class="modal fade" id="modal-edit-staff{{ $staff_edit->employe_id }}">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">#{{ $staff_edit->employe_id }}</h5>
+            <div class="modal-header bg-dark">
+                <h5 class="modal-title"><i class="fa fa-user-nurse"></i> {{ __('Staff Edit Form') }}</h5>
+                {{-- <h5 class="modal-title">#{{ $staff_edit->employe_id }}</h5> --}}
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>

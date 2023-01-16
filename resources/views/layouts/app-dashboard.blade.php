@@ -62,8 +62,11 @@
 {{-- <body class="hold-transition sidebar-closed sidebar-collapse" style="font-family: 'Nunito';"> --}}
 <body class="hold-transition sidebar-mini 
 {{  (request()->is('patient/**/acceptors')) 
+| (request()->is('admin/profile'))
 || (request()->is('admin/positions/**'))
 || (request()->is('admin/graduateds/**'))
+|| (request()->is('admin/works/**'))
+|| (request()->is('birth-controls/**'))
  ? 'sidebar-collapse' : ''  }}" 
 style="font-family: 'Nunito';">
     <!-- Site wrapper -->

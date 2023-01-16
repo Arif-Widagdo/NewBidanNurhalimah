@@ -5,7 +5,7 @@
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header bg-dark">
-                <h5 class="modal-title"><i class="fas fa-pencil-alt"></i> Formulir Edit Data Pemeriksaan</h5>
+                <h5 class="modal-title"><i class="fas fa-edit"></i> {{ __('Data Inspection Edit Form') }}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>

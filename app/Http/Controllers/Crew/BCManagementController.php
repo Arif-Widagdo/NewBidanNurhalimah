@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Crew;
 
+use App\Models\Work;
 use Ramsey\Uuid\Uuid;
+use App\Models\Acceptor;
+use App\Models\Graduated;
 use App\Models\BirthControl;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Acceptor;
+use App\Models\Patient;
 use Illuminate\Support\Facades\Validator;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 
@@ -50,6 +53,27 @@ class BCManagementController extends Controller
                 return response()->json(['status' => 1, 'msg' => __('New Type Has Been Added')]);
             }
         }
+    }
+
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\BirthControl  $work
+     * @return \Illuminate\Http\Response
+     */
+    public function show(BirthControl $birthControl)
+    {
+        $acceptors = Acceptor::where('birthControl_id', $birthControl->id)
+            ->orderBy('patient_id', 'DESC')->get()->groupBy(function ($item) {
+                return $item->patient_id;
+            });
+
+        return view('crew.birth_control.show', [
+            'acceptors' => $acceptors,
+            'birthControl' => $birthControl,
+            'patients' => Patient::all()
+        ]);
     }
 
     /**

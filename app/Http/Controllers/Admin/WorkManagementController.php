@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Work;
+use App\Models\Graduated;
+use App\Models\Patient;
 use Ramsey\Uuid\Uuid;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -61,7 +63,13 @@ class WorkManagementController extends Controller
      */
     public function show(Work $work)
     {
-        //
+        $patients = Patient::where('work_id', $work->id)->orderBy('name')->get();
+        return view('admin.work_management.show', [
+            'work' => $work,
+            'works' => Work::all(),
+            'graduateds' => Graduated::all(),
+            'patients' => $patients,
+        ]);
     }
 
 
@@ -113,6 +121,16 @@ class WorkManagementController extends Controller
      */
     public function destroy(Work $work)
     {
+        $patients = Patient::where('work_id', $work->id)->get();
+
+        if ($patients) {
+            foreach ($patients as $patient) {
+                Patient::find($patient->id)->update([
+                    'work_id' => ''
+                ]);
+            }
+        }
+
         $delete = Work::destroy($work->id);
         if ($delete) {
             return redirect()->back()->with('success', __('Job successfully deleted'));
@@ -123,6 +141,20 @@ class WorkManagementController extends Controller
 
     public function deleteAll(Request $request)
     {
+        if ($request->ids != '') {
+            foreach ($request->ids as $id) {
+                $patients = Patient::where('work_id', $id)->get();
+
+                if ($patients) {
+                    foreach ($patients as $patient) {
+                        Patient::find($patient->id)->update([
+                            'work_id' => ''
+                        ]);
+                    }
+                }
+            }
+        }
+
         $delete = Work::destroy($request->ids);
         if ($delete) {
             return redirect()->back()->with('success', __('Job successfully deleted'));

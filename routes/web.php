@@ -104,7 +104,7 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::group(['middleware' => ['isCrew']], function () {
         // Management Birth Control
         Route::get('/birth-controls/slug', [BCManagementController::class, 'checkSlug'])->name('check.birth.control');
-        Route::resource('/birth-controls', BCManagementController::class)->except(['create', 'edit', 'show']);
+        Route::resource('/birth-controls', BCManagementController::class)->except(['create', 'edit']);
         Route::delete('/birth-controls-deleteAll', [BCManagementController::class, 'deleteAll'])->name('birth-controls.deleteAll');
 
         // Management Patient

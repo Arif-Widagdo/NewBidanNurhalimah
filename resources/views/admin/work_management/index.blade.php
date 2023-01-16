@@ -58,7 +58,7 @@
                                     </td>
                                     <td class="text-center">
                                         <div class="d-inline-flex align-items-center text-center">
-                                            <a class="btn btn-sm btn-info ml-1 d-inline-flex align-items-center font-small">
+                                            <a href="{{ route('works.show', $work->slug) }}" class="btn btn-sm btn-info ml-1 d-inline-flex align-items-center font-small">
                                                 {{ __('Show') }} <i class="fas fa-eye ml-2"></i>
                                             </a>
                                             <a data-toggle="modal" data-target="#modal-edit{{ $work->slug }}" class="btn btn-sm btn-warning ml-1 d-inline-flex align-items-center font-small">

@@ -16,7 +16,7 @@
     <div class="row">
         <div class="col-12 col-md-6">
             <!-- small box -->
-            <div class="small-box bg-light">
+            <div class="small-box bg-light border-top border-primary">
                 <div class="inner">
                     <h3>{{ $staffs->count() }}</h3>
                     <p>{{ __('Staff') }}</p>
@@ -24,13 +24,13 @@
                 <div class="icon">
                     <i class="fas fa-user-nurse"></i>
                 </div>
-                <a href="{{ route('graduateds.show', $graduated->slug) }}#staffs" class="small-box-footer">{{ __('Show') }} <i class="fas fa-arrow-circle-down"></i></a>
+                <a href="{{ route('graduateds.show', $graduated->slug) }}#staffs" class="small-box-footer bg-primary" style="color: #ffffff !important;">{{ __('Show') }} <i class="fas fa-arrow-circle-down"></i></a>
             </div>
         </div>
         <!-- ./col -->
         <div class="col-12 col-md-6">
             <!-- small box -->
-            <div class="small-box bg-light">
+            <div class="small-box bg-light border-top border-primary">
                 <div class="inner">
                     <h3>{{ $patients->count() }}</h3>
                     <p>{{ __('Acceptor') }}</p>
@@ -38,7 +38,7 @@
                 <div class="icon">
                     <i class="fas fa-hospital-user"></i>
                 </div>
-                <a href="{{ route('graduateds.show', $graduated->slug) }}#patients" class="small-box-footer">{{ __('Show') }} <i class="fas fa-arrow-circle-down"></i></a>
+                <a href="{{ route('graduateds.show', $graduated->slug) }}#patients" class="small-box-footer bg-primary" style="color: #ffffff !important;">{{ __('Show') }} <i class="fas fa-arrow-circle-down"></i></a>
             </div>
         </div>
         <!-- ./col -->
@@ -50,7 +50,7 @@
         <div class="col-md-12">
             <div class="card card-primary card-outline">
                 <div class="card-header align-items-center">
-                    <h5 class="float-left mt-2 text-bold d-flex align-items-center"><i class="fas fa-user-nurse mr-2"></i> {{ __('Staffs') }} <span class="badge badge-info ml-2">{{ $staffs->count() }}</span></h5>
+                    <h5 class="float-left mt-2 text-bold d-flex align-items-center"><i class="fas fa-user-nurse mr-2"></i> {{ __('Staffs') }}</h5>
                     <div class="card-tools">
                         <a href="{{ route('staffs.create') }}" class="btn btn-primary">
                         {{ __('Add New Staff') }}  <i class="fas fa-plus-circle"></i>
@@ -101,7 +101,7 @@
                                         @endif
                                         <small class="d-flex flex-column">
                                             <span>{{ __('Created date') }}</span>
-                                            <span>{{ $staff->account->created_at }}</span>
+                                            <span>{{ Carbon\Carbon::parse($staff->account->created_at)->translatedFormat('l, d F Y-  h:i:s A') }}</span>
                                         </small>
                                     @else
                                     <div class="text-center mx-auto">
@@ -132,7 +132,7 @@
         <div class="col-md-12">
             <div class="card card-primary card-outline">
                 <div class="card-header align-items-center">
-                    <h5 class="float-left mt-2 text-bold d-flex align-items-center"><i class="fas fa-hospital-user mr-2"></i> {{ __('Acceptors') }} <span class="badge badge-info ml-2">{{ $patients->count() }}</span></h5>
+                    <h5 class="float-left mt-2 text-bold d-flex align-items-center"><i class="fas fa-hospital-user mr-2"></i> {{ __('Acceptors') }}</h5>
                     <div class="card-tools">
                         <a href="{{ route('patients.create') }}" class="btn btn-primary">
                             {{ __('Add New Patient') }} <i class="fas fa-plus-circle"></i>
@@ -199,7 +199,7 @@
                                     @endif
                                     <small class="d-flex flex-column">
                                         <span>{{ __('Created date') }}</span>
-                                        <span>{{ $patient->account->created_at }}</span>
+                                        <span>{{ Carbon\Carbon::parse($patient->account->created_at)->translatedFormat('l, d F Y-  h:i:s A') }}</span>
                                     </small>
                                     @else
                                     <div class="text-center">

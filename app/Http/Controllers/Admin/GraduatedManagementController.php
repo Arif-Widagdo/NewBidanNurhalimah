@@ -110,6 +110,24 @@ class GraduatedManagementController extends Controller
      */
     public function destroy(Graduated $graduated)
     {
+        $staffs = Staff::where('graduated_id', $graduated->id)->get();
+        $patients = Patient::where('graduated_id', $graduated->id)->get();
+
+        if ($staffs) {
+            foreach ($staffs as $staff) {
+                Staff::find($staff->id)->update([
+                    'graduated_id' => ''
+                ]);
+            }
+        }
+        if ($patients) {
+            foreach ($patients as $patient) {
+                Patient::find($patient->id)->update([
+                    'graduated_id' => ''
+                ]);
+            }
+        }
+
         $delete = Graduated::destroy($graduated->id);
 
         if ($delete) {
@@ -121,6 +139,27 @@ class GraduatedManagementController extends Controller
 
     public function deleteAll(Request $request)
     {
+        if ($request->ids != '') {
+            foreach ($request->ids as $id) {
+                $staffs = Staff::where('graduated_id', $id)->get();
+                $patients = Patient::where('graduated_id', $id)->get();
+                if ($staffs) {
+                    foreach ($staffs as $staff) {
+                        Staff::find($staff->id)->update([
+                            'graduated_id' => ''
+                        ]);
+                    }
+                }
+                if ($patients) {
+                    foreach ($patients as $patient) {
+                        Patient::find($patient->id)->update([
+                            'graduated_id' => ''
+                        ]);
+                    }
+                }
+            }
+        }
+
         $delete = Graduated::destroy($request->ids);
         if ($delete) {
             return redirect()->back()->with('success', __('Graduated successfully deleted'));

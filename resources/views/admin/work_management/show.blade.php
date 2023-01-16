@@ -1,30 +1,36 @@
-<x-app-dashboard title="{{ __('List Staff of') }} {{ $position->name }}">
+<x-app-dashboard title="{{ __('List of Acceptors Based on') }} {{ $work->name }}">
     @section('links')
     <!-- Tempusdominus Bootstrap 4 -->
     <link rel="stylesheet" href="{{ asset('plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
     <!-- Select2 -->
     <link rel="stylesheet" href="{{ asset('plugins/select2/css/select2.min.css') }}">
     <link rel="stylesheet" href="{{ asset('plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
-    <!-- Data Range -->
+     <!-- Data Range -->
     <link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker.css') }}">
-    <!-- Fixed Data Table -->
+     <!-- Fixed Data Table -->
     <link rel="stylesheet" href="{{ asset('plugins/datatables-fixedcolumns/css/fixedColumns.bootstrap4.min.css') }}">
     @endsection
 
+    <style>
+        .text_rm {
+            text-decoration: underline;
+        } 
+        .text_rm:hover .crash_rm{
+            color: #5A5A5A;
+        }
+    </style>
+
     <x-slot name="header">
-        {{ __('List Staff of') }} {{ $position->name }}
+        {{ __('List of Acceptors Based on') }} {{ $work->name }}
     </x-slot>
 
     <x-slot name="links">
-        <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item active"><a href="{{ route('positions.index') }}">{{ __('Position Staff') }}</a></li>
-            <li class="breadcrumb-item active">{{ $position->name }}</li>
-        </ol>
+        <a href="{{ route('works.index') }}" class="btn btn-outline-primary float-right"><i class="fas fa-arrow-circle-left"></i> {{ __('Back') }}</a>
     </x-slot>
 
     <div class="row d-none">
         <div class="col-12">
-            <input type="text" id="countStaff" class="w-100" value="{{ $staffs->count() }}">
+            <input type="text" id="countPatient" class="w-100" value="{{ $patients->count() }}">
         </div>
     </div>
 
@@ -33,82 +39,99 @@
         <div class="col-md-12">
             <div class="card card-primary card-outline">
                 <form method="post">
-                @method('delete')
-                @csrf
+                    @method('delete')
+                    @csrf
                     <div class="card-header align-items-center">
                         <a class="btn btn-danger float-left" id="btn_delete_all" hidden>
                             <i class="fas fa-solid fa-trash-alt"></i> {{ __('Delete All Selected') }}
                         </a>
-                        <button formaction="{{ route('admin.staff.deleteAll') }}" class="d-none" type="submit" id="form_deleteAll_Staff">
+                        <button formaction="{{ route('patient.deleteAll') }}" class="d-none" type="submit" id="form_deleteAll_Staff">
                             {{ __('Delete All Selected') }}
                         </button>
-                        <a href="{{ route('staffs.create') }}" class="btn btn-primary float-right">
-                            {{ __('Add New Staff') }}  <i class="fas fa-plus-circle"></i>
+                        <a href="{{ route('patients.create') }}" class="btn btn-primary float-right">
+                            {{ __('Add New Patient') }} <i class="fas fa-plus-circle"></i>
                         </a>
                     </div>
-                    <div class="card-body table-responsive">
-                        <table id="table-staff" class="table table-bordered table-hover text-nowrap" style="width: 100%">
+                    <div class="card-body">
+                        <table id="table-patient" class="table table-bordered text-nowrap order-column" style="width:100%">
                             <thead>
                                 <tr>
                                     <th class="text-center"><input type="checkbox" class="selectall" style="max-width: 15px !important; cursor: pointer;"></th>
-                                    <th>{{ __('Employee ID') }}</th>
-                                    <th>{{ __('Position') }}</th>
+                                    <th>{{ __('No. Medical records') }}</th>
+                                    <th>{{ __('Registration Date') }}</th>
                                     <th>{{ __('Name') }}</th>
                                     <th>{{ __('Gender') }}</th>
+                                    <th class="text-center">{{ __('Age') }}</th>
+                                    <th>{{ __('Marital Status') }}</th>
                                     <th class="text-center">{{ __("Account activation") }}</th>
                                     <th class="text-center">{{ __('Actions') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @if($staffs->count() > 0)
-                                @foreach ($staffs as $staff)
+                                @if($patients->count() > 0)
+                                @foreach ($patients as $patient)
                                 <tr>
-                                    <td class="text-center" style="width: 15px !important;"><input type="checkbox" name="ids[]" class="selectbox" value="{{ $staff->id }}" style="cursor: pointer;"></td>
-                                    <td>#{{ $staff->employe_id }}</td>
+                                    <td class="text-center" style="width: 15px !important;"><input type="checkbox" name="ids[]" class="selectbox" value="{{ $patient->id }}" style="cursor: pointer;"></td>
+                                    <td><a href="{{ route('acceptors.index', $patient->no_rm) }}" target="_blank" class="text_rm"> <span class="crash_rm">#</span>{{ $patient->no_rm }}</a></td>
                                     <td>
-                                        {{ $staff->position->name }}
+                                        {{ $patient->created_at }}
                                     </td>
                                     <td>
-                                        @if ($staff->gender == 'F')
+                                        {{ $patient->name }}
+                                    </td>
+                                    <td>
+                                        @if ($patient->gender == 'F')
                                             {{ __('Female') }}
                                         @else
                                             {{ __('Male') }}
                                         @endif
                                     </td>
-                                    <td class="fw-500">
-                                        {{ $staff->name }}
+                                    <td class="text-center">
+                                        {{ \Carbon\Carbon::parse($patient->date_brithday)->diff(\Carbon\Carbon::now())->format('%y ' . __('Years') ) }}
                                     </td>
-                                    <td class="text-right d-flex align-items-center justify-content-between">
-                                        @if($staff->account)
-                                            @if($staff->account->status == 'actived')
-                                            <i class="fas fa-check-circle text-success text-lg shadow rounded-circle mr-2"></i>
-                                            @else
-                                            <i class="fas fa-times-circle text-danger text-lg shadow rounded-circle mr-2"></i>
-                                            @endif
-                                            <small class="d-flex flex-column">
-                                                <span>{{ __('Created date') }}</span>
-                                                <span>{{ Carbon\Carbon::parse($staff->account->created_at)->translatedFormat('l, d F Y-  h:i:s A') }}</span>
-                                            </small>
+                                    <td>
+                                        @if ($patient->marital_status == 'married')
+                                            {{ __('Married') }}
+                                        @elseif($patient->marital_status == 'divorced')
+                                            {{ __('Divorced') }}
+                                        @elseif($patient->marital_status == 'dead_divorced')
+                                            {{ __('Dead Divorced') }}
                                         @else
-                                        <div class="text-center mx-auto">
+                                            {{ __('Single') }}
+                                        @endif
+                                    </td>
+                                    <td class="text-right d-flex align-items-center {{ $patient->account ? 'justify-content-between' : 'justify-content-center' }}">
+                                        @if($patient->account)
+                                        @if($patient->account->status == 'actived')
+                                        <i class="fas fa-check-circle text-success text-lg shadow rounded-circle mr-2"></i>
+                                        @else
+                                        <i class="fas fa-times-circle text-danger text-lg shadow rounded-circle mr-2"></i>
+                                        @endif
+                                        <small class="d-flex flex-column">
+                                            <span>{{ __('Created date') }}</span>
+                                            <span>{{ Carbon\Carbon::parse($patient->account->created_at)->translatedFormat('l, d F Y-  h:i:s A') }}</span>
+                                        </small>
+                                        @else
+                                        <div class="text-center">
                                             -
                                         </div>
                                         @endif
                                     </td>
                                     <td class="text-center">
                                         <div class="btn-group">
-                                            <button type="button" class="btn btn-light btn-sm border dropdown-toggle" data-toggle="dropdown" data-offset="-120">
-                                             <i class="fas fa-ellipsis-v"></i>
+                                            <button type="button" class="btn btn-light btn-sm border dropdown-toggle"
+                                                data-toggle="dropdown" data-offset="-120">
+                                                <i class="fas fa-ellipsis-v"></i>
                                             </button>
                                             <div class="dropdown-menu" role="menu">
-                                              <a href="#" class="dropdown-item" data-toggle="modal" data-target="#modal-show-staff{{ $staff->employe_id }}">{{ __('Show') }}</a>
-                                              <a href="#" class="dropdown-item" data-toggle="modal" data-target="#modal-edit-staff{{ $staff->employe_id }}">{{ __('Edit') }}</a>
-                                              <div class="dropdown-divider"></div>
-                                              <a class="dropdown-item" id="btn_delete_staff{{ $loop->iteration }}" style="cursor: pointer">{{ __('Remove') }}</a>
+                                                <a class="dropdown-item" href="{{ route('acceptors.index', $patient->no_rm) }}" target="_blank" >{{ __('Show') }}</a>
+                                                <a href="#" class="dropdown-item"  data-toggle="modal" data-target="#modal_edit_patient{{ $patient->no_rm }}">{{ __('Edit') }}</a>
+                                                <div class="dropdown-divider"></div>
+                                                <a class="dropdown-item" id="btn_delete_patient{{ $loop->iteration }}" style="cursor: pointer">{{ __('Remove') }}</a>
                                                 <form method="post" class="d-none">
                                                     @method('delete')
                                                     @csrf
-                                                    <button formaction="{{ route('staffs.destroy', $staff->employe_id) }}" class="d-none" id="form_delete_staff{{ $loop->iteration }}">
+                                                    <button formaction="{{ route('patients.destroy', $patient->no_rm) }}" class="d-none" id="form_delete_patient{{ $loop->iteration }}">
                                                         {{ __('Remove') }} <i class="fas fa-solid fa-trash-alt ml-2"></i>
                                                     </button>
                                                 </form>
@@ -127,15 +150,7 @@
     </div>
     <!-- /.row -->
 
-    <!----- Modal Show ---->
-    @include('admin.staff_management.partials._modal_show')
-    
-    
-    <!----- Modal Edit ---->
-    @include('admin.staff_management.partials._modal_edit')
-
-
-
+    @include('crew.patient_management._modal_edit')
 
     @section('scripts')
     <!-- Select 2 -->
@@ -151,22 +166,21 @@
     <script src="{{ asset('plugins/datatables-fixedcolumns/js/dataTables.fixedColumns.min.js') }}"></script>
 
     <script>
-        
-        $("#table-staff").DataTable({
+        $("#table-patient").DataTable({
             // "scrollY": "300px",  
-            // "scrollX": true,
-            // "scrollCollapse": true,
-            // "fixedColumns": {
-            //     leftColumns:2,
-            //     rightColumns:1,
-            // },
+            "scrollX": true,
+            "scrollCollapse": true,
+            "fixedColumns": {
+                leftColumns:2,
+                rightColumns:1,
+            },
             "responsive": false,
             "lengthChange": true,
             "autoWidth": false,
             "lengthMenu": [[-1, 5, 10, 25, 50 , 100], ["{{ __('All') }}", 5, 10, 25, 50, 100]],
             "order": [],
             "columnDefs": [{
-                "targets": [0, 6],
+                "targets": [0, 8],
                 "orderable": false,
             }],
             "oLanguage": {
@@ -184,41 +198,41 @@
             },
             "buttons": [{
                     "extend": 'copy',
-                    "title": " {{ __('List Staff of') }} {{ $position->name }}",
+                    "title": "{{ __('List of Acceptors Based on') }} {{ $work->name }}",
                     "exportOptions": {
-                        "columns": [1, 2, 3, 4, 5]
+                        "columns": [2, 3, 4, 5, 6, 7]
                     }
                 },
                 {
                     "extend": 'excel',
-                    "title": " {{ __('List Staff of') }} {{ $position->name }}",
+                    "title": "{{ __('List of Acceptors Based on') }} {{ $work->name }}",
                     "exportOptions": {
-                        "columns": [1, 2, 3, 4, 5]
+                        "columns": [2, 3, 4, 5, 6, 7]
                     }
                 },
                 {
                     "extend": 'print',
-                    "title": " {{ __('List Staff of') }} {{ $position->name }}",
+                    "title": "{{ __('List of Acceptors Based on') }} {{ $work->name }}",
                     "exportOptions": {
-                        "columns": [1, 2, 3, 4, 5]
+                        "columns": [2, 3, 4, 5, 6, 7]
                     }
                 },
                 "colvis"
             ]
-        }).buttons().container().appendTo('#table-staff_wrapper .col-md-6:eq(0)');
+        }).buttons().container().appendTo('#table-patient_wrapper .col-md-6:eq(0)');
 
         $('.select2').select2();
 
        
 
-        const countStaff = document.querySelector('#countStaff');
-        for (let i = 1; i <= countStaff.value; i++) {
+        const countPatient = document.querySelector('#countPatient');
+        for (let i = 1; i <= countPatient.value; i++) {
 
             $('#reservationdate'+i).datetimepicker({
                 format: 'DD-MM-YYYY'
             });
 
-            $('#form_edit_staff' + i).on('submit', function (e) {
+            $('#form_edit_patient' + i).on('submit', function (e) {
                 e.preventDefault();
                 $.ajax({
                     url: $(this).attr('action'),
@@ -249,10 +263,10 @@
                                 showConfirmButton: true,
                                 confirmButtonColor: '#007BFF',
                             });
-                            $('span.date_brithday_error').text("{{ __('Hes not yet 10 years old, you cant enter the data wrong, right?') }}");
+                            $('span.date_brithday_error').text("{{ __('Hes not yet 17 years old, you cant enter the data wrong, right?') }}");
                             $('input.error_input_date_brithday').addClass('is-invalid');
                         } else {
-                            $('#form_edit_staff' + i)[0].reset();
+                            $('#form_edit_patient' + i)[0].reset();
                             setTimeout(function () {
                                 location.reload(true);
                             }, 1000);
@@ -265,7 +279,7 @@
                 });
             });
 
-            $('#btn_delete_staff' + i).on('click', function (e) {
+            $('#btn_delete_patient' + i).on('click', function (e) {
                 e.preventDefault();
                 swal.fire({
                     title: "{{ __('Are you sure?') }}",
@@ -279,7 +293,7 @@
                     cancelButtonText: "{{ __('Cancel') }}"
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        $("#form_delete_staff" + i).click();
+                        $("#form_delete_patient" + i).click();
                     }
                 });
             });
@@ -303,6 +317,8 @@
                 }
             });
         });
+
+        
     </script>
     @endsection
 </x-app-dashboard>

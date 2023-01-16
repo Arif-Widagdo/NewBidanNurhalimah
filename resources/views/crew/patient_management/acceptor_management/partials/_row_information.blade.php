@@ -137,10 +137,9 @@
 <div class="modal fade" id="modal_edit_couple{{ $patient->couple->id }}">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header bg-dark">
                 <h5 class="modal-title d-flex flex-column">
                     <span class="text-bold d-flex flex-column flex-md-row align-items-md-center">{{ __('Form Edit Couple') }} <small class="ml-md-2">({{ __('No. Medical records') }} #{{ $patient->no_rm }})</small></span> 
-                    <small class="text-danger d-inline-block">{{ __('* required fileds') }}</small>
                 </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -151,6 +150,9 @@
             @method('PATCH')
                 <div class="modal-body p-0">
                     <div class="card-body">
+                        <div class="border-bottom text-danger mb-4 border-dark" >
+                            {{ __('* required fileds') }}
+                        </div>
                         <!-------- Full Name Couple Edit ----->
                         <div class="form-group row">
                             <label for="inputName" class="col-md-3 col-form-label ">
