@@ -8,14 +8,6 @@
      <!-- Data Range -->
     <link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker.css') }}">
     <link rel="stylesheet" href="{{ asset('plugins/datatables-fixedcolumns/css/fixedColumns.bootstrap4.min.css') }}">
-    {{-- <style>
-        .td_row{
-            vertical-align: middle !important;
-        }
-    </style> --}}
-    {{-- <style>
-          th, td { white-space: nowrap; }
-    </style> --}}
     @endsection
 
     <x-slot name="header">

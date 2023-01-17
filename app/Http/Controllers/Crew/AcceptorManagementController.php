@@ -98,9 +98,6 @@ class AcceptorManagementController extends Controller
         }
     }
 
-
-
-
     /**
      * Update the specified resource in storage.
      *
@@ -181,5 +178,23 @@ class AcceptorManagementController extends Controller
         } else {
             return redirect()->back()->with('error', __('Failed to delete data'));
         }
+    }
+
+
+    public function print($no_rm)
+    {
+        $patient =  Patient::where('no_rm', '=', $no_rm)->first();
+
+        $dateOfBirth = $patient->date_brithday;
+        $ageInYears = Carbon::parse($dateOfBirth)
+            ->diff(Carbon::now())
+            ->format('%y ' . __('Years') . ', %m ' . __('Months') . ' ' . __('and') . '  %d ' . __('Days'));
+
+        return view('print.akseptor_print', [
+            'patient' => $patient,
+            'ageInYears' => $ageInYears,
+            'acceptors' => Acceptor::where('patient_id', $patient->id)->orderBy('attendance_date', 'ASC')->get(),
+            'couples' =>  Couple::where('patient_id', $patient->id)->orderBy('name')->get(),
+        ]);
     }
 }

@@ -112,6 +112,7 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
         Route::delete('/patients-management-deleteAll', [PatientManagementController::class, 'deleteAll'])->name('patient.deleteAll');
         // Management Acceptor
         Route::get('patient/{no_rm}/acceptors', [AcceptorManagementController::class, 'index'])->name('acceptors.index');
+        Route::get('patient/{no_rm}/print', [AcceptorManagementController::class, 'print'])->name('acceptors.print');
         Route::resource('/acceptors', AcceptorManagementController::class)->except(['index', 'create', 'show', 'edit']);
         Route::delete('/acceptors-management-deleteAll', [AcceptorManagementController::class, 'deleteAll'])->name('acceptor.deleteAll');
         // Management Couple

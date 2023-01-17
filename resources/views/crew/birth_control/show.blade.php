@@ -34,6 +34,7 @@
         </div>
     </div>
 
+
     <!-- Main row -->
     <div class="row">
         <div class="col-md-12">
@@ -69,47 +70,41 @@
                             <tbody>
                                 @if($acceptors->count() > 0)
                                 @foreach ($acceptors as $key => $value)
-                                @foreach ($value as $acceptor)
+                                @foreach ($patients->where('id', $key) as $acceptor)
                                 <tr>
-                                    <td class="text-center" style="width: 15px !important;"><input type="checkbox" name="ids[]" class="selectbox" value="{{ $acceptor->patient->id }}" style="cursor: pointer;"></td>
-                                    <td><a href="{{ route('acceptors.index', $acceptor->patient->no_rm) }}" target="_blank" class="text_rm"> <span class="crash_rm">#</span>{{ $acceptor->patient->no_rm }}</a></td>
+                                    <td class="text-center" style="width: 15px !important;"><input type="checkbox" name="ids[]" class="selectbox" value="{{ $acceptor->id }}" style="cursor: pointer;"></td>
+                                    <td><a href="{{ route('acceptors.index', $acceptor->no_rm) }}" target="_blank" class="text_rm"> <span class="crash_rm">#</span>{{ $acceptor->no_rm }}</a></td>
+                                    <td>{{ $acceptor->created_at }}</td>
+                                    <td>{{ $acceptor->name }}</td>
                                     <td>
-                                        {{ $acceptor->patient->created_at }}
-                                    </td>
-                                    <td>
-                                        {{ $acceptor->patient->name }}
-                                    </td>
-                                    <td>
-                                        @if ($acceptor->patient->gender == 'F')
+                                        @if ($acceptor->gender == 'F')
                                             {{ __('Female') }}
                                         @else
                                             {{ __('Male') }}
                                         @endif
                                     </td>
-                                    <td class="text-center">
-                                        {{ \Carbon\Carbon::parse($acceptor->patient->date_brithday)->diff(\Carbon\Carbon::now())->format('%y ' . __('Years') ) }}
-                                    </td>
+                                    <td class="text-center">{{ \Carbon\Carbon::parse($acceptor->date_brithday)->diff(\Carbon\Carbon::now())->format('%y ' . __('Years') ) }}</td>
                                     <td>
-                                        @if ($acceptor->patient->marital_status == 'married')
+                                        @if ($acceptor->marital_status == 'married')
                                             {{ __('Married') }}
-                                        @elseif($acceptor->patient->marital_status == 'divorced')
+                                        @elseif($acceptor->marital_status == 'divorced')
                                             {{ __('Divorced') }}
-                                        @elseif($acceptor->patient->marital_status == 'dead_divorced')
+                                        @elseif($acceptor->marital_status == 'dead_divorced')
                                             {{ __('Dead Divorced') }}
                                         @else
                                             {{ __('Single') }}
                                         @endif
                                     </td>
-                                    <td class="text-right d-flex align-items-center {{ $acceptor->patient->account ? 'justify-content-between' : 'justify-content-center' }}">
-                                        @if($acceptor->patient->account)
-                                        @if($acceptor->patient->account->status == 'actived')
+                                    <td class="text-right d-flex align-items-center {{ $acceptor->account ? 'justify-content-between' : 'justify-content-center' }}">
+                                        @if($acceptor->account)
+                                        @if($acceptor->account->status == 'actived')
                                         <i class="fas fa-check-circle text-success text-lg shadow rounded-circle mr-2"></i>
                                         @else
                                         <i class="fas fa-times-circle text-danger text-lg shadow rounded-circle mr-2"></i>
                                         @endif
                                         <small class="d-flex flex-column">
                                             <span>{{ __('Created date') }}</span>
-                                            <span>{{ Carbon\Carbon::parse($acceptor->patient->account->created_at)->translatedFormat('l, d F Y-  h:i:s A') }}</span>
+                                            <span>{{ Carbon\Carbon::parse($acceptor->account->created_at)->translatedFormat('l, d F Y-  h:i:s A') }}</span>
                                         </small>
                                         @else
                                         <div class="text-center">

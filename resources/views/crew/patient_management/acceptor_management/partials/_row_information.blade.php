@@ -2,7 +2,7 @@
     <div class="col-12">
         <div class="card card-widget widget-user-2" style="border: none !important; box-shadow:none !important; border-radius:0px !important;">
             <div class="widget-user-header elevation-1">
-                <div class="row">
+                <div class="row" style="position: relative;">
                     <div class="widget-user-image">
                         @if($patient->account)
                             <img class="img-circle elevation-2" src="{{ $patient->account->picture }}" alt="{{ $patient->account->username }}">
@@ -14,6 +14,12 @@
                         <h3 class="name_user mr-2 mt-1">{{ $patient->name }}</h3>
                         <p class="user_email" style="margin-top: -10px !important">#{{ $patient->no_rm }} </p>
                     </div>
+                    <a href="{{ route('acceptors.print', $patient->no_rm) }}" 
+                        rel="noopener" target="_blank" 
+                        class="btn btn-primary position-absolute"
+                        style="right: 0;">
+                        <i class="fas fa-print"></i> {{ __('Print') }}
+                    </a>
                 </div>
                 <hr>
                 <!----- Row Patient ------>

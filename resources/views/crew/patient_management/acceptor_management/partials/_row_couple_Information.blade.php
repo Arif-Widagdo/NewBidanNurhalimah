@@ -25,7 +25,7 @@
                             {{ $patient->couple->place_brithday.', '.date('d-m-Y', strtotime($patient->couple->date_brithday)) }}
                         </p>
                     </li>
-                    <li class="d-flex flex-column flex-lg-row align-items-start">
+                    <li class="d-none d-lg-flex flex-column flex-lg-row align-items-start">
                         <p class="col-lg-5 border-right">{{ __('Address') }}</p>
                         <p class="col-lg-7 text-bold">
                             {{ $patient->couple->address }}
