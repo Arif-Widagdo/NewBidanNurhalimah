@@ -39,7 +39,7 @@ Route::get('/locale/{locales}', function ($locale) {
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
 Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/dashboard', [RouterController::class, 'dashboard'])->name('dashboard');

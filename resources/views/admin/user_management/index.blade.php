@@ -61,7 +61,8 @@
                                             {{ $user->email }}
                                         @endif
                                     </td>
-                                    <td>{{ $user->created_at }}</td>
+                                    <td>
+                                        {{ Carbon\Carbon::parse($user->created_at)->translatedFormat('d/m/Y') }}</td>
                                     <td class="text-center">
                                         {{ $user->role->name }}
                                     </td>
@@ -85,23 +86,6 @@
                                                   <a href="#" class="dropdown-item">{{ __('Remove') }}</a>
                                                 </div>
                                             </div>
-                                            {{-- <a class="btn btn-sm btn-info ml-1 d-inline-flex align-items-center font-small" data-toggle="modal" data-target="#modal-show{{ $user->id }}">
-                                                {{ __('Show') }} <i class="fas fa-eye ml-2"></i>
-                                            </a>
-                                            <a data-toggle="modal" data-target="#modal-edit{{ $user->id }}" class="btn btn-sm btn-warning ml-1 d-inline-flex align-items-center font-small">
-                                                {{ __('Edit') }} <i class="fas fa-edit ml-2"></i>
-                                            </a>
-                                            <a class="btn btn-sm btn-danger ml-1 d-inline-flex align-items-center font-small" id="btn_delete{{ $loop->iteration }}">
-                                                {{ __('Remove') }} <i class="fas fa-solid fa-trash-alt ml-2"></i>
-                                            </a>
-                                            <form method="post" class="d-none">
-                                                @method('delete')
-                                                @csrf
-                                                <button formaction="{{ route('users.destroy', $user->username) }}" 
-                                                    class="d-none" id="form_delete_user{{ $loop->iteration }}">
-                                                    {{ __('Remove') }} <i class="fas fa-solid fa-trash-alt ml-2"></i>
-                                                </button>
-                                            </form> --}}
                                         </div>
                                     </td>
                                 </tr>
