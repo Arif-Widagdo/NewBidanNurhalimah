@@ -245,6 +245,35 @@
     "Acceptor" : "Acceptor",
     "Acceptor List" : "Acceptor List",
 
+    "Site Management" : "Site Management",
+    "Site Information" : "Site Information",
+    "Site Information Management" : "Site Information Management", 
+    "Facebook Address" : "Facebook Address",
+    "Twitter Address" : "Twitter Address",
+    "Youtube Address" : "Youtube Address",
+    "Instagram Address" : "Instagram Address",
+    "Information Updated Successfully" : "Information Updated Successfully",
+    "Update Failed Information" : "Update Failed Information",
+
+    "Category List" : "Category List",
+    "Create New Category" : "Create New Category",
+    "New Category Form" : "New Category Form",
+    "Somethin went Wrong, creating category" : "Somethin went Wrong, creating category",
+    "Category created successfully" : "Category created successfully",
+    "Category successfully deleted" : "Category successfully deleted",
+    "Category failed to delete" : "Category failed to delete!",
+    "Form Edit Category" : "Form Edit Category",
+    "Category edited successfully" : "Category edited successfully",
+    "Category failed to edit" : "Category failed to edit",
+    "Gallery" : "Gallery",
+    "Category" : "Category",
+
+
+
+
+
+
+
 
     "Change Password" : "Change Passwordi",
     "Active" : "Active",

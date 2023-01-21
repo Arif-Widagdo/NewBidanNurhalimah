@@ -11,6 +11,7 @@ use Database\Seeders\AcceptorSeeder;
 use Database\Seeders\PositionSeeder;
 use Database\Seeders\GraduatedSeeder;
 use Database\Seeders\BirthControlSeeder;
+use Database\Seeders\SiteInformationSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -54,5 +55,14 @@ class DatabaseSeeder extends Seeder
         // CREATE ACCEPTORS 
         // --------------------------------
         $this->call(AcceptorSeeder::class);
+        // --------------------------------
+        // CREATE SITE INFORMATION 
+        // --------------------------------
+        $this->call(SiteInformationSeeder::class);
+        // --------------------------------
+        // CREATE CATEGORY & FAQ
+        // --------------------------------
+        \App\Models\Category::factory(10)->create();
+        \App\Models\FAQ::factory(10)->create();
     }
 }

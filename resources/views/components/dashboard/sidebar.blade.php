@@ -34,7 +34,6 @@
         <!-- Sidebar Menu -->
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-               
                 @if(auth()->user()->role->slug === 'administrator')
                 @if(auth()->user()->staff->position->slug === 'admin')
                 <li class="nav-item">
@@ -95,12 +94,50 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-header">{{ __('User') }}</li>
+                {{-- <li class="nav-header">{{ __('User') }}</li> --}}
+               
+                <li class="nav-header">{{ __('Site Management') }}</li>
+                <li class="nav-item">
+                    <a href="{{ route('site-management.index') }}" class="nav-link {{ request()->is('admin/site-management') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-globe"></i>
+                        <p>
+                            {{ __('Site Information') }}
+                        </p>
+                    </a>
+                </li>
                 <li class="nav-item">
                     <a href="{{ route('users.index') }}" class="nav-link {{ request()->is('admin/users') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-users-cog"></i>
                         <p>
-                            {{ __('Users Management') }}
+                            {{ __('Users') }}
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item {{ request()->is('admin/categories') ? 'menu-open' : '' }}">
+                    <a class="nav-link {{ request()->is('admin/categories') ? 'active' : '' }}" style="cursor: pointer;">
+                        <i class="nav-icon fas fa-images"></i>
+                        <p>{{ __('Gallery') }} <i class="right fas fa-angle-left"></i></p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('categories.index') }}" class="nav-link {{ request()->is('admin/categories') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>{{ __('Category') }}</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="" class="nav-link ">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Images</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="" class="nav-link">
+                        <i class="nav-icon fas fa-question-circle"></i>
+                        <p>
+                            F.A.Q
                         </p>
                     </a>
                 </li>

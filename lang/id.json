@@ -242,10 +242,29 @@
     "Acceptors" : "Akseptor",
     "Acceptor" : "Akseptor",
     "Acceptor List" : "Daftar Akseptor",
-   
-   
 
-
+    "Site Management" : "Manajemen Situs",
+    "Site Information" : "Informasi Situs",
+    "Site Information Management" : "Manajemen Informasi Situs",    
+    "Facebook Address" : "Alamat Facebook",
+    "Twitter Address" : "Alamat Twitter",
+    "Youtube Address" : "Alamat Youtube",
+    "Instagram Address" : "Alamat Instagram",
+    "Information Updated Successfully" : "Informasi Berhasil Diperbaharui",
+    "Update Failed Information" : "Informasi Gagal Diperbaharui",
+   
+    "Category List" : "Daftar Kategori",
+    "Create New Category" : "Buat Baru Kategori",
+    "New Category Form" : "Formulir Kategori Baru",
+    "Somethin went Wrong, creating category" : "Ada yang salah pada saat membuat kategori!",
+    "Category created successfully" : "Kategori berhasil dibuat.",
+    "Category successfully deleted" : "Kategori berhasil dihapus.",
+    "Category failed to delete" : "Kategori gagal dihapus!",
+    "Form Edit Category" : "Formulir Edit Kategori",
+    "Category edited successfully" : "Kategori berhasil diperbaharui",
+    "Category failed to edit" : "Kategori gagal diperbaharui",
+    "Gallery" : "Galeri",
+    "Category" : "Kategori",
 
 
 

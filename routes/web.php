@@ -6,8 +6,10 @@ use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\RouterController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\CategoryManagement;
 use App\Http\Controllers\Admin\GraduatedManagementController;
 use App\Http\Controllers\Admin\PositionManagementController;
+use App\Http\Controllers\Admin\SiteManagementController;
 use App\Http\Controllers\Admin\StaffManagementController;
 use App\Http\Controllers\Staff\StaffController;
 use App\Http\Controllers\Patient\PatientController;
@@ -78,6 +80,14 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
         // Management Staff
         Route::resource('/staffs', StaffManagementController::class)->except(['show', 'edit']);
         Route::delete('/staffs-management-deleteAll', [StaffManagementController::class, 'deleteAll'])->name('admin.staff.deleteAll');
+
+        // Management Site Information
+        Route::resource('/site-management', SiteManagementController::class)->except(['create', 'store', 'show', 'edit', 'destroy']);
+
+        // Management Category
+        Route::get('/categories/slug', [CategoryManagement::class, 'checkSlug'])->name('admin.check.category');
+        Route::resource('/categories', CategoryManagement::class)->except(['create', 'edit', 'show']);
+        Route::delete('/categories-management-deleteAll', [CategoryManagement::class, 'deleteAll'])->name('admin.category.deleteAll');
     });
 
 
