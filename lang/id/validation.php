@@ -280,7 +280,13 @@ return [
             'required' => 'Judul wajib diisi!',
             'unique' => 'Judul sudah ada sebelumnya.'
         ],
-
+        'category_id' => [
+            'required' => 'Kategori wajib diisi!',
+        ],
+        'image' => [
+            'required' => 'Gambar wajib diisi!',
+            'max' => 'Gambar harus :max'
+        ],
     ],
 
     /*

@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use Ramsey\Uuid\Uuid;
+use App\Models\Gallery;
 use App\Models\Category;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\SiteInformation;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 
@@ -107,6 +109,13 @@ class CategoryManagement extends Controller
      */
     public function destroy(Category $category)
     {
+        $galleries = Gallery::where('category_id', $category->id)->get();
+        foreach ($galleries as $gallery) {
+            if ($gallery->image) {
+                Storage::delete($gallery->image);
+            }
+        }
+
         $delete = Category::destroy($category->id);
         if ($delete) {
             return redirect()->back()->with('success', __('Category successfully deleted'));
@@ -117,6 +126,18 @@ class CategoryManagement extends Controller
 
     public function deleteAll(Request $request)
     {
+        if ($request->ids != '') {
+            $categories = Category::find($request->ids);
+            foreach ($categories as $category) {
+                $galleries = Gallery::where('category_id', $category->id)->get();
+                foreach ($galleries as $gallery) {
+                    if ($gallery->image) {
+                        Storage::delete($gallery->image);
+                    }
+                }
+            }
+        }
+
         $delete = Category::destroy($request->ids);
         if ($delete) {
             return redirect()->back()->with('success', __('Category successfully deleted'));

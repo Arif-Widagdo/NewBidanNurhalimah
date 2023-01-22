@@ -305,6 +305,13 @@ return [
             'required' => 'Title must be filled in!',
             'unique' => 'Title has already been taken.'
         ],
+        'category_id' => [
+            'required' => 'Category must be selected!',
+        ],
+        'image' => [
+            'required' => 'Image must be filled in!',
+            'max' => 'Image must be :max'
+        ],
 
     ],
 

@@ -64,5 +64,17 @@ class DatabaseSeeder extends Seeder
         // --------------------------------
         \App\Models\Category::factory(10)->create();
         \App\Models\FAQ::factory(10)->create();
+        // --------------------------------
+        // CREATE GALLERY
+        // --------------------------------
+        $categories = \App\Models\Category::all();
+        foreach ($categories as $category) {
+            \App\Models\Gallery::factory()->create([
+                'id' => fake()->uuid(),
+                'category_id' => $category->id,
+                'image' => 'gallery_seeder/portfolio-' . mt_rand(0, 9) . '.jpg',
+                'title' =>  fake()->unique()->sentence(mt_rand(2, 4))
+            ]);
+        }
     }
 }

@@ -8,6 +8,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoryManagement;
 use App\Http\Controllers\Admin\FAQManagementController;
+use App\Http\Controllers\Admin\GalleryManagementController;
 use App\Http\Controllers\Admin\GraduatedManagementController;
 use App\Http\Controllers\Admin\PositionManagementController;
 use App\Http\Controllers\Admin\SiteManagementController;
@@ -93,6 +94,10 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
         // Management F.A.Q
         Route::resource('/faqs', FAQManagementController::class)->except(['create', 'show', 'edit']);
         Route::delete('/faqs-management-deleteAll', [FAQManagementController::class, 'deleteAll'])->name('admin.faq.deleteAll');
+
+        // Management Gallery
+        Route::resource('galleries', GalleryManagementController::class)->except(['create', 'show']);
+        Route::delete('/galleries-management-deleteAll', [GalleryManagementController::class, 'deleteAll'])->name('admin.gallery.deleteAll');
     });
 
 

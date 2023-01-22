@@ -283,8 +283,26 @@
     "F.A.Q edited successfully" : "F.A.Q edited successfully",
     "F.A.Q failed to edit" : "F.A.Q failed to edit",
 
-
-
+    "Images" : "Images",
+    "Image" : "Image",
+    "Image List" : "Image List",
+    "Image Title" : "Image Title",
+    "Image Titles" : "Image Titles",
+    "Add Image" : "Add Image",
+    "Gallery Add Image Form" : "Gallery Add Image Form",
+    "Recomen Image" : "Recomen Image",
+    "File Size" : "File Size",
+    "or" : "or",
+    "Image Failed to Add" : "Image Failed to Add",
+    "Image Added Successfully" : "Image Added Successfully",
+    "Image Category" : "Image Category",
+    "Select Image Category" : "Select Image Category",
+    "Image Deleted Successfully" : "Image Deleted Successfully",
+    "Image Failed to Delete" : "Image Failed to Delete",
+    "Image Edit Form" : "Image Edit Form",
+    "Categories" : "Categories",
+    "Image Updated Successfully" : "Image Updated Successfully",
+    "Image Update Failed" : "Image Update Failed",
 
 
 

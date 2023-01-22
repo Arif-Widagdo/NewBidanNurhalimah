@@ -113,9 +113,9 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-item {{ request()->is('admin/categories') ? 'menu-open' : '' }}">
-                    <a class="nav-link {{ request()->is('admin/categories') ? 'active' : '' }}" style="cursor: pointer;">
-                        <i class="nav-icon fas fa-images"></i>
+                <li class="nav-item {{ request()->is('admin/categories') || request()->is('admin/galleries') || request()->is('admin/galleries/**/edit') ? 'menu-open' : '' }}">
+                    <a class="nav-link {{ request()->is('admin/categories') || request()->is('admin/galleries') || request()->is('admin/galleries/**/edit') ? 'active' : '' }}" style="cursor: pointer;">
+                        <i class="nav-icon fas fa-image"></i>
                         <p>{{ __('Gallery') }} <i class="right fas fa-angle-left"></i></p>
                     </a>
                     <ul class="nav nav-treeview">
@@ -126,9 +126,9 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="" class="nav-link ">
+                            <a href="{{ route('galleries.index') }}" class="nav-link {{ request()->is('admin/galleries') || request()->is('admin/galleries/**/edit') ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Images</p>
+                                <p>{{ __('Images') }}</p>
                             </a>
                         </li>
                     </ul>

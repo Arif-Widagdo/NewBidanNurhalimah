@@ -6,7 +6,7 @@
          <li class="nav-item">
              <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
          </li>
-         @if(auth()->user()->role->slug === 'administrator')
+         {{-- @if(auth()->user()->role->slug === 'administrator')
          <li class="nav-item d-none d-sm-inline-block">
              <a href="" class="nav-link">{{ __('Data Master') }}</a>
          </li>
@@ -15,7 +15,7 @@
          <li class="nav-item d-none d-sm-inline-block">
              <a href="" class="nav-link">{{ __('Dashboard') }}</a>
          </li>
-         @endif
+         @endif --}}
      </ul>
 
      <!-- Right navbar links -->

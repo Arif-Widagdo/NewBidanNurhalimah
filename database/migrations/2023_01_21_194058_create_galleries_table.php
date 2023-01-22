@@ -17,6 +17,7 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->foreignUuid('category_id')->index()->references('id')->on('categories')->onDelete('cascade');
             $table->string('title')->unique();
+            $table->string('slug')->unique();
             $table->string('image');
             $table->timestamps();
         });
