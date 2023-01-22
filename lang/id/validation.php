@@ -276,6 +276,10 @@ return [
         'description' => [
             'required' => 'Keterangan wajib diisi!',
         ],
+        'title' => [
+            'required' => 'Judul wajib diisi!',
+            'unique' => 'Judul sudah ada sebelumnya.'
+        ],
 
     ],
 

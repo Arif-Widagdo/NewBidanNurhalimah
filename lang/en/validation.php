@@ -301,6 +301,10 @@ return [
         'description' => [
             'required' => 'Required information!',
         ],
+        'title' => [
+            'required' => 'Title must be filled in!',
+            'unique' => 'Title has already been taken.'
+        ],
 
     ],
 

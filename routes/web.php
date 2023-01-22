@@ -7,6 +7,7 @@ use App\Http\Controllers\RouterController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoryManagement;
+use App\Http\Controllers\Admin\FAQManagementController;
 use App\Http\Controllers\Admin\GraduatedManagementController;
 use App\Http\Controllers\Admin\PositionManagementController;
 use App\Http\Controllers\Admin\SiteManagementController;
@@ -88,6 +89,10 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
         Route::get('/categories/slug', [CategoryManagement::class, 'checkSlug'])->name('admin.check.category');
         Route::resource('/categories', CategoryManagement::class)->except(['create', 'edit', 'show']);
         Route::delete('/categories-management-deleteAll', [CategoryManagement::class, 'deleteAll'])->name('admin.category.deleteAll');
+
+        // Management F.A.Q
+        Route::resource('/faqs', FAQManagementController::class)->except(['create', 'show', 'edit']);
+        Route::delete('/faqs-management-deleteAll', [FAQManagementController::class, 'deleteAll'])->name('admin.faq.deleteAll');
     });
 
 

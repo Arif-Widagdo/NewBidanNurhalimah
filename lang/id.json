@@ -266,8 +266,20 @@
     "Gallery" : "Galeri",
     "Category" : "Kategori",
 
-
-
+    "F.A.Q List" : "Daftar F.A.Q",
+    "Frequently Asked Questions List" : "Daftar Pertanyaan yang Sering Diajukan",
+    "Create New a Question" : "Buat Baru Pertanyaan",
+    "Titles" : "Judul",
+    "Title" : "Judul",
+    "Descriptions" : "Keterangan",
+    "Frequently Asked Questions Form" : "Formulir Pertanyaan yang Sering Diajukan",
+    "FAQ Created Successfully" : "F.A.Q Berhasil Dibuat",
+    "Somethin went Wrong, creating F.A.Q" : "Ada yang salah pada saat membuat F.A.Q!",
+    "F.A.Q successfully deleted" : "F.A.Q berhasil dihapus.",
+    "F.A.Q failed to delete" : "F.A.Q gagal dihapus!",
+    "Form Edit F.A.Q" : "Formulir Edit F.A.Q",
+    "F.A.Q edited successfully" : "F.A.Q berhasil diperbaharui",
+    "F.A.Q failed to edit" : "F.A.Q gagal diperbaharui",
 
 
 

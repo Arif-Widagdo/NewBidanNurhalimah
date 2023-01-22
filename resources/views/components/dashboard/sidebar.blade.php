@@ -134,10 +134,10 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a href="" class="nav-link">
+                    <a href="{{ route('faqs.index') }}" class="nav-link {{ request()->is('admin/faqs') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-question-circle"></i>
                         <p>
-                            F.A.Q
+                            {{ __('F.A.Q') }}
                         </p>
                     </a>
                 </li>

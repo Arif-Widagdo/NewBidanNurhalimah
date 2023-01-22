@@ -1,17 +1,16 @@
-<x-app-dashboard title="{{ __('Category List') }}">
+<x-app-dashboard title="{{ __('F.A.Q List') }}">
     @section('links')
-    <!-- Select2 -->
-    <link rel="stylesheet" href="{{ asset('plugins/select2/css/select2.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
+    <!-- summernote -->
+    <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.css') }}">
     @endsection
 
     <x-slot name="header">
-        {{ __('Category List') }}
+        {{ __('Frequently Asked Questions List') }}
     </x-slot>
 
     <div class="row d-none">
         <div class="col-12">
-            <input type="text" id="countCategory" class="w-100" value="{{ $categories->count() }}">
+            <input type="text" id="countFAQ" class="w-100" value="{{ $faqs->count() }}">
         </div>
     </div>
 
@@ -26,12 +25,12 @@
                         <a class="btn btn-danger float-left" id="btn_delete_all" hidden>
                             <i class="fas fa-solid fa-trash-alt"></i> {{ __('Delete All Selected') }}
                         </a>
-                        <button formaction="{{ route('admin.category.deleteAll') }}" class="d-none" type="submit" id="form_deleteAll_category">
+                        <button formaction="{{ route('admin.faq.deleteAll') }}" class="d-none" type="submit" id="form_deleteAll_faq">
                             {{ __('Delete All Selected') }}
                         </button>
                         <button type="button" class="btn btn-primary float-right" data-toggle="modal"
-                            data-target="#modal-create-graduated">
-                            {{ __('Create New Category') }} <i class="fas fa-plus-circle"></i>
+                            data-target="#modal-create-faq">
+                            {{ __('Create New a Question') }} <i class="fas fa-plus-circle"></i>
                         </button>
                     </div>
                     <div class="card-body">
@@ -39,38 +38,34 @@
                             <thead>
                                 <tr>
                                     <th class="text-center"><input type="checkbox" class="selectall" style="max-width: 15px !important; cursor: pointer;"></th>
-                                    <th>{{ __('Name') }}</th>
-                                    <th class="text-center">{{ __('Status') }}</th>
+                                    <th>{{ __('Titles') }}</th>
+                                    <th>{{ __('Descriptions') }}</th>
                                     <th class="text-center">{{ __('Actions') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @if($categories->count() > 0)
-                                @foreach ($categories as $category)
+                                @if($faqs->count() > 0)
+                                @foreach ($faqs as $faq)
                                 <tr>
-                                    <td class="text-center" style="width: 15px !important;"><input type="checkbox" name="ids[]" class="selectbox" value="{{ $category->id }}" style="cursor: pointer;"></td>
+                                    <td class="text-center" style="width: 15px !important;"><input type="checkbox" name="ids[]" class="selectbox" value="{{ $faq->id }}" style="cursor: pointer;"></td>
                                     <td class="fw-500">
-                                        {{ $category->name }}
+                                        {{ $faq->title }}
                                     </td>
-                                    <td class="text-center"> 
-                                        @if($category->status == 'actived')
-                                        <i class="fas fa-check-circle text-success text-lg shadow rounded-circle" ></i>
-                                        @else
-                                        <i class="fas fa-times-circle text-danger text-lg shadow rounded-circle"></i>
-                                        @endif
+                                    <td> 
+                                        {!! $faq->description !!}
                                     </td>
                                     <td class="text-center">
                                         <div class="d-inline-flex align-items-center text-center">
-                                            <a data-toggle="modal" data-target="#modal-edit{{ $category->slug }}" class="btn btn-sm btn-warning ml-1 d-inline-flex align-items-center font-small">
+                                            <a data-toggle="modal" data-target="#modal-edit{{ $faq->id }}" class="btn btn-sm btn-warning ml-1 d-inline-flex align-items-center font-small">
                                                 {{ __('Edit') }} <i class="fas fa-edit ml-2"></i>
                                             </a>
-                                            <a class="btn btn-sm btn-danger ml-1 d-inline-flex align-items-center font-small" id="btn_delete_graduated{{ $loop->iteration }}">
+                                            <a class="btn btn-sm btn-danger ml-1 d-inline-flex align-items-center font-small" id="btn_delete_faq{{ $loop->iteration }}">
                                                 {{ __('Remove') }} <i class="fas fa-solid fa-trash-alt ml-2"></i>
                                             </a>
                                             <form method="post" class="d-none">
                                                 @method('delete')
                                                 @csrf
-                                                <button formaction="{{ route('categories.destroy', $category->slug) }}" class="d-none" id="form_delete_category{{ $loop->iteration }}">
+                                                <button formaction="{{ route('faqs.destroy', $faq->id) }}" class="d-none" id="form_delete_faq{{ $loop->iteration }}">
                                                     {{ __('Remove') }} <i class="fas fa-solid fa-trash-alt ml-2"></i>
                                                 </button>
                                             </form>
@@ -89,42 +84,30 @@
     <!-- /.row -->
 
     <!--- Modal Create -->
-    <div class="modal fade" id="modal-create-graduated">
+    <div class="modal fade" id="modal-create-faq">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header bg-primary">
-                    <h5 class="modal-title"><i class="fas fa-pencil-alt"></i> {{ __('New Category Form') }}</h5>
+                    <h5 class="modal-title"><i class="fas fa-pencil-alt"></i> {{ __('Frequently Asked Questions Form') }}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form class="form-horizontal" method="POST" action="{{ route('categories.store') }}" id="form_create_category">
+                <form class="form-horizontal" method="POST" action="{{ route('faqs.store') }}" id="form_create_faq">
                     @csrf
                     <div class="modal-body">
                         <div class="border-bottom text-danger" style="border-color: #007BFF !important">
                             {{ __('* required fileds') }}
                         </div>
                         <div class="form-group mb-1">
-                            <div class="col-form-label d-flex flex-column flex-lg-row justify-content-between align-items-start align-items-lg-center">
-                                <label for="name" class="col-form-label">{{ __('Name') }} <span class="text-danger">*</span></label>
-                                <small class="text-lg-right">{{ __('Press') }} <kbd>Tab</kbd> {{ __('or switch columns to insert slug values automatically') }}</small>
-                            </div>
-                            <input type="text" id="name_category" class="form-control error_input_name" placeholder="{{ __('Enter') }} {{ __('Name') }}" name="name" autofocus required>
-                            <span class="text-danger error-text name_error"></span>
+                            <label for="title" class="col-form-label">{{ __('Title') }} <span class="text-danger">*</span></label>
+                            <input type="text" id="title" class="form-control error_input_title" placeholder="{{ __('Enter') }} {{ __('Title') }}" name="title" autofocus required>
+                            <span class="text-danger error-text title_error"></span>
                         </div>
-                        <div class="form-group mb-1 ">
-                            <label for="slug" class="col-form-label">{{ __('Slug') }} <span class="text-danger">*</span></label>
-                            <input type="disabled" id="slug_category" class="form-control error_input_slug" placeholder="{{ __('Automatically') }}" name="slug" disable readonly required>
-                            <span class="text-danger error-text slug_error"></span>
-                        </div>
-                        <div class="form-group mb-1">
-                            <label for="status" class="col-form-label"> {{ __('Activation Status') }} <span class="text-danger">*</span></label>
-                            <select required class="form-control select2 error_input_status" style="width: 100%;" name="status" required>
-                                <option selected="selected" disabled>{{ __('Select Status') }}</option>
-                                <option value="actived">{{ __('Active') }}</option>
-                                <option value="not_actived">{{ __('Not Active') }}</option>
-                            </select>
-                            <span class="text-danger error-text status_error"></span>
+                        <div class="form-group">
+                            <label for="description" class="col-form-label">{{ __('Description') }} <span class="text-danger">*</span></label>
+                            <textarea class="form-control error_input_description" id="description" name="description" cols="50" rows="2"></textarea>
+                            <span class="text-danger error-text description_error"></span>
                         </div>
                     </div>
                     <div class="modal-footer justify-content-between">
@@ -138,51 +121,34 @@
     <!-- /.modal -->
 
     <!--- Modal Edit -->
-    @foreach ($categories as $category_edit)
-    <div class="modal fade" id="modal-edit{{ $category_edit->slug }}">
+    @foreach ($faqs as $faq_edit)
+    <div class="modal fade" id="modal-edit{{ $faq_edit->id }}">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header bg-dark">
                     <h5 class="modal-title">
-                       <i class="fas fa-edit"></i> {{ __('Form Edit Category') }}
+                       <i class="fas fa-edit"></i> {{ __('Form Edit F.A.Q') }}
                     </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form class="form-horizontal" method="POST" action="{{ route('categories.update', $category_edit->slug) }}" id="form_edit_category{{ $loop->iteration }}">
+                <form class="form-horizontal" method="POST" action="{{ route('faqs.update', $faq_edit->id) }}" id="form_edit_category{{ $loop->iteration }}">
                     @csrf
                     @method('PATCH')
                     <div class="modal-body">
                         <div class="border-bottom border-dark text-danger">
                             {{ __('* required fileds') }}
                         </div>
-                        <div class="form-group mb-1 ">
-                            <div class="col-form-label d-flex flex-column flex-lg-row justify-content-between align-items-start align-items-lg-center">
-                                <label for="name_edit_category" class="col-form-label">{{ __('Name') }} <span class="text-danger">*</span></label>
-                                <small class="text-lg-right">{{ __('Press') }} <kbd>Tab</kbd> {{ __('or switch columns to insert slug values automatically') }}</small>
-                            </div>
-                            <input type="text" id="name_edit_category{{ $loop->iteration }}" class="form-control error_input_name_edit_category" placeholder="{{ __('Enter') }} {{ __('Name') }}" name="name" value="{{ $category_edit->name }}" autofocus required>
-                            <span class="text-danger error-text name_edit_category_error"></span>
-                        </div>
-                        <div class="form-group mb-1 ">
-                            <label for="slug_edit_category" class="col-form-label">{{ __('Slug') }} <span class="text-danger">*</span></label>
-                            <input type="disabled" id="slug_edit_category{{ $loop->iteration }}" class="form-control error_input_slug_edit_category" placeholder="{{ __('Automatically') }}" name="slug" disable readonly value="{{ $category_edit->slug }}" required>
-                            <span class="text-danger error-text slug_edit_category_error"></span>
-                        </div>
                         <div class="form-group mb-1">
-                            <label for="category_status_edit" class="col-form-label"> {{ __('Activation Status') }} <span class="text-danger">*</span></label>
-                            <select class="form-control error_input_category_status_edit_edit_category_error" style="width: 100%;" name="category_status_edit" required>
-                               <option selected="selected">{{ __('Select Status') }}</option>
-                                @if($category_edit->status === 'actived')
-                                <option value="actived" selected="selected">{{ __('Active') }}</option> 
-                                <option value="not_actived">{{ __('Not Active') }}</option> 
-                                @else
-                                <option value="actived">{{ __('Active') }}</option>
-                                <option value="not_actived" selected="selected">{{ __('Not Active') }}</option>
-                                @endif
-                            </select>
-                            <span class="text-danger error-text category_status_edit_edit_category_error"></span>
+                            <label for="title_edit" class="col-form-label">{{ __('Title') }} <span class="text-danger">*</span></label>
+                            <input type="text" id="title_edit" class="form-control error_input_title_edit" placeholder="{{ __('Enter') }} {{ __('Title') }}" name="title" value="{{ $faq_edit->title }}" autofocus required>
+                            <span class="text-danger error-text title_edit_error"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="description_edit" class="col-form-label">{{ __('Description') }} <span class="text-danger">*</span></label>
+                            <textarea class="form-control error_input_description_edit"  id="description_edit{{ $loop->iteration }}" name="description" cols="50" rows="2">{{ $faq_edit->description }}</textarea>
+                            <span class="text-danger error-text description_edit_error"></span>
                         </div>
                     </div>
                     <div class="modal-footer justify-content-between">
@@ -200,11 +166,10 @@
 
 
     @section('scripts')
-    <!-- Select 2 -->
-    <script src="{{ asset('plugins/select2/js/select2.full.min.js') }}"></script>
+    <!-- Summernote -->
+    <script src="{{ asset('plugins/summernote/summernote-bs4.js') }}"></script>
     <!-- Customs for pages -->
     <script>
-       
         $("#table-category").DataTable({
             "responsive": true,
             "lengthChange": true,
@@ -228,17 +193,24 @@
             },
         });
 
-        // CheckSlug
-        const nameCategory = document.querySelector('#name_category');
-        const slugCategory = document.querySelector('#slug_category');
-
-        nameCategory.addEventListener('change', function () {
-            fetch('admin/categories/slug?name=' + nameCategory.value)
-                .then(response => response.json())
-                .then(data => slugCategory.value = data.slug)
+        // Summernote
+        $('#description').summernote({
+            disableDragAndDrop: true,
+            toolbar: [
+            // ['style', ['style']],
+            ['font', ['bold', 'underline', 'clear']],
+            ['fontname', ['fontname']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            // ['table', ['table']],
+            //   ['insert', ['link', 'picture', 'video']],
+            // ['insert', ['link', 'video']],
+            ['insert', ['link']],
+            // ['view', ['fullscreen', 'codeview', 'help']],
+            ],
         });
 
-        $('#form_create_category').on('submit', function (e) {
+        $('#form_create_faq').on('submit', function (e) {
             e.preventDefault();
             $.ajax({
                 url: $(this).attr('action'),
@@ -255,11 +227,10 @@
                         $.each(data.error, function (prefix, val) {
                             $('span.' + prefix + '_error').text(val[0]);
                             $('input.error_input_' + prefix).addClass('is-invalid');
-                            $('select.error_input_' + prefix).addClass('is-invalid');
                         });
                         alertToastInfo(data.msg)
                     } else {
-                        $('#form_create_category')[0].reset();
+                        $('#form_create_faq')[0].reset();
                         setTimeout(function () {
                             location.reload(true);
                         }, 1000);
@@ -272,14 +243,18 @@
             });
         });
 
-        const countCategory = document.querySelector('#countCategory');
-        for (let i = 1; i <= countCategory.value; i++) {
-            const name_edit_category = document.querySelector('#name_edit_category' + i);
-            const slug_edit_category = document.querySelector('#slug_edit_category' + i);
-            name_edit_category.addEventListener('change', function () {
-                fetch('admin/categories/slug?name=' + name_edit_category.value)
-                    .then(response => response.json())
-                    .then(data => slug_edit_category.value = data.slug)
+        const countFAQ = document.querySelector('#countFAQ');
+        for (let i = 1; i <= countFAQ.value; i++) {
+
+            $('#description_edit'+i).summernote({
+                disableDragAndDrop: true,
+                toolbar: [
+                ['font', ['bold', 'underline', 'clear']],
+                ['fontname', ['fontname']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['insert', ['link']],
+                ],
             });
 
             $('#form_edit_category' + i).on('submit', function (e) {
@@ -297,9 +272,8 @@
                     success: function (data) {
                         if (data.status == 0) {
                             $.each(data.error, function (prefix, val) {
-                                $('span.' + prefix + '_edit_category_error').text(val[0]);
-                                $('input.error_input_' + prefix + '_edit_category').addClass('is-invalid');
-                                $('select.error_input_' + prefix+ '_edit_category_error').addClass('is-invalid');
+                                $('span.' + prefix + '_edit_error').text(val[0]);
+                                $('input.error_input_' + prefix + '_edit').addClass('is-invalid');
                             });
                             alertToastInfo(data.msg)
                         } else {
@@ -316,7 +290,7 @@
                 });
             });
 
-            $('#btn_delete_graduated' + i).on('click', function (e) {
+            $('#btn_delete_faq' + i).on('click', function (e) {
                 e.preventDefault();
                 swal.fire({
                     title: "{{ __('Are you sure?') }}",
@@ -330,7 +304,7 @@
                     cancelButtonText: "{{ __('Cancel') }}"
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        $("#form_delete_category" + i).click();
+                        $("#form_delete_faq" + i).click();
                     }
                 });
             });
@@ -350,7 +324,7 @@
                 cancelButtonText: "{{ __('Cancel') }}"
             }).then((result) => {
                 if (result.isConfirmed){
-                    $("#form_deleteAll_category").click();
+                    $("#form_deleteAll_faq").click();
                 }
             });
         });
