@@ -10,7 +10,7 @@
                 <li><a class="nav-link scrollto active" href="/#hero">{{ __('Home') }}</a></li>
                 <li><a class="nav-link scrollto" href="#features">{{ __('About Us') }}</a></li>
                 <li><a class="nav-link scrollto" href="#services">{{ __('Services') }}</a></li>
-                <li><a class="nav-link scrollto" href="#portfolio">{{ __('Gallary') }}</a></li>
+                <li><a class="nav-link scrollto" href="#portfolio">{{ __('Gallery') }}</a></li>
                 <li><a class="nav-link scrollto" href="#contact">{{ __('Contact') }}</a></li>
                 <li class="dropdown"><a href="#"><i class="bi bi-translate btn btn-outline-primary" style="font-size:16px;"><i class="bi bi-chevron-down"></i></i></a>
                     <ul>

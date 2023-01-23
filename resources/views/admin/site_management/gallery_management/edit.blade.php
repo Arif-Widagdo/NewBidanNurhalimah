@@ -1,4 +1,4 @@
-<x-app-dashboard title="{{ __('Image List') }}">
+<x-app-dashboard title="{{ __('Image Edit Form') }}">
     @section('links')
     <!-- Select2 -->
     <link rel="stylesheet" href="{{ asset('plugins/select2/css/select2.min.css') }}">
@@ -40,9 +40,9 @@
                                 <option selected="selected" disabled >{{ __('Select Image Category') }}</option>
                                 @foreach ($categories as $category)
                                     @if($gallery->category_id != '' && $gallery->category->id  == $category->id)
-                                    <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
+                                    <option value="{{ $category->id }}" selected>{{ $category->name }} {{ $category->status == 'not_actived' ? '- ('.__('Not Active').')' : '' }}</option>
                                     @else
-                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                    <option value="{{ $category->id }}">{{ $category->name }} {{ $category->status == 'not_actived' ? '- ('.__('Not Active').')' : '' }}</option>
                                     @endif
                                 @endforeach
                             </select>

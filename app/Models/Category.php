@@ -27,7 +27,7 @@ class Category extends Model
         return $this->belongsTo(SiteInformation::class, 'site_id');
     }
 
-    public function gallary()
+    public function gallery()
     {
         return $this->hasMany(Gallery::class);
     }

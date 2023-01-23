@@ -12,8 +12,9 @@
                     @csrf
                     @method('PATCH')
                     <div class="card-body">
-                        <div class="text-danger">
+                        <div class="text-danger d-flex justify-content-between">
                             <span>{{ __('* required fileds') }}</span>
+                            <a href="{{ route('welcome') }}#contact" target="_blank" class="btn btn-outline-primary">{{ __('View Site') }} <i class="fas fa-arrow-alt-circle-right"></i></a>
                         </div>
                         <hr>
                         <div class="row">

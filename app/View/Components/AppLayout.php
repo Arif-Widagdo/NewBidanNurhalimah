@@ -3,6 +3,7 @@
 namespace App\View\Components;
 
 use Illuminate\View\Component;
+use App\Models\SiteInformation;
 
 class AppLayout extends Component
 {
@@ -24,6 +25,9 @@ class AppLayout extends Component
      */
     public function render()
     {
-        return view('layouts.app');
+        $site = SiteInformation::latest()->first(['address', 'telp', 'email', 'facebook', 'twitter', 'instagram', 'linkedin']);
+        return view('layouts.app', [
+            'site' => $site
+        ]);
     }
 }

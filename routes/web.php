@@ -1,26 +1,31 @@
 <?php
 
+use App\Models\FAQ;
+use App\Models\Gallery;
+use App\Models\Category;
+use App\Models\SiteInformation;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\RouterController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\Admin\CategoryManagement;
-use App\Http\Controllers\Admin\FAQManagementController;
-use App\Http\Controllers\Admin\GalleryManagementController;
-use App\Http\Controllers\Admin\GraduatedManagementController;
-use App\Http\Controllers\Admin\PositionManagementController;
-use App\Http\Controllers\Admin\SiteManagementController;
-use App\Http\Controllers\Admin\StaffManagementController;
 use App\Http\Controllers\Staff\StaffController;
+use App\Http\Controllers\Admin\CategoryManagement;
 use App\Http\Controllers\Patient\PatientController;
+use App\Http\Controllers\Crew\BCManagementController;
+use App\Http\Controllers\Admin\FAQManagementController;
+use App\Http\Controllers\Admin\SiteManagementController;
 use App\Http\Controllers\Admin\UserManagementController;
 use App\Http\Controllers\Admin\WorkManagementController;
-use App\Http\Controllers\Crew\AcceptorManagementController;
-use App\Http\Controllers\Crew\BCManagementController;
+use App\Http\Controllers\Admin\StaffManagementController;
 use App\Http\Controllers\Crew\CoupleManagementController;
 use App\Http\Controllers\Crew\PatientManagementController;
+use App\Http\Controllers\Admin\GalleryManagementController;
+use App\Http\Controllers\Crew\AcceptorManagementController;
+use App\Http\Controllers\Admin\PositionManagementController;
+use App\Http\Controllers\Admin\GraduatedManagementController;
+use App\Http\Controllers\WelcomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,9 +46,8 @@ Route::get('/locale/{locales}', function ($locale) {
     return redirect()->back();
 });
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
+Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
+
 
 Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/dashboard', [RouterController::class, 'dashboard'])->name('dashboard');

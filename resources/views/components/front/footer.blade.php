@@ -22,15 +22,26 @@
         <div class="row gy-4">
           <div class="col-lg-5 col-md-12 footer-info">
             <a href="index.html" class="logo d-flex align-items-center">
-              {{-- <img src="assets/img/logo.png" alt=""> --}}
+              <img src="{{ asset('dist/img/logos/logo.png') }}" alt="">
               <span>Bidan Nurhalimah</span>
             </a>
-            <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus.</p>
+            <p>{{ __('Two Better Children, Lets Join the Family Planning Program to Become a Better Family.') }}</p>
             <div class="social-links mt-3">
-              <a href="https://www.twitter.com/" class="twitter" target="_blank"><i class="bi bi-twitter"></i></a>
-              <a href="https://www.facebook.com/dhe.uhibbuilaika" class="facebook" target="_blank"><i class="bi bi-facebook"></i></a>
-              <a href="https://www.instagram.com/sifafot/" class="instagram" target="_blank"><i class="bi bi-instagram"></i></a>
-              <a href="https://www.linkedin.com/" class="linkedin" target="_blank"><i class="bi bi-linkedin"></i></a>
+              @if($site->twitter != '')
+              <a href="{{ $site->twitter }}" class="twitter" target="_blank"><i class="bi bi-twitter"></i></a>
+              @endif
+
+              @if($site->facebook != '')
+              <a href="{{ $site->facebook }}" class="facebook" target="_blank"><i class="bi bi-facebook"></i></a>
+              @endif
+
+              @if($site->instagram != '')
+              <a href="{{ $site->instagram }}" class="instagram" target="_blank"><i class="bi bi-instagram"></i></a>
+              @endif
+              
+              @if($site->linkedin != '')
+              <a href="{{ $site->linkedin }}" class="linkedin" target="_blank"><i class="bi bi-linkedin"></i></a>
+              @endif
             </div>
           </div>
 
@@ -47,20 +58,19 @@
           <div class="col-lg-2 col-6 footer-links">
             <h4>{{ __('Our Services') }}</h4>
             <ul>
-              <li><i class="bi bi-chevron-right"></i> <a href="#services">Apotik</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#services">Konsultasi</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#services">Persalinan</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#services">{{ __('Apotek') }}</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#services">{{ __('Consultation') }}</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#services">{{ __('Childbirth') }}</a></li>
             </ul>
           </div>
 
-          <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
+          <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start p-0">
             <h4>{{ __('Contact Us') }}</h4>
             <p>
-              Kp. Mulya Asih Rt 04/05 Desa Cimhai <br>
-              Kec. Klari Kab. Karawang
-              <br><br>
-              <strong>Phone:</strong> (62+) 8960 1909 107<br>
-              <strong>Email:</strong> bidannurhalimah334@gmail.com<br>
+              {{ $site->address }}
+              <br>
+              <strong>{{ __('Number Phone') }} :</strong> {{ $site->telp }}<br>
+              <strong>{{ __('Email') }} :</strong> {{ $site->email }}<br>
             </p>
 
           </div>
@@ -71,14 +81,14 @@
 
     <div class="container">
       <div class="copyright">
-        &copy; Copyright <strong><span>Bidan Nurhalimah</span></strong>. All Rights Reserved
+        &copy; {{ __('Copyright') }} <strong><span>Bidan Nurhalimah</span></strong>. {{ __('All Rights Reserved') }}
       </div>
       <div class="credits">
         <!-- All the links in the footer should remain intact. -->
         <!-- You can delete the links only if you purchased the pro version. -->
         <!-- Licensing information: https://bootstrapmade.com/license/ -->
         <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/flexstart-bootstrap-startup-template/ -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        {{ __('Designed by') }} <a href="https://bootstrapmade.com/">BootstrapMade</a>
       </div>
     </div>
   </footer><!-- End Footer -->

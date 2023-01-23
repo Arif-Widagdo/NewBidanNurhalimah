@@ -117,7 +117,7 @@
                             <select class="form-control select2" style="width: 100%;" name="category_id" id="category_id">
                                 <option selected="selected" disabled >{{ __('Select Image Category') }}</option>
                                 @foreach ($categories as $category)
-                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                    <option value="{{ $category->id }}">{{ $category->name }} {{ $category->status == 'not_actived' ? '- ('.__('Not Active').')' : '' }}</option>
                                 @endforeach
                             </select>
                             <span class="text-danger error-text category_id_error"></span>
@@ -189,7 +189,7 @@
             "lengthMenu": [[-1, 5, 10, 25, 50 , 100], ["{{ __('All') }}", 5, 10, 25, 50, 100]],
             "order": [],
             "columnDefs": [{
-                "targets": [0, 2],
+                "targets": [0, 3],
                 "orderable": false,
             }],
             "oLanguage": {
