@@ -8,7 +8,7 @@
                     <h2 data-aos="fade-up" data-aos-delay="400">{{ __('Lets Join the Family Planning Program to Become a Better Family') }}</h2>
                     <div data-aos="fade-up" data-aos-delay="600">
                         <div class="text-center text-lg-start">
-                            <a href="{{ route('login') }}"
+                            <a href="{{ route('register') }}"
                                 class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
                                 <span>{{ __('Sign up now') }}</span>
                                 <i class="bi bi-arrow-right"></i>
@@ -18,7 +18,6 @@
                 </div>
                 <div class="col-lg-6 hero-img" data-aos="zoom-out" data-aos-delay="200">
                     <img src="{{ asset('dist/img/banner2.png') }}" class="img-fluid" alt="" style="border-bottom-left-radius: 40%; border-bottom-right-radius: 40%;">
-                    {{-- <img src="{{ asset('dist/img/banner4.png') }}" class="img-fluid " alt=""> --}}
                 </div>
             </div>
         </div>

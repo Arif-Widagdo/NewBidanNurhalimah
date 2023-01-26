@@ -1,6 +1,6 @@
 {
     "Dashboard" : "Dashboard",
-    "Language" : "Language",
+    "Language" : "Languages",
     "Indonesian" : "Indonesian",
     "English" : "English",
     "Settings Account" : "Settings Account",
@@ -117,7 +117,7 @@
     "Hes not yet 17 years old, you cant enter the data wrong, right?" : "He's not yet 17 years old, you can't enter the data wrong, right?",
     "Patient Data Failed to Create" : "Patient Data Failed to Create",
     "Patient Data Created Successfully" : "Patient Data Created Successfully",
-    "No. Medical records" : "No. Medical records",
+    "No. Medical records" : "Registration Number",
     "Account activation" : "Account activation",
 
     "Marital Status" : "Marital Status",
@@ -334,6 +334,15 @@
     "Lets Join the Family Planning Program to Become a Better Family" : "Let's Join the Family Planning Program to Become a Better Family",
     "Sign up now" : "Sign up now",
     "View Site" : "View Site",
+
+
+
+
+    "Register Now" : "Register Now",
+    "Enter Your Phone Number" : "Enter Your Phone Number",
+    "Enter Your Address" : "Enter Your Address",
+
+
 
     "Change Password" : "Change Passwordi",
     "Active" : "Active",

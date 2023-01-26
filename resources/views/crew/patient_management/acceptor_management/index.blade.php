@@ -11,7 +11,7 @@
     @endsection
 
     <x-slot name="header">
-        {{ __('No. Medical records') }} #{{ $patient->no_rm }}
+        {{ __('No. Medical records') }} {{ $patient->no_rm }}
     </x-slot>
 
     <x-slot name="links">

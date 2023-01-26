@@ -13,7 +13,7 @@
                 <img src="{{ Auth::user()->picture }}" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="{{ route('profile.update') }}"
+                <a href="{{ route('profile.edit') }}"
                     class="d-block user_name">{{ Auth::user()->username !== '' ? Auth::user()->username : Auth::user()->name }}
                 </a>
             </div>

@@ -117,7 +117,7 @@
     "Hes not yet 17 years old, you cant enter the data wrong, right?" : "Umurnya belum genap 17 tahun, tidak mungkin salah input data kan?",
     "Patient Data Failed to Create" : "Data Pasien Gagal Dibuat",
     "Patient Data Created Successfully" : "Data Pasien Berhasil Dibuat",
-    "No. Medical records" : "No. Rekam Medis",
+    "No. Medical records" : "No. Pendaftaran",
     "Account activation" : "Aktivasi Akun",
 
     "Marital Status" : "Status Kawin",
@@ -333,7 +333,22 @@
     "Lets Join the Family Planning Program to Become a Better Family" : "Mari Ikut Program Keluarga Berencana Untuk Menjadi Keluarga Lebih Baik",
     "Sign up now" : "Daftar Sekarang",
     "View Site" : "Lihat Situs",
+    
 
+
+    "Register Now" : "Daftarkan Sekarang",
+    "Enter Your Phone Number" : "Masukan Nomor Telepon Anda",
+    "Enter Your Address" : "Masukan Alamat Tinggal Anda",
+
+
+
+
+
+
+
+
+
+    
 
 
     "Change Password" : "Ganti Kata Sandi",

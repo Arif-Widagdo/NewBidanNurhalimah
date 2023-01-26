@@ -55,6 +55,7 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::post('/profile/picture-update', [ProfileController::class, 'updatePicture'])->name('profile.pictureUpdate');
     Route::patch('/profile/delete-picture', [ProfileController::class, 'deletePicture'])->name('profile.deletePicture');
     Route::patch('/profile-staf', [ProfileController::class, 'updateStaff'])->name('profile.update.staff');
+    Route::patch('/profile-patient', [ProfileController::class, 'updatePatient'])->name('profile.update.patient');
 
     // ------------------
     // --- Auth Admin ---
@@ -120,6 +121,8 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::group(['prefix' => 'patient', 'middleware' => 'isPatient'], function () {
         Route::get('/dashboard', [PatientController::class, 'dashboard'])->name('patient.dashboard');
         Route::get('/profile', [ProfileController::class, 'edit'])->name('patient.profile.edit');
+
+        Route::post('/register-patient', [PatientController::class, 'registerPatient'])->name('patient.registerPatient');
     });
 
     // -------------------------
@@ -146,10 +149,10 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
 
 
 
-Route::middleware('auth')->group(function () {
-    // Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+// Route::middleware('auth')->group(function () {
+//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+// });
 
 require __DIR__ . '/auth.php';

@@ -119,12 +119,18 @@
                                         @endif
                                     </p>
                                 </li>
-                                <li class="d-flex flex-column flex-lg-row align-items-center ">
+                                <li class="d-flex flex-column flex-lg-row align-items-start">
+                                    <p class="col-lg-5 border-right">{{ __('Graduate Status') }}</p>
+                                    <p class="col-lg-7 text-bold ">
+                                        {{ auth()->user()->staff->graduated_id != '' ? auth()->user()->staff->graduated->name : '-' }}
+                                    </p>
+                                </li>
+                                {{-- <li class="d-flex flex-column flex-lg-row align-items-center ">
                                     <p class="col-lg-5 border-right">{{ __('Username') }}</p>
                                     <p class="col-lg-7 text-bold ">
                                         {{ auth()->user()->username != '' ? auth()->user()->username : '-' }}
                                     </p>
-                                </li>
+                                </li> --}}
                                 <li class="d-flex flex-column flex-lg-row align-items-center">
                                     <p class="col-lg-5 border-right">{{ __('Email') }}</p>
                                     <p class="col-lg-7 text-bold ">
@@ -191,6 +197,22 @@
                                 <span class="text-danger error-text name_error"></span>
                             </div>
                         </div>
+                          <!----- Position ------->
+                          <div class="form-group row">
+                            <label for="position_id" class="col-md-3 col-form-label">
+                                {{ __('Position Staff') }} <span class="text-danger">*</span>
+                            </label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control error_input_position_id" id="position_id" value="{{ auth()->user()->staff->position_id != '' ? auth()->user()->staff->position->name : ''  }}" name="position_id" disabled readonly>
+                                {{-- <select class="form-control select2" style="width: 100%;" name="position_id" id="position_id">
+                                    <option selected="selected" disabled >{{ __('Select Position Staff') }}</option>
+                                    @foreach ($positions as $position)
+                                        <option value="{{ $position->id }}">{{ $position->name }}</option>
+                                    @endforeach
+                                </select> --}}
+                                {{-- <span class="text-danger error-text position_id_error"></span> --}}
+                            </div>
+                        </div>
                         <div class="form-group row">
                             <label for="inputEmail" class="col-md-3 col-form-label ">
                                 {{ __('Email') }} 
@@ -254,6 +276,25 @@
                                 <span class="text-danger error-text date_brithday_error"></span>
                             </div>
                         </div>
+                        <!----- Graduateds ------->
+                        <div class="form-group row">
+                            <label for="graduated_id" class="col-lg-3 col-form-label">
+                                {{ __('Graduate Status') }}<span class="text-danger">*</span>
+                            </label>
+                            <div class="col-md-9">
+                                <select class="form-control select2" style="width: 100%;" name="graduated_id" id="graduated_id">
+                                    <option selected="selected" disabled >{{ __('Select Graduated') }}</option>
+                                    @foreach ($graduateds as $graduated)
+                                        @if(auth()->user()->staff->graduated_id != '' && auth()->user()->staff->graduated->id  == $graduated->id)
+                                        <option value="{{ $graduated->id }}" selected>{{ $graduated->name }}</option>
+                                        @else
+                                        <option value="{{ $graduated->id }}">{{ $graduated->name }}</option>
+                                        @endif
+                                    @endforeach
+                                </select>
+                                <span class="text-danger error-text graduated_id_error"></span>
+                            </div>
+                        </div>
                         <div class="form-group row">
                             <label for="InputNoHp" class="col-md-3 col-form-label">
                                 {{ __('Number Phone') }} <span class="text-danger">*</span>
@@ -289,7 +330,7 @@
     </div>
 
     <!-- Row Change Passowrd -->
-    @include('profile.partials.change_password')
+    @include('profile.change_password')
     <!-- /Row Change Passowrd -->
 
 
@@ -338,6 +379,17 @@
                             $('#'+ prefix +' + span').addClass("is-invalid");
                         });
                         alertToastInfo(data.msg)
+                    } else if (data.status == 'notAccept') {
+                            Swal.fire({
+                                position: 'center',
+                                icon: 'info',
+                                title: "{{ __('Information') }}",
+                                text: data.msg,
+                                showConfirmButton: true,
+                                confirmButtonColor: '#007BFF',
+                            });
+                            $('span.date_brithday_error').text("{{ __('Hes not yet 10 years old, you cant enter the data wrong, right?') }}");
+                            $('input.error_input_date_brithday').addClass('is-invalid');
                     } else {
                         document.getElementById('notifSucccess').play();
                         Swal.fire({
