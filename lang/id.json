@@ -511,6 +511,7 @@
     "Verify link has been sent" : "Verifikasi tautan telah dikirim",
     "Resend Verification Email" : "Kirim Ulang E-Mail Verifikasi",
     "Thanks for signing up! Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didnt receive the email, we will gladly send you another." : "Terima kasih telah mendaftar! Sebelum memulai, dapatkah Anda memverifikasi alamat email Anda dengan mengeklik tautan yang baru saja kami kirimkan melalui email kepada Anda? Jika Anda tidak menerima email tersebut, kami dengan senang hati akan mengirimkan email lain kepada Anda.",
+    "A new verification link has been sent to the email address you provided during registration." : "Tautan verifikasi baru telah dikirim ke alamat email yang Anda berikan saat pendaftaran.",
     "This is a secure area of the application. Please confirm your password before continuing." : "Ini adalah area aplikasi yang aman. Harap konfirmasi kata sandi Anda sebelum melanjutkan.",
     "Reset Password Notification" : "Pemberitahuan Atur Ulang Kata Sandi",
     "You are receiving this email because we received a password reset request for your account." : "Anda menerima email ini karena kami menerima permintaan pengaturan ulang kata sandi untuk akun Anda.",
@@ -527,9 +528,7 @@
     "If you're having trouble clicking the \":actionText\" button, copy and paste the URL below\ninto your web browser:" : "Jika Anda kesulitan mengeklik tombol \":actionText\", salin dan tempel URL di bawah\nke browser web Anda:",
    
 
-
-
-
+   
 
 
     "Something went wrong, updating personal information" : "Terjadi kesalahan pada saat memperbarui informasi pribadi!",

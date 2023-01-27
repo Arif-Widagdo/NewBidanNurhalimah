@@ -1,5 +1,4 @@
 <x-app-layout title="{{ __('Sign In') }}">
-    <!-- ======= Hero Section ======= -->
     <section class="login d-flex align-items-center">
         <div class="container">
             <div class="row">
@@ -19,7 +18,7 @@
                                 </div>
                                 @endif
                                 @if(session()->has('status'))
-                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
                                     <strong>{{ session('status') }}</strong>
                                 </div>
                                 @endif

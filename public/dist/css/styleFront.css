@@ -2267,60 +2267,68 @@ section {
 }
 
 /*--------------------------------------------------------------
-# email Section
+# Forgot Password Section
 --------------------------------------------------------------*/
-.email {
+.forgot-password {
+    padding: 100px 0 40px 0;
     width: 100%;
-    height: 100vh;
+    height: auto;
     background: url(../img/hero-bg.png) top center no-repeat;
+    /* background: url(../dist/img/hero-bg.png) top center no-repeat; */
     background-size: cover;
 }
-.email h1 {
+.forgot-password h1 {
     margin-left: 15px;
-    font-size: 38px;
+    font-size: 48px;
     font-weight: 800;
     color: #0056b3;
     text-transform: Capitalize;
 }
-.email small {
+.forgot-password small {
     line-height: 30px;
     margin-left: 15px;
 }
-
-.email .card {
+.forgot-password .card {
     border-color: transparent;
-    padding: 80px 25px;
+    padding: 25px 25px 0px 25px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
     border-radius: 25px;
 }
 
-.email form {
+/* .forgot-password .card {
+    border-color: transparent;
+    padding: 80px 25px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    border-radius: 25px;
+} */
+
+.forgot-password form {
     margin-top: 15px;
 }
-.email .alert {
+.forgot-password .alert {
     padding: 5px 10px;
 }
 
-.email strong {
+.forgot-password strong {
     font-weight: 400;
 }
 
-.email .form-group {
+.forgot-password .form-group {
     margin-bottom: 20px;
 }
 
-.email .form-control {
+.forgot-password .form-control {
     border-width: 2.3px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
 }
-.email .form-group label {
+.forgot-password .form-group label {
     width: 100%;
     display: flex;
     justify-content: space-between;
     margin-bottom: 5px;
 }
 
-.email .btn.btn-block {
+.forgot-password .btn.btn-block {
     margin: 15px 0 0;
     width: 100%;
     padding: 10px 5px;
@@ -2329,35 +2337,34 @@ section {
     font-family: "Nunito", sans-serif;
 }
 
-.email .email-img {
+.forgot-password .forgot-password-img {
     text-align: left;
 }
 
 @media (min-width: 1024px) {
-    .email {
+    .forgot-password {
         background-attachment: fixed;
     }
 }
 @media (max-width: 991px) {
-    .email {
+    .forgot-password {
+        margin-top: 0;
         height: auto;
         padding: 120px 0 60px 0;
     }
-    .email .email-img {
-        display: none;
-    }
 }
 @media (max-width: 768px) {
-    .email .card {
+    .forgot-password .card {
         padding: 15px 15px;
     }
-    .email h1 {
+
+    .forgot-password h1 {
         font-size: 32px;
     }
-    .email .form-group label {
+    .forgot-password .form-group label {
         font-size: 15px;
     }
-    .email .form-control {
+    .forgot-password .form-control {
         font-size: 14px;
     }
 }
