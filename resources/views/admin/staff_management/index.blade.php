@@ -61,15 +61,15 @@
                                     <td>
                                         {{ $staff->position->name }}
                                     </td>
+                                    <td class="fw-500">
+                                        {{ $staff->name }}
+                                    </td>
                                     <td>
                                         @if ($staff->gender == 'F')
                                             {{ __('Female') }}
                                         @else
                                             {{ __('Male') }}
                                         @endif
-                                    </td>
-                                    <td class="fw-500">
-                                        {{ $staff->name }}
                                     </td>
                                     <td class="text-right d-flex align-items-center justify-content-between">
                                         @if($staff->account)

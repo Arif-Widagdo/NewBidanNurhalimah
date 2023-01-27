@@ -27,17 +27,39 @@ class Staff extends Model
         'address',
     ];
 
+    // public static function boot()
+    // {
+    //     parent::boot();
+
+    //     static::creating(function ($model) {
+    //         $staff = Staff::where('position_id', $model->position->id)->get();
+    //         $getValue = $staff->count() + 1;
+
+    //         $values = str_pad($getValue, 5,  0, STR_PAD_LEFT);
+
+    //         $model->employe_id = strtoupper($model->position->position_code)  . $values;
+    //     });
+    // }
     public static function boot()
     {
         parent::boot();
 
         static::creating(function ($model) {
+            $string = $model->position->position_code;
+            $stringLenght = strlen($string);
             $staff = Staff::where('position_id', $model->position->id)->get();
-            $getValue = $staff->count() + 1;
+            $counter = $staff->count();
+            $values = '';
 
-            $values = str_pad($getValue, 5,  0, STR_PAD_LEFT);
-
-            $model->employe_id = strtoupper($model->position->position_code)  . $values;
+            if ($staff->count() <= 0) {
+                $values =  substr(str_pad($counter, 3,  0, STR_PAD_LEFT), -1) . '01';
+                $model->employe_id = strtoupper($string)  . $values;
+            } else {
+                $lastData = Staff::orderBy('employe_id', 'desc')->first();
+                $position_code = intval(substr($lastData->employe_id, $stringLenght)) + 1;
+                $values = str_pad($position_code, 3,  0, STR_PAD_LEFT);
+                $model->employe_id = strtoupper($string)  .  $values;
+            }
         });
     }
 
