@@ -31,24 +31,25 @@ class Patient extends Model
         'address',
     ];
 
-    // protected $with = ['account', 'graduated', 'work'];
-
     public static function boot()
     {
         parent::boot();
 
         static::creating(function ($model) {
-            $string = 'RM';
+            $string = 'R' . date("y") . date("m") . date("d");
             $exsist = Patient::where('no_rm', 'like', '%' . strtoupper($string) . '%')->get();
-            $counter = $exsist->count();
-
             $values = '';
+
+            $counter = $exsist->count();
 
             if ($exsist->count() <= 0) {
                 $values =  substr(str_pad($counter, 3,  0, STR_PAD_LEFT), -1) . '01';
                 $model->no_rm = strtoupper($string)  .  $values;
             } else {
-                $values = str_pad($counter + 1, 3,  0, STR_PAD_LEFT);
+                $lastData = Patient::orderBy('no_rm', 'desc')->first();
+                $no_rm = intval(substr($lastData->no_rm, 7)) + 1;
+                $values = str_pad($no_rm, 3,  0, STR_PAD_LEFT);
+
                 $model->no_rm = strtoupper($string)  .  $values;
             }
         });

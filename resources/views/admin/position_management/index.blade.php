@@ -1,7 +1,7 @@
 <x-app-dashboard title="{{ __('Data Master') }}">
 
     <x-slot name="header">
-        {{ __('User Positions Management') }}
+        {{ __('User Access Management') }}
     </x-slot>
 
     <div class="row d-none">

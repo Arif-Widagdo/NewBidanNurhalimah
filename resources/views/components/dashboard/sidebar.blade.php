@@ -45,23 +45,25 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-item {{ request()->is('admin/positions') || request()->is('admin/graduateds') || request()->is('admin/works') || request()->is('birth-controls')  || request()->is('admin/positions/**') || request()->is('admin/graduateds/**') || (request()->is('admin/works/**'))  || (request()->is('birth-controls/**')) ? 'menu-open' : '' }}">
-                    <a class="nav-link {{ request()->is('admin/positions') || request()->is('admin/graduateds') || request()->is('admin/works') || request()->is('birth-controls') || request()->is('admin/positions/**') || request()->is('admin/graduateds/**') || (request()->is('admin/works/**')) || (request()->is('birth-controls/**')) ? 'active' : '' }}" style="cursor: pointer;">
-                        <i class="nav-icon fas fa-laptop-medical"></i>
-                        <p>{{ __('Master') }} <i class="right fas fa-angle-left"></i>
+                <li class="nav-item {{ request()->is('patients') || request()->is('birth-controls') || request()->is('birth-controls/**') || request()->is('admin/works') || (request()->is('admin/works/**'))  ? 'menu-open' : '' }}">
+                    <a class="nav-link {{ request()->is('patients') || request()->is('birth-controls') || request()->is('birth-controls/**') || request()->is('admin/works') || (request()->is('admin/works/**'))  ? 'active' : '' }}" style="cursor: pointer;">
+                        <i class="nav-icon fas fa-hospital-user"></i>
+                        <p>{{ __('Acceptors') }} <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ route('positions.index') }}" class="nav-link {{ request()->is('admin/positions') || request()->is('admin/positions/**')  ? 'active' : '' }}">
+                            <a href="{{ route('patients.index') }}" class="nav-link {{ request()->is('patients') || request()->is('patients/create') ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>{{ __('Positions') }}</p>
+                                <p>
+                                    {{ __('Acceptor List') }}
+                                </p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('graduateds.index') }}" class="nav-link {{ request()->is('admin/graduateds') || request()->is('admin/graduateds/**')  ? 'active' : '' }}">
+                            <a href="{{ route('birth-controls.index') }}" class="nav-link {{ request()->is('birth-controls') || (request()->is('birth-controls/**')) ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>{{ __('Graduateds') }}</p>
+                                <p>{{ __('Birth Controls') }}</p>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -70,10 +72,25 @@
                                 <p>{{ __('Jobs') }}</p>
                             </a>
                         </li>
+                    </ul>
+                </li>
+                <li class="nav-item {{ request()->is('admin/positions') || request()->is('admin/graduateds')  || request()->is('admin/positions/**') || request()->is('admin/graduateds/**')  ? 'menu-open' : '' }}">
+                    <a class="nav-link {{ request()->is('admin/positions') || request()->is('admin/graduateds') || request()->is('admin/positions/**') || request()->is('admin/graduateds/**') ? 'active' : '' }}" style="cursor: pointer;">
+                        <i class="nav-icon fas fa-laptop-medical"></i>
+                        <p>{{ __('Master') }} <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ route('birth-controls.index') }}" class="nav-link {{ request()->is('birth-controls') || (request()->is('birth-controls/**')) ? 'active' : '' }}">
+                            <a href="{{ route('positions.index') }}" class="nav-link {{ request()->is('admin/positions') || request()->is('admin/positions/**')  ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>{{ __('Birth Controls') }}</p>
+                                <p>{{ __('Access Rights') }}</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('graduateds.index') }}" class="nav-link {{ request()->is('admin/graduateds') || request()->is('admin/graduateds/**')  ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>{{ __('Graduateds') }}</p>
                             </a>
                         </li>
                     </ul>
@@ -86,14 +103,14 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a href="{{ route('patients.index') }}" class="nav-link {{ request()->is('patients') || request()->is('patients/create') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-hospital-user"></i>
                         <p>
                             {{ __('Acceptors') }}
                         </p>
                     </a>
-                </li>
+                </li> --}}
                 {{-- <li class="nav-header">{{ __('User') }}</li> --}}
                
                 <li class="nav-header">{{ __('Site Management') }}</li>

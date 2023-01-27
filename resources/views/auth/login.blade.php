@@ -4,7 +4,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 login-img" data-aos="zoom-out">
-                    <img src="{{ asset('dist/img/about.jpg') }}" class="img-fluid" alt="">
+                    <img src="{{ asset('dist/img/login2.png') }}" class="img-fluid" alt="">
                 </div>
                 <div class="col-lg-6 d-flex flex-column justify-content-center typograph">
                     <div data-aos="fade-up">

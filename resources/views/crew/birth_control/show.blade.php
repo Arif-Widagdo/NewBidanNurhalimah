@@ -25,7 +25,7 @@
     </x-slot>
 
     <x-slot name="links">
-        <a href="{{ route('works.index') }}" class="btn btn-outline-primary float-right"><i class="fas fa-arrow-circle-left"></i> {{ __('Back') }}</a>
+        <a href="{{ route('birth-controls.index') }}" class="btn btn-outline-primary float-right"><i class="fas fa-arrow-circle-left"></i> {{ __('Back') }}</a>
     </x-slot>
 
     <div class="row d-none">

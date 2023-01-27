@@ -64,7 +64,7 @@
                             <span class="text-danger error-text image_error"></span>
                         </div>
                         <div class="form-group mb-1">
-                            <img src="{{ $gallery->image }}" alt="Preview Image" class="img-fluid mb-3 rounded-lg img-preview img-fluid border w-100" style="height: 600px; width: 800px; object-fit: cover;">
+                            <img src="{{ asset('storage/'.$gallery->image) }}" alt="Preview Image" class="img-fluid mb-3 rounded-lg img-preview img-fluid border w-100" style="height: 600px; width: 800px; object-fit: cover;">
                         </div>
                     </div>
                     <div class="card-footer">

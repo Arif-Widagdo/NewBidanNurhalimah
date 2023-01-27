@@ -59,7 +59,7 @@
                                     </td>
                                     <td class="text-center">
                                         <div class="d-inline-flex align-items-center text-center">
-                                            <a class="btn btn-sm btn-info ml-1 d-inline-flex align-items-center font-small" href="{{ $gallery->image }}" data-toggle="lightbox" data-title="{{ $gallery->title }}" data-gallery="gallery">
+                                            <a class="btn btn-sm btn-info ml-1 d-inline-flex align-items-center font-small" href="{{ asset('storage/'.$gallery->image) }}" data-toggle="lightbox" data-title="{{ $gallery->title }}" data-gallery="gallery">
                                                 {{ __('Show') }} <i class="fas fa-image ml-2"></i>
                                             </a>
                                             <a href="{{ route('galleries.edit', $gallery->slug) }}" class="btn btn-sm btn-warning ml-1 d-inline-flex align-items-center font-small">

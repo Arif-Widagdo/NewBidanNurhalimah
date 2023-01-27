@@ -274,12 +274,12 @@
                     @foreach ($galleries as $gallery)
                     <div class="col-lg-3 col-md-6 portfolio-item filter-{{ $gallery->category->slug }}">
                         <div class="portfolio-wrap">
-                            <img src="{{ $gallery->image }}" class="img-fluid" alt="">
+                            <img src="{{ asset('storage/'.$gallery->image) }}" class="img-fluid" alt="">
                             <div class="portfolio-info">
                                 <h4>{{ $gallery->title }}</h4>
                                 <p>{{ $gallery->category->name }}</p>
                                 <div class="portfolio-links">
-                                    <a href="{{ $gallery->image }}" data-gallery="portfolioGallery" class="portfokio-lightbox" title="{{ $gallery->title }}"><i class="bi bi-plus"></i></a>
+                                    <a href="{{ asset('storage/'.$gallery->image) }}" data-gallery="portfolioGallery" class="portfokio-lightbox" title="{{ $gallery->title }}"><i class="bi bi-plus"></i></a>
                                     {{-- <a href="portfolio-details.html" title="More Details"><i class="bi bi-link"></i></a> --}}
                                 </div>
                             </div>
