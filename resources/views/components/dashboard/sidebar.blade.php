@@ -45,8 +45,8 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-item {{ request()->is('patients') || request()->is('birth-controls') || request()->is('birth-controls/**') || request()->is('admin/works') || (request()->is('admin/works/**'))  ? 'menu-open' : '' }}">
-                    <a class="nav-link {{ request()->is('patients') || request()->is('birth-controls') || request()->is('birth-controls/**') || request()->is('admin/works') || (request()->is('admin/works/**'))  ? 'active' : '' }}" style="cursor: pointer;">
+                <li class="nav-item {{ request()->is('patients') || request()->is('patients/create') || request()->is('birth-controls') || request()->is('birth-controls/**') || request()->is('admin/works') || (request()->is('admin/works/**'))  ? 'menu-open' : '' }}">
+                    <a class="nav-link {{ request()->is('patients') || request()->is('patients/create') || request()->is('birth-controls') || request()->is('birth-controls/**') || request()->is('admin/works') || (request()->is('admin/works/**'))  ? 'active' : '' }}" style="cursor: pointer;">
                         <i class="nav-icon fas fa-hospital-user"></i>
                         <p>{{ __('Acceptors') }} <i class="right fas fa-angle-left"></i>
                         </p>

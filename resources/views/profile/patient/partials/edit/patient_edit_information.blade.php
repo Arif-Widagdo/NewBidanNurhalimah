@@ -16,7 +16,7 @@
                 <div class="border-bottom text-danger border-primary mb-4">
                     {{ __('* required fileds') }}
                 </div>
-                <form class="form-horizontal" action="{{ route('profile.update.patient') }}" method="POST" id="fromUpdateInfo">
+                <form class="form-horizontal" action="{{ route('profile.update.patient') }}" method="POST" id="fromUpdatePatient">
                     @csrf
                     @method('patch')
                     <!----- Full Name ------->

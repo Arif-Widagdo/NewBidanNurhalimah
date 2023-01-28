@@ -7,14 +7,6 @@
     <!-- SEO Meta Tags -->
     {{-- <meta name="description" content="" /> --}}
     <meta name="author" content="Arif Widagdo | arifwidagdo24@gmail.com" />
-    <!-- OG Meta Tags to improve the way the post looks when you share the page on Facebook, Twitter, LinkedIn -->
-    {{-- <meta property="og:site_name" content="Sistem Gaji Kedai Muslim" /> <!-- website name -->
-    <meta property="og:site" content="" /> <!-- website link -->
-    <meta property="og:title" content="Elearning for X-Ray" /> <!-- title shown in the actual shared post -->
-    <meta property="og:description" content="" /> <!-- description shown in the actual shared post -->
-    <meta property="og:image" content="{{ asset('dist/img/logo.jpg') }}" /> <!-- image link, make sure it's jpg -->
-    <meta property="og:url" content="" /> <!-- where do you want your post to link to -->
-    <meta name="twitter:card" content="summary_large_image" /> <!-- to have large image post format in Twitter --> --}}
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <base href="{{{ URL::to('/') }}}">
 
@@ -67,6 +59,7 @@
 || (request()->is('admin/graduateds/**'))
 || (request()->is('admin/works/**'))
 || (request()->is('birth-controls/**'))
+|| (request()->is('patient/profile'))
  ? 'sidebar-collapse' : ''  }}" 
 style="font-family: 'Nunito';">
     <!-- Site wrapper -->

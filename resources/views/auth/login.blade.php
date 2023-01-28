@@ -2,7 +2,7 @@
     <section class="login d-flex align-items-center">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6 login-img" data-aos="zoom-out">
+                <div class="col-lg-6 login-img d-lg-flex justify-content-center align-items-center" data-aos="zoom-out">
                     <img src="{{ asset('dist/img/login2.png') }}" class="img-fluid" alt="">
                 </div>
                 <div class="col-lg-6 d-flex flex-column justify-content-center typograph">
@@ -27,7 +27,7 @@
                                     @csrf
                                     <div class="form-group">
                                         <label for="email">{{ __('Email') }}</label>
-                                        <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus placeholder="{{ __('Enter Your Email') }}">
+                                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autofocus placeholder="{{ __('Enter Your Email') }}">
                                         <span class="text-danger">@error('email'){{ $message }}@enderror</span>
                                     </div>
 

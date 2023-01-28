@@ -32,6 +32,12 @@
                                         </button>
                                     </div>
                                 </form>
+                                <div>
+                                    <p style="text-align: right;" class="text-right">
+                                        {{ __('Dont have an account yet?') }}
+                                        <a href="{{route('register')}}">{{ __('Register here') }}</a>
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>

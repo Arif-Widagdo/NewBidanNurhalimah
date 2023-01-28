@@ -3,7 +3,7 @@
     <section class="register d-flex align-items-center">
         <div class="container">
             <div class="row d-flex align-items-center">
-                <div class="col-lg-6 register-img" data-aos="zoom-out">
+                <div class="col-lg-6 register-img d-lg-flex justify-content-center align-items-center" data-aos="zoom-out">
                     <img src="{{ asset('dist/img/login2.png') }}" class="img-fluid" alt="">
                 </div>
                 <div class="col-lg-6 d-flex flex-column justify-content-center typograph">

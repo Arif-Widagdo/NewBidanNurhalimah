@@ -94,7 +94,7 @@
     "The password will be generated automatically using the username." : "Kata sandi akan dibuat secara otomatis menggunakan username.",
     "Staff Data Failed to Create" : "Data Karyawan Gagal Dibuat",
     "Staff Data Created Successfully" : "Data Karyawan Berhasil Dibuat",
-    "Hes not yet 10 years old, you cant enter the data wrong, right?" : "Umurnya belum genap 10 tahun, tidak mungkin salah input data kan?",
+    "Hes not yet 10 years old, you cant enter the data wrong, right?" : "Dia belum genap 10 tahun, tidak mungkin salah input data kan?",
     "Information" : "Informasi",
     "Create Now" : "Buat Sekarang",
     "Select Position Staff" : "Pilih Posisi Karyawan",
@@ -117,7 +117,7 @@
     "Patient Registration" : "Pendaftaran Pasien",
     "Patient List" : "Daftar Pasien",
     "Patient Registration Form" : "Formulir Pendaftaran Akseptor KB",
-    "Hes not yet 17 years old, you cant enter the data wrong, right?" : "Umurnya belum genap 17 tahun, tidak mungkin salah input data kan?",
+    "Hes not yet 17 years old, you cant enter the data wrong, right?" : "Dia belum genap 17 tahun, tidak mungkin salah input data kan?",
     "Patient Data Failed to Create" : "Data Pasien Gagal Dibuat",
     "Patient Data Created Successfully" : "Data Pasien Berhasil Dibuat",
     "No. Medical records" : "No. Pendaftaran",
@@ -502,6 +502,7 @@
     "Next" : "Selanjutnya",
 
     "Save Change" : "Simpan Perubahan",
+    "Same with me" : "Sama dengan Saya",
     
   
     

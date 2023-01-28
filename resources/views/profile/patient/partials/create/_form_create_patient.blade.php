@@ -1,4 +1,4 @@
-<form action="{{ route('patient.registerPatient') }}" id="form_create" method="POST">
+<form action="{{ route('patient.registerPatient') }}" id="form_create_patient" method="POST">
     @csrf
     <!-------- Full Name ----->
     <div class="form-group row">

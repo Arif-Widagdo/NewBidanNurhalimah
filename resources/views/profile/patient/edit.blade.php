@@ -84,18 +84,15 @@
                     <hr>
                     <div class="row">
                         <div class="col-12">
+                            @if(!auth()->user()->patient->couple)
+                                @include('profile.patient.partials.create._row_couple_create')
+                            @else
                             <div class="d-flex justify-content-between align-items-center">
                                 <h5 class="text-bold">#{{ __('Couple Informations') }}</h5>
                                 @if(auth()->user()->patient->couple)
                                 <a href="#" class="btn btn-light border"  data-toggle="modal" data-target="#modal_edit_couple"><i class="fas fa-user-edit mr-1"></i> {{ __('Edit') }}</a>
                                 @endif
                             </div>
-                            @if(!auth()->user()->patient->couple)
-                            <form action="">
-                                <h1>CREATE COUPLE</h1>
-                                <input type="text">
-                            </form>
-                            @else
                                 @include('profile.patient.partials.show._row_couple_information')
                             @endif
                         </div>
@@ -114,7 +111,11 @@
         @include('profile.patient.partials.create._row_create_patient')
     @endif
     
-
+    @if(auth()->user()->patient)
+        @if(auth()->user()->patient->couple)
+            @include('profile.patient.partials.edit._modal_edit_couple')
+        @endif
+    @endif
  
 
 
@@ -142,7 +143,7 @@
             format: 'DD-MM-YYYY'
         });
       
-        $('#fromUpdateInfo').on('submit', function (e) {
+        $('#fromUpdatePatient').on('submit', function (e) {
             e.preventDefault();
             $.ajax({
                 url: $(this).attr('action'),
@@ -186,7 +187,7 @@
                             timer: 1500
                         });
                         setTimeout(function () {
-                            location.reload(true);
+                            window.location.href='patient/dashboard';
                         }, 1000);
                     }
                 },
@@ -232,6 +233,9 @@
                             showConfirmButton: false,
                             timer: 1500
                         });
+                        setTimeout(function () {
+                            window.location.href='patient/dashboard';
+                        }, 1000);
                     }
                 },
                 error: function (xhr) {
@@ -324,8 +328,9 @@
         $('#reservationdate_create').datetimepicker({
             format: 'DD-MM-YYYY'
         });
-
-        $('#form_create').on('submit', function (e) {
+        
+        // ------- Form Regist Patient
+        $('#form_create_patient').on('submit', function (e) {
             e.preventDefault();
             $.ajax({
                 url: $(this).attr('action'),
@@ -381,6 +386,135 @@
                     )
                 }
             });
+        });
+        // ------- Form Regist Couple
+        $('#form_create_couple').on('submit', function (e) {
+            e.preventDefault();
+            $.ajax({
+                url: $(this).attr('action'),
+                method: $(this).attr('method'),
+                data: new FormData(this),
+                processData: false,
+                dataType: 'json',
+                contentType: false,
+                withCSRF: ['_token', '{{ csrf_token() }}'],
+                beforeSend: function () {
+                    $(document).find('span.error-text').text('');
+                },
+                success: function (data) {
+                    if (data.status == 0) {
+                        $.each(data.error, function (prefix, val) {
+                            $('span.' + prefix + '_create_couple_error').text(val[0]);
+                            $('input.error_input_' + prefix + '_create_couple').addClass('is-invalid');
+                            $('select.error_input_' + prefix + '_create_couple').addClass('is-invalid');
+                            $('#'+ prefix +'_create_couple'+' + span').addClass("is-invalid");
+                            $('textarea.error_input_' + prefix + '_create_couple').addClass('is-invalid');
+                        });
+                        alertToastInfo(data.msg)
+                    } else if (data.status == 'notAccept') {
+                            Swal.fire({
+                                position: 'center',
+                                icon: 'info',
+                                title: "{{ __('Information') }}",
+                                text: data.msg,
+                                showConfirmButton: true,
+                                confirmButtonColor: '#007BFF',
+                            });
+                            $('span.date_brithday_create_couple_error').text("{{ __('Hes not yet 10 years old, you cant enter the data wrong, right?') }}");
+                            $('input.error_input_date_brithday_create_couple').addClass('is-invalid');
+                    } else {
+                        document.getElementById('notifSucccess').play();
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'success',
+                            title: data.msg,
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                        setTimeout(function () {
+                            window.location.href='patient/dashboard';
+                        }, 1000);
+                    }
+                },
+                error: function (xhr) {
+                    Swal.fire(
+                        xhr.statusText,
+                        '{{ __('Wait a few minutes to try again') }}',
+                        'error'
+                    )
+                }
+            });
+        });
+
+        $('#reservationdate_create_couple').datetimepicker({
+            format: 'DD-MM-YYYY'
+        });
+        
+        $('#sameAddress').change(function() {
+            if (this.checked) {
+                document.getElementById("inputAddressCouple2").value = document.getElementById("inputAddressCouple1").value;
+            } else{
+                document.getElementById("inputAddressCouple2").value = ''
+            }
+        }); 
+
+        // --------- Form Edit Couple
+        $('#form_create_couple_edit').on('submit', function (e) {
+            e.preventDefault();
+            $.ajax({
+                url: $(this).attr('action'),
+                method: $(this).attr('method'),
+                data: new FormData(this),
+                processData: false,
+                dataType: 'json',
+                contentType: false,
+                beforeSend: function () {
+                    $(document).find('span.error-text').text('');
+                },
+                success: function (data) {
+                    if (data.status == 0) {
+                        $.each(data.error, function (prefix, val) {
+                            $('span.' + prefix + '_couple_error').text(val[0]);
+                            $('input.error_input_' + prefix + '_couple').addClass('is-invalid');
+                            $('select.error_input_' + prefix + '_couple').addClass('is-invalid');
+                            $('textarea.error_input_' + prefix + '_couple').addClass('is-invalid');
+                            $('#'+ prefix + '_couple' + ' + span').addClass("is-invalid");
+                        });
+                        alertToastInfo(data.msg)
+                    } else if (data.status == 'notAccept') {
+                        Swal.fire({
+                            work: 'center',
+                            icon: 'info',
+                            title: "{{ __('Information') }}",
+                            text: data.msg,
+                            showConfirmButton: true,
+                            confirmButtonColor: '#007BFF',
+                        });
+                        $('span.date_brithday_error').text("{{ __('Hes not yet 17 years old, you cant enter the data wrong, right?') }}");
+                        $('input.error_input_date_brithday').addClass('is-invalid');
+                    }else {
+                        document.getElementById('notifSucccess').play();
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'success',
+                            title: data.msg,
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                        setTimeout(function () {
+                            window.location.href='patient/dashboard';
+                            // location.reload(true);
+                        }, 1000);
+                    }
+                },
+                error: function (xhr) {
+                    Swal.fire(xhr.statusText, '{{ __('Wait a few minutes to try again ') }}', 'error')
+                }
+            });
+        });
+
+        $('#reservationdate_edit_couple').datetimepicker({
+            format: 'DD-MM-YYYY'
         });
 
        

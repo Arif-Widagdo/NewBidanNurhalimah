@@ -5,14 +5,14 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Learn Basic Radiology Techniques here to improve radiological interpretation skills, and increase confidence." />
+    <meta name="description" content="Bidan Nurhalimah merupakan salah satu bidan praktek mandiri yang berada di daerah kabupaten karawang, kecamatan klari di desa cimahi." />
     <meta name="author" content="Arif Widagdo | arifwidagdo24@gmail.com" />
 
     <!-- OG Meta Tags to improve the way the post looks when you share the page on Facebook, Twitter, LinkedIn -->
-    <meta property="og:site_name" content="ExRAY.web" /> <!-- website name -->
+    <meta property="og:site_name" content="Bidan Nurhalimah" /> <!-- website name -->
     <meta property="og:site" content="" /> <!-- website link -->
-    <meta property="og:title" content="Elearning for X-Ray" /> <!-- title shown in the actual shared post -->
-    <meta property="og:description" content="Learn Basic Radiology Techniques here to improve radiological interpretation skills, and increase confidence." /> <!-- description shown in the actual shared post -->
+    <meta property="og:title" content="Bidan Nurhalimah" /> <!-- title shown in the actual shared post -->
+    <meta property="og:description" content="Bidan Nurhalimah merupakan salah satu bidan praktek mandiri yang berada di daerah kabupaten karawang, kecamatan klari di desa cimahi." /> <!-- description shown in the actual shared post -->
     <meta property="og:image" content="{{ asset('dist/img/logo.jpg') }}" /> <!-- image link, make sure it's jpg -->
     <meta property="og:url" content="" /> <!-- where do you want your post to link to -->
     <meta name="twitter:card" content="summary_large_image" /> <!-- to have large image post format in Twitter -->

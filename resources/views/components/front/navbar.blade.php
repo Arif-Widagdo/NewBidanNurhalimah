@@ -12,7 +12,7 @@
                 <li><a class="nav-link scrollto" href="#services">{{ __('Services') }}</a></li>
                 <li><a class="nav-link scrollto" href="#portfolio">{{ __('Gallery') }}</a></li>
                 <li><a class="nav-link scrollto" href="#contact">{{ __('Contact') }}</a></li>
-                <li class="dropdown"><a href="#"><i class="bi bi-translate btn btn-outline-primary" style="font-size:16px;"><i class="bi bi-chevron-down"></i></i></a>
+                <li class="dropdown"><a href="#"><i class="bi bi-translate" style="font-size:16px; margin-right:2px !important;"></i> <span>{{ __('Language') }}</span> <i class="bi bi-chevron-down"></i></a>
                     <ul>
                         <li>
                             <a href="{{ url('locale/id') }}">
@@ -44,7 +44,10 @@
                             </li>
                         @else
                             <li>
-                                <a class="getstarted scrollto" href="{{ route('login') }}">{{ __('Sign In') }}</a>
+                                <a class="getstarted-outline" href="{{ route('login') }}">{{ __('Sign Up') }}</a>
+                            </li>
+                            <li class="">
+                                <a class="getstarted scrollto m-1" href="{{ route('login') }}">{{ __('Sign In') }}</a>
                             </li>
                         @endauth
                     @endif

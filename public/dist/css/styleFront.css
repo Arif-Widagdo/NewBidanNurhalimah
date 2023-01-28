@@ -226,14 +226,29 @@ section {
 .navbar li:hover > a {
     color: #007bff;
 }
+
+.navbar .getstarted-outline,
+.navbar .getstarted-outline:focus {
+    padding: 8px 20px;
+    margin-left: 30px;
+    border: 0.5px solid #007bff;
+    border-style: inset;
+    border-radius: 4px;
+    color: #007bff;
+}
+
 .navbar .getstarted,
 .navbar .getstarted:focus {
+    border: 0.5px solid #007bff;
     background: #007bff;
     padding: 8px 20px;
     margin-left: 30px;
     border-radius: 4px;
     color: #fff;
 }
+
+.navbar .getstarted-outline:hover,
+.navbar .getstarted-outline:focus:hover,
 .navbar .getstarted:hover,
 .navbar .getstarted:focus:hover {
     color: #fff;
@@ -359,6 +374,8 @@ section {
 .navbar-mobile li:hover > a {
     color: #007bff;
 }
+.navbar-mobile .getstarted-outline,
+.navbar-mobile .getstarted-outline:focus,
 .navbar-mobile .getstarted,
 .navbar-mobile .getstarted:focus {
     margin: 15px;
