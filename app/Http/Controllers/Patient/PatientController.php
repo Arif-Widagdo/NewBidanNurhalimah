@@ -170,33 +170,56 @@ class PatientController extends Controller
         if (!$validator->passes()) {
             return response()->json(['status' => 0, 'error' => $validator->errors()->toArray(), 'msg' => __('Please complete the input on the form provided')]);
         } else {
-            $patient = Patient::where('no_rm', '=', $request->no_rm)->first();
+            $no_rm = $request->no_rm;
+
+            if ($request->no_rm[0] == '#') {
+                $no_rm = substr($request->no_rm, strlen(0));
+            }
+
+            $patient = Patient::where('no_rm', '=', $no_rm)->first();
 
             if ($patient) {
-                if ($patient->user_id != null) {
-                    $em   = explode("@", $patient->account->email);
-                    $name = implode('@', array_slice($em, 0, count($em) - 1));
-                    $len  = floor(strlen($name) / 2);
-                    $result = substr($name, 0, $len) . str_repeat('*', $len) . "@" . end($em);
+                if (strtolower($request->name) == strtolower($patient->name) && $patient->date_brithday == Carbon::parse($request->date_brithday)->translatedFormat('Y-m-d')) {
+                    if ($patient->user_id != null) {
+                        $em   = explode("@", $patient->account->email);
+                        $name = implode('@', array_slice($em, 0, count($em) - 1));
+                        $len  = floor(strlen($name) / 2);
+                        $result = substr($name, 0, $len) . str_repeat('*', $len) . "@" . end($em);
 
-                    return response()->json(['status' => 0, 'msg' => 'Pasient Tersebut Telah Memiliki Akun dengan alamat email ' . $result]);
-                } else {
-                    if (strtolower($request->name) == strtolower($patient->name) && $patient->date_brithday == Carbon::parse($request->date_brithday)->translatedFormat('Y-m-d')) {
+                        return response()->json(['statusValidate' => 0, 'msg' => __('This data belongs to an account with the email address') . $result]);
+                    } else {
                         $patient_update = Patient::find($patient->id)->update([
                             'user_id' => auth()->user()->id,
                         ]);
                         if (!$patient_update) {
-                            return response()->json(['status' => 0, 'msg' => 'Gagal Memperbarui']);
+                            return response()->json(['statusValidate' => 0, 'msg' => __('Data Retrieval Failed')]);
                         } else {
-                            return response()->json(['status' => 1, 'msg' => 'Berhasil Memperbarui']);
+                            return response()->json(['statusValidate' => 1, 'msg' => __('Data Successfully Obtained')]);
                         }
-                    } else {
-                        return response()->json(['status' => 0, 'msg' => 'Data yang dimasukan Tidak Sesuai']);
                     }
+                } else {
+                    return response()->json(['statusValidate' => 0, 'msg' => __('The data entered does not match our records')]);
                 }
             } else {
-                return response()->json(['status' => 0, 'msg' => 'Data Tidak Sesuai']);
+                return response()->json(['statusValidate' => 0, 'msg' => __('The data entered does not match our records')]);
             }
         }
+    }
+
+    public function print($no_rm)
+    {
+        $patient =  Patient::where('no_rm', '=', $no_rm)->first();
+
+        $dateOfBirth = $patient->date_brithday;
+        $ageInYears = Carbon::parse($dateOfBirth)
+            ->diff(Carbon::now())
+            ->format('%y ' . __('Years') . ', %m ' . __('Months') . ' ' . __('and') . '  %d ' . __('Days'));
+
+        return view('print.akseptor_print', [
+            'patient' => $patient,
+            'ageInYears' => $ageInYears,
+            'acceptors' => Acceptor::where('patient_id', $patient->id)->orderBy('attendance_date', 'ASC')->get(),
+            'couples' =>  Couple::where('patient_id', $patient->id)->orderBy('name')->get(),
+        ]);
     }
 }

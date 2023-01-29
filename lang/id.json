@@ -460,7 +460,17 @@
     "Data deleted successfully" : "Data berhasil dihapus",
     "Failed to delete data" : "Data gagal dihapus",
    
-    
+    "Visit Result Data" : "Data Hasil Kunjungan",
+    "Please Enter Your Registered Personal Data" : "Silahkan Masukkan Data Pribadi Anda Yang Terdaftar",
+    "Enter your registered registration number" : "Masukan No. Pendaftaran Anda yang telah Terdaftar",
+    "Check Data Compatibility" : "Periksa Kecocokan Data",
+    "The data entered does not match our records" : "Data yang dimasukkan tidak sesuai dengan catatan kami",
+    "Data Retrieval Failed" : "Data Gagal Didapatkan",
+    "Data Successfully Obtained" : "Data Berhasil Didapatkan",
+    "This data belongs to an account with the email address" : "Data ini telah milik akun dengan alamat email ",
+    "Print" : "Cetak",
+    "Remember me" : "Ingatkan Saya",
+  
     
   
 

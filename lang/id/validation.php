@@ -162,6 +162,9 @@ return [
         'position_id' => [
             'required' => 'Posisi Staf wajib diisi!',
         ],
+        'no_rm' => [
+            'required' => 'No. Pendaftaran wajib diisi!',
+        ],
         'name' => [
             'required' => 'Nama wajib diisi!',
             'unique' => 'Nama sudah digunakan.'

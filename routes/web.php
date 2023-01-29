@@ -121,13 +121,12 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::group(['prefix' => 'patient', 'middleware' => 'isPatient'], function () {
         Route::get('/dashboard', [PatientController::class, 'dashboard'])->name('patient.dashboard');
         Route::get('/profile', [ProfileController::class, 'edit'])->name('patient.profile.edit');
-
         Route::patch('/validate-patient', [PatientController::class, 'validatePatient'])->name('patient.validatePatient');
-
         Route::post('/register-patient', [PatientController::class, 'registerPatient'])->name('patient.registerPatient');
         Route::post('/register-couple', [PatientController::class, 'registerCouple'])->name('patient.registerCouple');
-
         Route::patch('/couple-edit/{couple}', [PatientController::class, 'coupleEdit'])->name('patient.coupleEdit');
+
+        Route::get('/print/{no_rm}', [PatientController::class, 'print'])->name('patient.print');
     });
 
     // -------------------------

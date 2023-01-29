@@ -24,7 +24,7 @@
     @include('crew.patient_management.acceptor_management.partials._row_information')
 
 
-    <h3 class="font-weight-bold my-4" style="font-family: 'Nunito';">{{ __('Examination Data') }}</h3>
+    <h3 class="font-weight-bold my-4" style="font-family: 'Nunito';">{{ __('Visit Result Data') }}</h3>
     
     <!-- Main row -->
     <div class="row">

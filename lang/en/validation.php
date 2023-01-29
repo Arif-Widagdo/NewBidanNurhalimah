@@ -184,6 +184,9 @@ return [
         'position_id' => [
             'required' => 'Position Staff must be selected!',
         ],
+        'no_rm' => [
+            'required' => 'Registration Number must be filled in!',
+        ],
         'name' => [
             'required' => 'Name must be filled in!',
             'unique' => 'The name is already in use',

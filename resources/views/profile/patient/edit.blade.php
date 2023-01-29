@@ -522,6 +522,57 @@
         $('#reservationdate_validate').datetimepicker({
             format: 'DD-MM-YYYY'
         });
+        
+        $('#form-validate').on('submit', function (e) {
+            e.preventDefault();
+            $.ajax({
+                url: $(this).attr('action'),
+                method: $(this).attr('method'),
+                data: new FormData(this),
+                processData: false,
+                dataType: 'json',
+                contentType: false,
+                beforeSend: function () {
+                    $(document).find('span.error-text').text('');
+                },
+                success: function (data) {
+                    if (data.status == 0) {
+                        $.each(data.error, function (prefix, val) {
+                            $('span.' + prefix + '_validate_error').text(val[0]);
+                            $('input.error_input_' + prefix + '_validate').addClass('is-invalid');
+                        });
+                        alertToastInfo(data.msg)
+                    } else {
+                        if(data.statusValidate == 0){
+                            document.getElementById('notifFail').play();
+                            Swal.fire({
+                                position: 'center',
+                                icon: 'error',
+                                title: "{{ __('Information') }}",
+                                text: data.msg,
+                                showConfirmButton: true,
+                                confirmButtonColor: '#007BFF',
+                            });
+                        }else{
+                            document.getElementById('notifSucccess').play();
+                            Swal.fire({
+                                position: 'center',
+                                icon: 'success',
+                                title: data.msg,
+                                showConfirmButton: false,
+                                timer: 1500
+                            });
+                            setTimeout(function () {
+                                window.location.href='patient/dashboard';
+                            }, 1000);
+                        }
+                    }
+                },
+                error: function (xhr) {
+                    Swal.fire(xhr.statusText, '{{ __('Wait a few minutes to try again ') }}', 'error')
+                }
+            });
+        });
 
        
         

@@ -54,7 +54,7 @@
                             <div class="row">
                                 <div class="col-12">
                                     <hr class="my-0">
-                                    <h3 class="text-bold my-0 border py-2 text-center " style="font-family: 'Nunito';">{{ __('Examination Data') }}</h3>
+                                    <h3 class="text-bold my-0 border py-2 text-center " style="font-family: 'Nunito';">{{ __('Visit Result Data') }}</h3>
                                     <hr class="my-0">
                                     <table class="table table-bordered" >
                                         <thead>

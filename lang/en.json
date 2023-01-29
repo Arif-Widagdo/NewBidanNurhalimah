@@ -441,6 +441,16 @@
     "Data Update Failed" : "Data Update Failed",
     "Data deleted successfully" : "Data deleted successfully",
     "Failed to delete data" : "Failed to delete data",
+
+    "Visit Result Data" : "Visit Result Data",
+    "Please Enter Your Registered Personal Data" : "Please Enter Your Registered Personal Data",
+    "Enter your registered registration number" : "Enter your registered registration number",
+    "Check Data Compatibility" : "Check Data Compatibility",
+    "The data entered does not match our records" : "The data entered does not match our records",
+    "Data Retrieval Failed" : "Data Retrieval Failed",
+    "Data Successfully Obtained" : "Data Successfully Obtained",
+    "This data belongs to an account with the email address" : "This data belongs to an account with the email address ",
+    "Print" : "Print",
   
     
    
