@@ -157,4 +157,46 @@ class PatientController extends Controller
             }
         }
     }
+
+
+    public function validatePatient(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'no_rm' => ['required', 'string', 'max:100'],
+            'name' => ['required', 'string', 'max:100'],
+            'date_brithday' => ['required'],
+        ]);
+
+        if (!$validator->passes()) {
+            return response()->json(['status' => 0, 'error' => $validator->errors()->toArray(), 'msg' => __('Please complete the input on the form provided')]);
+        } else {
+            $patient = Patient::where('no_rm', '=', $request->no_rm)->first();
+
+            if ($patient) {
+                if ($patient->user_id != null) {
+                    $em   = explode("@", $patient->account->email);
+                    $name = implode('@', array_slice($em, 0, count($em) - 1));
+                    $len  = floor(strlen($name) / 2);
+                    $result = substr($name, 0, $len) . str_repeat('*', $len) . "@" . end($em);
+
+                    return response()->json(['status' => 0, 'msg' => 'Pasient Tersebut Telah Memiliki Akun dengan alamat email ' . $result]);
+                } else {
+                    if (strtolower($request->name) == strtolower($patient->name) && $patient->date_brithday == Carbon::parse($request->date_brithday)->translatedFormat('Y-m-d')) {
+                        $patient_update = Patient::find($patient->id)->update([
+                            'user_id' => auth()->user()->id,
+                        ]);
+                        if (!$patient_update) {
+                            return response()->json(['status' => 0, 'msg' => 'Gagal Memperbarui']);
+                        } else {
+                            return response()->json(['status' => 1, 'msg' => 'Berhasil Memperbarui']);
+                        }
+                    } else {
+                        return response()->json(['status' => 0, 'msg' => 'Data yang dimasukan Tidak Sesuai']);
+                    }
+                }
+            } else {
+                return response()->json(['status' => 0, 'msg' => 'Data Tidak Sesuai']);
+            }
+        }
+    }
 }

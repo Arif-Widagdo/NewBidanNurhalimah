@@ -16,6 +16,11 @@
              <a href="" class="nav-link">{{ __('Dashboard') }}</a>
          </li>
          @endif --}}
+        @if(auth()->user()->role->slug === 'patient' && !request()->is('patient/dashboard'))
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="{{ route('dashboard') }}" class="nav-link {{ request()->is('patient/dashboard') ? 'active' : '' }}">{{ __('Dashboard') }}</a>
+        </li>
+        @endif 
      </ul>
 
      <!-- Right navbar links -->

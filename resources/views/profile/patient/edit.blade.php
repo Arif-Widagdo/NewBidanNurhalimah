@@ -306,19 +306,19 @@
             $('#form-validate').toggle();
             
             if ($('input#createAccout').bootstrapSwitch('state')){
-                $('#form_create').hide();
-                $('#form_create input').attr('disabled', true);
-                $('#form_create select').attr('disabled', true);
-                $('#form_create textarea').attr('disabled', true);
+                $('#form_create_patient').hide();
+                $('#form_create_patient input').attr('disabled', true);
+                $('#form_create_patient select').attr('disabled', true);
+                $('#form_create_patient textarea').attr('disabled', true);
 
                 $('#form-validate input').removeAttr('disabled');
                 $('#form-validate select').removeAttr('disabled');
                 
             }else{     
-                $('#form_create').show();
-                $('#form_create input').removeAttr('disabled');
-                $('#form_create select').removeAttr('disabled');
-                $('#form_create textarea').removeAttr('disabled');
+                $('#form_create_patient').show();
+                $('#form_create_patient input').removeAttr('disabled');
+                $('#form_create_patient select').removeAttr('disabled');
+                $('#form_create_patient textarea').removeAttr('disabled');
 
                 $('#form-validate input').attr('disabled', true);
                 $('#form-validate select').attr('disabled', true); 
@@ -514,6 +514,12 @@
         });
 
         $('#reservationdate_edit_couple').datetimepicker({
+            format: 'DD-MM-YYYY'
+        });
+
+
+        // ------ Validate Patient
+        $('#reservationdate_validate').datetimepicker({
             format: 'DD-MM-YYYY'
         });
 

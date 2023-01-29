@@ -44,7 +44,7 @@
                             </li>
                         @else
                             <li>
-                                <a class="getstarted-outline" href="{{ route('login') }}">{{ __('Sign Up') }}</a>
+                                <a class="getstarted-outline" href="{{ route('register') }}">{{ __('Sign Up') }}</a>
                             </li>
                             <li class="">
                                 <a class="getstarted scrollto m-1" href="{{ route('login') }}">{{ __('Sign In') }}</a>

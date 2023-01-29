@@ -52,7 +52,9 @@
 </head>
 
 {{-- <body class="hold-transition sidebar-closed sidebar-collapse" style="font-family: 'Nunito';"> --}}
-<body class="hold-transition sidebar-mini 
+    {{-- sidebar-closed sidebar-mini sidebar-collapse --}}
+    
+<body class="hold-transition {{ auth()->user()->role->slug !== 'patient' ? 'sidebar-mini' : 'sidebar-closed sidebar-collapse' }} 
 {{  (request()->is('patient/**/acceptors')) 
 | (request()->is('admin/profile'))
 || (request()->is('admin/positions/**'))

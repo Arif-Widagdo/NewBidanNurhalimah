@@ -1,19 +1,21 @@
-<form action="" id="form-validate" style="display: none">
-    <div class="card border border-danger">
+<form action="{{ route('patient.validatePatient') }}" id="form-validate" style="display: none" method="POST">
+    @csrf
+    @method('PATCH')
+    <div class="card border ">
         <div class="card-body">
             <div class="d-inline-flex align-items-start">
                 <i class="fas fa-info mr-2" style="margin-top: 2px;"></i>
-                <strong class="text-danger">Masukan Data Diri Anda yang Telah Terdaftar</strong>
+                <strong class="text-danger">Harap Masukan Data Diri Anda yang Telah Terdaftar</strong>
             </div>
         </div>
     </div>
     <!-------- No Medical ----->
     <div class="form-group row">
-        <label for="inputName" class="col-md-3 col-form-label ">
+        <label for="inputNoRM" class="col-md-3 col-form-label ">
             {{ __('No. Medical records') }} <span class="text-danger">*</span>
         </label>
         <div class="col-md-9">
-            <input type="text" class="form-control error_input_name" id="inputName" placeholder="Masukan Nomor Pendaftaran Anda yang telah Terdaftar" name="name" disabled>
+            <input type="text" class="form-control error_input_name" id="inputNoRM" placeholder="Masukan Nomor Pendaftaran Anda yang telah Terdaftar" name="no_rm" disabled>
             <span class="text-danger error-text name_error"></span>
         </div>
     </div>
@@ -33,9 +35,9 @@
             {{ __('Date of Birthday') }} <span class="text-danger">*</span>
         </label>
         <div class="col-md-9">
-            <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                <input type="text" class="form-control datetimepicker-input error_input_date_brithday" placeholder="{{ __('Enter your Date of Birth') }}" data-target="#reservationdate" name="date_brithday" disabled>
-                <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
+            <div class="input-group date" id="reservationdate_validate" data-target-input="nearest">
+                <input type="text" class="form-control datetimepicker-input error_input_date_brithday" placeholder="{{ __('Enter your Date of Birth') }}" data-target="#reservationdate_validate" name="date_brithday" disabled>
+                <div class="input-group-append" data-target="#reservationdate_validate" data-toggle="datetimepicker">
                     <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                 </div>
             </div>

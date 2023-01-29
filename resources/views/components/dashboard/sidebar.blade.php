@@ -19,6 +19,7 @@
             </div>
         </div>
 
+        @if(auth()->user()->role->slug !== 'patient')
         <!-- SidebarSearch Form -->
         <div class="form-inline">
             <div class="input-group" data-widget="sidebar-search">
@@ -30,6 +31,7 @@
                 </div>
             </div>
         </div>
+        @endif
 
         <!-- Sidebar Menu -->
         <nav class="mt-2">
@@ -103,16 +105,6 @@
                         </p>
                     </a>
                 </li>
-                {{-- <li class="nav-item">
-                    <a href="{{ route('patients.index') }}" class="nav-link {{ request()->is('patients') || request()->is('patients/create') ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-hospital-user"></i>
-                        <p>
-                            {{ __('Acceptors') }}
-                        </p>
-                    </a>
-                </li> --}}
-                {{-- <li class="nav-header">{{ __('User') }}</li> --}}
-               
                 <li class="nav-header">{{ __('Site Management') }}</li>
                 <li class="nav-item">
                     <a href="{{ route('site-management.index') }}" class="nav-link {{ request()->is('admin/site-management') ? 'active' : '' }}">
@@ -177,17 +169,24 @@
                     </a>
                 </li>
                 @endif
-
                 @else
                 <!----------------------------------------
                 --- End Admin & Midwife/ Start Patient ---
                 ------------------------------------------>
                 <li class="nav-item">
                     <a href="{{ route('dashboard') }}"
-                        class="nav-link {{ request()->is('admin/dashboard') ? 'active' : '' }}">
+                        class="nav-link {{ request()->is('patient/dashboard') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             {{ __('Dashboard') }}
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-toggle="modal" data-target="#modal_question">
+                        <i class="nav-icon fas fa-question-circle"></i>
+                        <p>
+                            {{ __('Help') }}
                         </p>
                     </a>
                 </li>

@@ -122,6 +122,8 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
         Route::get('/dashboard', [PatientController::class, 'dashboard'])->name('patient.dashboard');
         Route::get('/profile', [ProfileController::class, 'edit'])->name('patient.profile.edit');
 
+        Route::patch('/validate-patient', [PatientController::class, 'validatePatient'])->name('patient.validatePatient');
+
         Route::post('/register-patient', [PatientController::class, 'registerPatient'])->name('patient.registerPatient');
         Route::post('/register-couple', [PatientController::class, 'registerCouple'])->name('patient.registerCouple');
 
