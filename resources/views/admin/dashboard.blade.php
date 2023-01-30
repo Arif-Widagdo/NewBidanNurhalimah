@@ -17,63 +17,45 @@
 
     <!-- Small boxes (Stat box) -->
     <div class="row">
-        <div class="col-lg-3 col-6">
+        <div class="col-lg-4 col-6">
             <!-- small box -->
             <div class="small-box bg-info">
                 <div class="inner">
-                    <h3>150</h3>
-
-                    <p>New Orders</p>
+                    <h3>{{ $patients->count() }}</h3>
+                    <p>{{ __('Number of Acceptors') }}</p>
                 </div>
                 <div class="icon">
-                    <i class="ion ion-bag"></i>
+                    <i class="fas fa-hospital-user"></i>
                 </div>
-                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="{{ route('patients.index') }}" class="small-box-footer">{{ __('More Info') }} <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
         <!-- ./col -->
-        <div class="col-lg-3 col-6">
+        <div class="col-lg-4 col-6">
             <!-- small box -->
             <div class="small-box bg-success">
                 <div class="inner">
-                    <h3>53<sup style="font-size: 20px">%</sup></h3>
-
-                    <p>Bounce Rate</p>
+                    <h3>{{ $users->count() }}</h3>
+                    <p>{{ __('Number of Users') }}</p>
                 </div>
                 <div class="icon">
-                    <i class="ion ion-stats-bars"></i>
+                    <i class="fas fa-users"></i>
                 </div>
-                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="{{ route('users.index') }}" class="small-box-footer">{{ __('More Info') }} <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
         <!-- ./col -->
-        <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-warning">
-                <div class="inner">
-                    <h3>44</h3>
-
-                    <p>User Registrations</p>
-                </div>
-                <div class="icon">
-                    <i class="ion ion-person-add"></i>
-                </div>
-                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-        </div>
-        <!-- ./col -->
-        <div class="col-lg-3 col-6">
+        <div class="col-lg-4 col-12">
             <!-- small box -->
             <div class="small-box bg-danger">
                 <div class="inner">
-                    <h3>65</h3>
-
-                    <p>Unique Visitors</p>
+                    <h3>{{ $birthControls->count() }}</h3>
+                    <p>{{ __('Number of types of Birth Control') }}</p>
                 </div>
                 <div class="icon">
                     <i class="ion ion-pie-graph"></i>
                 </div>
-                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="{{ route('birth-controls.index') }}" class="small-box-footer">{{ __('More Info') }} <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
         <!-- ./col -->
@@ -84,7 +66,7 @@
         <div class="col-md-8 animate__animated animate__slideInLeft">
             <div class="card card-outline card-primary">
                 <div class="card-header">
-                    <h3 class="card-title text-bold">Jumlah Pendaftaran Akseptor Berdasarkan Bulan</h3>
+                    <h3 class="card-title text-bold">{{ __('Number of Acceptor Registration by Month') }}</h3>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
@@ -96,7 +78,7 @@
                     </div>
                     <!-- /.d-flex -->
                     <div class="position-relative mb-4">
-                        <canvas id="sales-chart" height="330"></canvas>
+                        <canvas id="sales-chart" height="310"></canvas>
                     </div>
                 </div>
                 <!-- ./card-body -->
@@ -109,7 +91,7 @@
               <!-- DONUT CHART -->
               <div class="card card-primary card-outline">
                 <div class="card-header">
-                  <h3 class="card-title text-bold">Jumlah Akseptor Berdasarkan KB</h3>
+                  <h3 class="card-title text-bold">{{ __('Number of Acceptors Based on Birth Control Users') }}</h3>
                 </div>
                 <div class="card-body">
                   <canvas id="birthControls" style="min-height: 350px; height: 350px; max-height: 350px; max-width: 100%; "></canvas>

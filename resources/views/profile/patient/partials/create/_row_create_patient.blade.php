@@ -22,7 +22,7 @@
                 </div>
                 <div class="form-group row d-flex flex-row align-items-center">
                     <label for="createAccout" class="col-form-label mr-2 px-2">
-                        Sudah Pernah Mendaftar di Bidan Nurhalimah?
+                        {{ __('Have you ever registered for the family planning program at Midwife Nurhalimah?') }}
                     </label>
                     <input id="createAccout" type="checkbox" name="create_account" data-bootstrap-switch data-off-color="light" data-on-color="primary" data-off-text="{{ __('No') }}" data-on-text="{{ __('Yes') }}"  > 
                 </div>

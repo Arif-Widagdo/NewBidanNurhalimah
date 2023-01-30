@@ -34,7 +34,7 @@
                         <table id="tabel_users" class="table table-bordered table-hover">
                             <thead>
                                 <tr>
-                                    <th class="text-center"><input type="checkbox" class="selectall" style="max-width: 15px !important; cursor: pointer;"></th>
+                                    <th class="text-center">No.</th>
                                     <th>{{ __('Username') }}</th>
                                     <th>{{ __('Email Address') }}</th>
                                     <th>{{ __('Created date') }}</th>
@@ -46,7 +46,7 @@
                             <tbody>
                                 @foreach ($users as $user)
                                 <tr>
-                                    <td class="text-center" style="width: 15px !important;"><input type="checkbox" name="ids[]" class="selectbox" value="{{ $user->id }}" style="cursor: pointer;"></td>
+                                    <td class="text-center" style="width: 15px !important;">{{ $loop->iteration }}</td>
                                     <td class="fw-500">
                                         @if(Str::length($user->username) > 20)
                                             {{ substr( $user->username, 0, 20) }} ...
@@ -80,8 +80,18 @@
                                                  <i class="fas fa-ellipsis-v"></i>
                                                 </button>
                                                 <div class="dropdown-menu" role="menu">
-                                                  <a href="#" class="dropdown-item">{{ __('Show') }}</a>
-                                                  <a href="#" class="dropdown-item">{{ __('Edit') }}</a>
+                                                    @if($user->staff)
+                                                            <a href="#" class="dropdown-item" data-toggle="modal" data-target="#modal-edit-staff{{ $user->id }}">{{ __('Edit') }}</a>
+                                                    @else
+                                                        @if ($user->patient)
+                                                            <a href="{{ route('acceptors.index', $user->patient->no_rm) }}" class="dropdown-item">{{ __('Show') }}</a>
+                                                        @endif
+                                                    @endif
+
+                                                    @if($user->staff)
+                                                        <a href="#" class="dropdown-item" data-toggle="modal" data-target="#modal-edit-staff{{ $user->id }}">{{ __('Edit') }}</a>
+                                                    @endif
+                                                  
                                                   <div class="dropdown-divider"></div>
                                                   <a href="#" class="dropdown-item">{{ __('Remove') }}</a>
                                                 </div>
@@ -101,6 +111,10 @@
     </div>
     <!-- /.row -->
 
+
+
+    {{-- @include('admin.user_management.partials._modal_show_staff') --}}
+    @include('admin.user_management.partials._modal_edit_staff')
    
 
 
@@ -210,81 +224,6 @@
             $.fn.dataTable.ext.search.splice($.fn.dataTable.ext.search.indexOf(DateFilterFunction, 1));
             $dTable.draw();
             });
-        });
-
-
-
-       
-
-        // -------- Data Table
-        // $("#table-positions").DataTable({
-        //     "responsive": true,
-        //     "lengthChange": true,
-        //     "autoWidth": false,
-        //     "lengthMenu": [
-        //         [10, 25, 50, -1],
-        //         [10, 25, 50, "{{ __('All') }}"]
-        //     ],
-        //     "order": [],
-        //     "columnDefs": [{
-        //         "targets": [0, 5],
-        //         "orderable": false,
-        //     }],
-        //     "oLanguage": {
-        //         "sSearch": "{{ __('Quick Search') }}",
-        //         "sLengthMenu": "{{ __('DataTableLengthMenu') }}",
-        //         "sInfo": "{{ __('DataTableInfo') }}",
-        //         "oPaginate": {
-        //             // "sFirst": "First page", // This is the link to the first page
-        //             "sPrevious": "{{ __('Previous') }}", // This is the link to the previous page
-        //             "sNext": "{{ __('Next') }}", // This is the link to the next page
-        //             // "sLast": "Last page" // This is the link to the last page
-        //         },
-        //         "sInfoEmpty": "{{ __('DataTableInfoEmpty') }}",
-        //         "sInfoFiltered": "{{ __('DataTabelInfoFiltered') }}"
-        //     },
-        //     "buttons": [{
-        //                 "extend": 'copy',
-        //                 "title": "{{ __('List of Users') }}",
-        //                 "exportOptions": {
-        //                     "columns": [1, 2, 3]
-        //                 }
-        //             },
-        //             {
-        //                 "extend": 'excel',
-        //                 "title": "{{ __('List of Users') }}",
-        //                 "exportOptions": {
-        //                     "columns": [1, 2, 3]
-        //                 }
-        //             },
-        //             {
-        //                 "extend": 'print',
-        //                 "title": "{{ __('List of Users') }}",
-        //                 "exportOptions": {
-        //                     "columns": [1, 2, 3]
-        //                 }
-        //             },
-        //             "colvis"
-        //         ]
-        // }).buttons().container().appendTo('#table-positions_wrapper .col-md-6:eq(0)');
-
-        //Initialize Select2 Elements
-        $('.select2').select2()
-
-        $('.selectall').click(function () {
-            $('.selectbox').prop('checked', $(this).prop('checked'));
-            $("#btn_delete_all").prop("hidden", !$(this).prop('checked'));
-        });
-
-        $('.selectbox').change(function () {
-            var total = $('.selectbox').length;
-            var number = $('.selectbox:checked').length;
-            if (total == number) {
-                $('.selectall').prop('checked', true);
-            } else {
-                $('.selectall').prop('checked', false);
-            }
-            $("#btn_delete_all").prop("hidden", !$('.selectbox:checked').length);
         });
 
         $('#form_create_user').on('submit', function (e) {

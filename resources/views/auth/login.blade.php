@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 login-img d-lg-flex justify-content-center align-items-center" data-aos="zoom-out">
-                    <img src="{{ asset('dist/img/login2.png') }}" class="img-fluid" alt="">
+                    <img src="{{ asset('dist/img/login2.png') }}" class="img-fluid" alt="{{ __('Sign In') }}" style="width: 500px !important;">
                 </div>
                 <div class="col-lg-6 d-flex flex-column justify-content-center typograph">
                     <div data-aos="fade-up">

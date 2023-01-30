@@ -127,6 +127,9 @@ class AdminController extends Controller
         })->get();
 
         return view('admin.dashboard', [
+            'patients' => Patient::all(),
+            'users' => User::all(),
+
             'birthControls' => $birth_controls,
             'acceptors' => $acceptors,
 

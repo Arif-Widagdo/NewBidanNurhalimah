@@ -36,13 +36,6 @@
     <link rel="stylesheet" href={{ asset("plugins/datatables-responsive/css/responsive.bootstrap4.min.css") }}>
     <link rel="stylesheet" href={{ asset("plugins/datatables-buttons/css/buttons.bootstrap4.min.css") }}>
 
-    {{-- <style>
-        .page-item.active .page-link {
-            color: #fff !important;
-            background-color: #6F42C1 !important;
-            border-color: #6F42C1 !important; 
-        }
-    </style> --}}
     <style>
         .is-invalid .select2-selection,
         .needs-validation ~ span > .select2-dropdown{
@@ -51,12 +44,10 @@
     </style>
 </head>
 
-{{-- <body class="hold-transition sidebar-closed sidebar-collapse" style="font-family: 'Nunito';"> --}}
-    {{-- sidebar-closed sidebar-mini sidebar-collapse --}}
-    
 <body class="hold-transition {{ auth()->user()->role->slug !== 'patient' ? 'sidebar-mini' : 'sidebar-closed sidebar-collapse' }} 
 {{  (request()->is('patient/**/acceptors')) 
-| (request()->is('admin/profile'))
+|| (request()->is('admin/dashboard'))
+|| (request()->is('admin/profile'))
 || (request()->is('admin/positions/**'))
 || (request()->is('admin/graduateds/**'))
 || (request()->is('admin/works/**'))
