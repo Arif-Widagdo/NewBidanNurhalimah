@@ -79,17 +79,17 @@
                     </div>
                     <!-------- Job Status Couple Create ----->
                     <div class="form-group row">
-                        <label for="birthControl_id" class="col-md-3 col-form-label">
+                        <label for="birth_control_id" class="col-md-3 col-form-label">
                             {{ __('Birth Control') }} <span class="text-danger">*</span>
                         </label>
                         <div class="col-md-9">
-                            <select class="form-control select2" style="width: 100%;" name="birthControl_id" id="birthControl_id">
+                            <select class="form-control select2" style="width: 100%;" name="birth_control_id" id="birth_control_id">
                                 <option selected="selected" disabled >{{ __('Select Birth Control') }}</option>
                                 @foreach ($birthControls as $birthControl)
                                     <option value="{{ $birthControl->id }}">{{ $birthControl->name }}</option>
                                 @endforeach
                             </select>
-                            <span class="text-danger error-text birthControl_id_error"></span>
+                            <span class="text-danger error-text birth_control_id_error"></span>
                         </div>
                     </div>
                     <!-------- Return Visit Date ----->

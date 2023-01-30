@@ -17,7 +17,7 @@ class Acceptor extends Model
         'id',
         'attendance_date',
         'patient_id',
-        'birthControl_id',
+        'birth_control_id',
         'menstrual_date',
         'weight',
         'blood_pressure',
@@ -49,6 +49,6 @@ class Acceptor extends Model
     }
     public function birthControl()
     {
-        return $this->belongsTo(BirthControl::class, 'birthControl_id');
+        return $this->belongsTo(BirthControl::class, 'birth_control_id');
     }
 }

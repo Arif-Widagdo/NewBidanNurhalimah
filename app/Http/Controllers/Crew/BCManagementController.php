@@ -64,7 +64,7 @@ class BCManagementController extends Controller
      */
     public function show(BirthControl $birthControl)
     {
-        $acceptors = Acceptor::where('birthControl_id', $birthControl->id)
+        $acceptors = Acceptor::where('birth_control_id', $birthControl->id)
             ->orderBy('patient_id', 'DESC')->get()->groupBy(function ($item) {
                 return $item->patient_id;
             });
@@ -114,12 +114,12 @@ class BCManagementController extends Controller
      */
     public function destroy(BirthControl $birthControl)
     {
-        $acceptors = Acceptor::where('birthControl_id', $birthControl->id)->get();
+        $acceptors = Acceptor::where('birth_control_id', $birthControl->id)->get();
 
         if ($acceptors) {
             foreach ($acceptors as $acceptor) {
                 Acceptor::find($acceptor->id)->update([
-                    'birthControl_id' => ''
+                    'birth_control_id' => ''
                 ]);
             }
         }
@@ -136,11 +136,11 @@ class BCManagementController extends Controller
     {
         if ($request->ids != '') {
             foreach ($request->ids as $id) {
-                $acceptors = Acceptor::where('birthControl_id', $id)->get();
+                $acceptors = Acceptor::where('birth_control_id', $id)->get();
                 if ($acceptors) {
                     foreach ($acceptors as $acceptor) {
                         Acceptor::find($acceptor->id)->update([
-                            'birthControl_id' => ''
+                            'birth_control_id' => ''
                         ]);
                     }
                 }

@@ -295,7 +295,7 @@ return [
         'failure' => [
             'required' => 'Failure is required!',
         ],
-        'birthControl_id' => [
+        'birth_control_id' => [
             'required' => 'Birth Control Device is a must choose!',
         ],
         'return_date' => [

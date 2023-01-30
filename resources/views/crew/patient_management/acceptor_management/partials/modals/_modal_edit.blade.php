@@ -74,29 +74,29 @@
                             {{ __('Effect') }}
                         </label>
                         <div class="col-md-9">
-                            <input type="text" class="form-control error_input_complication_edit" id="inputAkibat" placeholder="{{ __('Serious Complication_edits') }}" value="{{ $acceptor_edit->complication }}" name="complication_edit">
+                            <input type="text" class="form-control error_input_complication_edit" id="inputAkibat" placeholder="{{ __('Serious Complications') }}" value="{{ $acceptor_edit->complication }}" name="complication_edit">
                             <span class="text-danger error-text complication_edit_error"></span>
                             <input type="text" class="form-control error_input_failure_edit mt-3" id="inputFailure" placeholder="{{ __('Failure') }}" value="{{ $acceptor_edit->failure }}" name="failure_edit">
                             <span class="text-danger error-text failure_edit_error"></span>
                         </div>
                     </div>
-                    <!-------- Job Status Couple Create ----->
+                    <!-------- birth_control_id_edit ----->
                     <div class="form-group row">
-                        <label for="birthControl_id_edit" class="col-md-3 col-form-label">
+                        <label for="birth_control_id_edit{{ $loop->iteration }}" class="col-md-3 col-form-label">
                             {{ __('Birth Control') }} <span class="text-danger">*</span>
                         </label>
                         <div class="col-md-9">
-                            <select class="form-control select2" style="width: 100%;" name="birthControl_id_edit" id="birthControl_id_edit">
+                            <select class="form-control select2" style="width: 100%;" name="birth_control_id_edit" id="birth_control_id_edit{{ $loop->iteration }}">
                                 <option selected="selected" disabled >{{ __('Select Birth Control') }}</option>
                                 @foreach ($birthControls as $birthControl)
-                                    @if($acceptor_edit->birthControl_id != '' && $acceptor_edit->birthControl->id  == $birthControl->id)
+                                    @if($acceptor_edit->birth_control_id != '' && $acceptor_edit->birthControl->id  == $birthControl->id)
                                     <option value="{{ $birthControl->id }}" selected>{{ $birthControl->name }}</option>
                                     @else
                                     <option value="{{ $birthControl->id }}">{{ $birthControl->name }}</option>
                                     @endif
                                 @endforeach
                             </select>
-                            <span class="text-danger error-text birthControl_id_edit_error"></span>
+                            <span class="text-danger error-text birth_control_id_edit_error"></span>
                         </div>
                     </div>
                     <!-------- Return Visit Date ----->

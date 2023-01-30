@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('acceptors', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->foreignUuid('patient_id')->index()->references('id')->on('patients')->onDelete('cascade');
-            $table->foreignUuid('birthControl_id')->nullable();
+            $table->foreignUuid('birth_control_id')->nullable();
             $table->date('attendance_date');
             $table->date('menstrual_date')->nullable();
             $table->integer('weight');

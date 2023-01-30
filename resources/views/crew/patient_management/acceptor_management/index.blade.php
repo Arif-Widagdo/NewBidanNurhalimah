@@ -89,7 +89,7 @@
                                         {{ $acceptor->failure != '' ? $acceptor->failure : '-' }}
                                     </td>
                                     <td>
-                                        {{ $acceptor->birthControl_id != '' ? $acceptor->birthControl->name : '-' }}
+                                        {{ $acceptor->birth_control_id != '' ? $acceptor->birthControl->name : '-' }}
                                     </td>
                                     <td>
                                         {{ $acceptor->description != '' ? $acceptor->description : '-' }}

@@ -43,8 +43,8 @@
                                     <div class="form-group">
                                         <div class="chek-form">
                                             <div class="custome-checkbox d-flex">
-                                                <input class="form-check-input" type="checkbox" name="remember" id="exampleCheckbox1" value="">
-                                                <label class="form-check-label" for="exampleCheckbox1" style="margin-left: 4px;"><span>{{ __('Remember me') }}</span></label>
+                                                <input class="form-check-input" type="checkbox" name="remember" id="remember_me" value="1">
+                                                <label class="form-check-label" for="remember_me" style="margin-left: 4px;"><span>{{ __('Remember me') }}</span></label>
                                             </div>
                                         </div>
                                     </div>

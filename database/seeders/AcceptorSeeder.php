@@ -25,7 +25,7 @@ class AcceptorSeeder extends Seeder
                     'id' => fake()->uuid(),
                     'attendance_date' => Carbon::today()->subDays(rand(0, 7)),
                     'patient_id' => $patient->id,
-                    'birthControl_id' => $birthControl->id,
+                    'birth_control_id' => $birthControl->id,
                     'menstrual_date' => Carbon::today()->subDays(rand(0, 14)),
                     'weight' => rand(60, 80),
                     'blood_pressure' => rand(100, 120) . '/' . rand(60, 80),

@@ -54,7 +54,7 @@ class AcceptorManagementController extends Controller
             'attendance_date' => ['required'],
             'weight' => ['required'],
             'blood_pressure' => ['required'],
-            'birthControl_id' => ['required'],
+            'birth_control_id' => ['required'],
         ]);
 
         if (!$validator->passes()) {
@@ -85,7 +85,7 @@ class AcceptorManagementController extends Controller
                 'blood_pressure' => $request->blood_pressure,
                 'complication' => $request->complication,
                 'failure' => $request->failure,
-                'birthControl_id' => $request->birthControl_id,
+                'birth_control_id' => $request->birth_control_id,
                 'return_date' => $return_date,
                 'description' => $request->description
             ]);
@@ -111,7 +111,7 @@ class AcceptorManagementController extends Controller
             'attendance_date_edit' => ['required'],
             'weight_edit' => ['required'],
             'blood_pressure_edit' => ['required'],
-            'birthControl_id_edit' => ['required'],
+            'birth_control_id_edit' => ['required'],
         ]);
         if (!$validator->passes()) {
             return response()->json(['status' => 0, 'error' => $validator->errors()->toArray(), 'msg' => __('Please complete the input on the form provided')]);
@@ -139,7 +139,7 @@ class AcceptorManagementController extends Controller
                 'blood_pressure' => $request->blood_pressure_edit,
                 'complication' => $request->complication_edit,
                 'failure' => $request->failure_edit,
-                'birthControl_id' => $request->birthControl_id_edit,
+                'birth_control_id' => $request->birth_control_id_edit,
                 'return_date' => $return_date,
                 'description' => $request->description_edit
             ]);

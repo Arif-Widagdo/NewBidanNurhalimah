@@ -270,7 +270,7 @@ return [
         'failure' => [
             'required' => 'Kegagalan wajib diisi!',
         ],
-        'birthControl_id' => [
+        'birth_control_id' => [
             'required' => 'Alat Kontrol Kelahiran wajib dipilih',
         ],
         'return_date' => [
