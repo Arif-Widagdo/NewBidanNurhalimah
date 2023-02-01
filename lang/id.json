@@ -396,6 +396,7 @@
     "Registration user successfully" : "Pendaftaran Pengguna berhasil!",
     "Somethin went Wrong, creating user" : "Ada yang salah pada saat mendaftarkan Pengguna!",
     "User successfully deleted" : "Pengguna berhasil dihapus!",
+    "User failed to delete" : "Pengguna gagal dihapus",
     "Are you sure?" : "Anda Yakin?",
     "User Management" : "Manajemen Pengguna",
    
@@ -476,7 +477,8 @@
     "Number of Acceptor Registration by Month" : "Jumlah Registrasi Akseptor Berdasarkan Bulan",
     "Number of Acceptors Based on Birth Control Users" : "Jumlah Akseptor Berdasarkan Pengguna KB",
     "Have you ever registered for the family planning program at Midwife Nurhalimah?" : "Sudah Pernah Mendaftar Program KB di Bidan Nurhalimah?",
-
+    "Employee Account Edit Form" : "Formulir Edit Akun Karyawan",
+   
    
     
   
@@ -541,7 +543,7 @@
     "Email Password Reset Link" : "Kirim Email Atur Ulang Kata Sandi",
     "Please click the button below to verify your email address." : "Klik tombol di bawah untuk memverifikasi alamat email Anda.",
     "If you did not create an account, no further action is required." : "Jika Anda tidak membuat akun, tidak diperlukan tindakan lebih lanjut.",
-    "Regards" : "Salam",
+    "Regards" : "Salam Hangat",
     "All rights reserved." : "Seluruh hak cipta.",
     "into your web browser:" : "ke browser web Anda:",
     "If you're having trouble clicking the \":actionText\" button, copy and paste the URL below\ninto your web browser:" : "Jika Anda kesulitan mengeklik tombol \":actionText\", salin dan tempel URL di bawah\nke browser web Anda:",
@@ -564,8 +566,24 @@
     "Cancel" : "Batalkan",
     "Wait a few minutes to try again" : "Tunggu beberapa menit untuk mencoba lagi!",
     "User successfully updated" : "Pengguna berhasil diperbaharui",
-    "User failed update" : "Pengguna gagal diperbaharui"
+    "User failed update" : "Pengguna gagal diperbaharui",
+    "user account deleted successfully" : "Akun pengguna berhasil dihapus",
+    "user account failed to delete" : "Akun pengguna gagal dihapus",
+    "Patient Account Edit Form" : "Formulir Edit Akun Pasien",
+    "Welcome to the Help Menu" : "Selamat Datang di Menu Bantuan",  
+    "This floating capital or card is made to help the user or application users" : "Modal atau kartu floating ini dibuat untuk membantu user atau pengguna aplikasi",
+    "If when using this application there is something that you are confused about, please read the following guide or contact the administrator to more quickly solve the problem at hand." : "Jika saat penggunaan aplikasi ini ada yang Anda bingungkan silahkan Anda dapat membaca panduan berikut ini atau hubungi adminsitrator untuk lebih cepat mengatasi masalah yang dihadapi.",
+    "If you register for the first time on this website you will be presented with a Profile page, on that profile page you can complete or change your personal data and also your partners data." : "Jika Anda pertama kali mendaftar pada website ini Anda akan dihadapkan kehalaman Profile, dihalaman profil tersebut Anda dapat melengkapi atau mengubah data diri Anda dan juga data dari pasangan Anda.",
+    "On the profile page, besides you can complete or change your personal data, you can also change the password for the account that you have created, you can find the feature to change the password on the bottom page of the profile menu. You can scroll through the arrows to find the change password form." : "Pada halaman profil, selain Anda dapat melengkapi atau mengubah data diri Anda, Anda juga dapat menggati Kata Sandi dari Akun yang telah Anda Buat, fitur untuk melakukan perubahan kata sandi dapat Anda temukan dihalaman paling bawah pada menu profil. Anda dapat menggulir tombol pada tanda panah tersebut untuk menemukan formulir ganti kata sandi.",
+    "If you have completed your required personal data. then the system will direct you to the dashboard page. On this Dashboard page you can view and print data from the results of your visit to Midwife Nurhalimah after participating in the Acceptor program." : "Jika Anda, telah melengkapi data diri yang diperlukan Anda. maka sistem akan mengarahkan Anda kehalaman dashboard. Dihalaman Dashboard ini Anda dapat melihat serta mencetak Data dari Hasil Kunjungan Anda di Bidan Nurhalimah setelah mengikuti program Akseptor.",
+    "After you print or check the data from the results of your visit at Midwife Nurhalimah, it is hoped that you will press the exit button, this is to prevent leakage of your personal data." : "Setelah Anda melakukan pencetakan atau pengecekan Data dari Hasil Kunjungan Anda di Bidan Nurhalimah, diharapkan Anda menekan tombol keluar, hal tersebut untuk mencegah terjadinya kebocoran data pribadi Anda.",
+    "For other information you can contact the administrator or can look at" : "Untuk informasi lainnya Anda dapat menghubungin adminsitrator atau dapat melihat pada"
 
+
+
+    
+     
+    
 
 
 }

@@ -19,43 +19,43 @@
     <div class="row">
         <div class="col-lg-4 col-6">
             <!-- small box -->
-            <div class="small-box bg-info">
+            <div class="small-box border-top border-info">
                 <div class="inner">
                     <h3>{{ $patients->count() }}</h3>
                     <p>{{ __('Number of Acceptors') }}</p>
                 </div>
                 <div class="icon">
-                    <i class="fas fa-hospital-user"></i>
+                    <i class="fas fa-hospital-user text-info"></i>
                 </div>
-                <a href="{{ route('patients.index') }}" class="small-box-footer">{{ __('More Info') }} <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="{{ route('patients.index') }}" class="small-box-footer bg-info">{{ __('More Info') }} <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
         <!-- ./col -->
         <div class="col-lg-4 col-6">
             <!-- small box -->
-            <div class="small-box bg-success">
+            <div class="small-box border-top border-success">
                 <div class="inner">
                     <h3>{{ $users->count() }}</h3>
                     <p>{{ __('Number of Users') }}</p>
                 </div>
                 <div class="icon">
-                    <i class="fas fa-users"></i>
+                    <i class="fas fa-users text-success"></i>
                 </div>
-                <a href="{{ route('users.index') }}" class="small-box-footer">{{ __('More Info') }} <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="{{ route('users.index') }}" class="small-box-footer bg-success">{{ __('More Info') }} <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
         <!-- ./col -->
         <div class="col-lg-4 col-12">
             <!-- small box -->
-            <div class="small-box bg-danger">
+            <div class="small-box border-top border-danger">
                 <div class="inner">
                     <h3>{{ $birthControls->count() }}</h3>
                     <p>{{ __('Number of types of Birth Control') }}</p>
                 </div>
                 <div class="icon">
-                    <i class="ion ion-pie-graph"></i>
+                    <i class="fas fa-prescription-bottle-alt text-danger"></i>
                 </div>
-                <a href="{{ route('birth-controls.index') }}" class="small-box-footer">{{ __('More Info') }} <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="{{ route('birth-controls.index') }}" class="small-box-footer bg-danger">{{ __('More Info') }} <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
         <!-- ./col -->

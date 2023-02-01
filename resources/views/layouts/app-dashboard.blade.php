@@ -109,6 +109,51 @@ style="font-family: 'Nunito';">
         </div>
         <!-- /.content-wrapper -->
 
+        @if(auth()->user()->role->slug == 'patient')
+        <div class="modal fade" id="modal_question">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header bg-primary">
+                        <h5 class="modal-title"><i class="fas fa-question-circle"></i> {{ __('Welcome to the Help Menu') }}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="card">
+                            <div class="card-body">
+                                {{ __('This floating capital or card is made to help the user or application users') }} {{ config('app.name') }}. {{ __('If when using this application there is something that you are confused about, please read the following guide or contact the administrator to more quickly solve the problem at hand.') }}
+                            </div>
+                        </div>
+                        
+                        <div class="card mt-4">
+                            <div class="card-body">
+                                <p>{{ __('If you register for the first time on this website you will be presented with a Profile page, on that profile page you can complete or change your personal data and also your partners data.') }}</p>
+                                <img src="{{ app()->getLocale()=='id' ? asset('dist/img/help/id/2.png') : asset('dist/img/help/en/2.png')  }}" alt="{{ __('Profile') }}" class="img-fluid mb-3">
+                                <p class="mb-1">{{ __('On the profile page, besides you can complete or change your personal data, you can also change the password for the account that you have created, you can find the feature to change the password on the bottom page of the profile menu. You can scroll through the arrows to find the change password form.') }}</p>
+                                <img src="{{ app()->getLocale()=='id' ? asset('dist/img/help/id/3.png') : asset('dist/img/help/en/3.png')  }}" alt="{{ __('Patient Registration Form') }}"  class="img-fluid mb-3">
+                                <p>{{ __('If you have completed your required personal data. then the system will direct you to the dashboard page. On this Dashboard page you can view and print data from the results of your visit to Midwife Nurhalimah after participating in the Acceptor program.') }}</p>
+                                <img src="{{ app()->getLocale()=='id' ? asset('dist/img/help/id/4.png') : asset('dist/img/help/en/4.png')  }}" alt="{{ __('Visit Result Data') }}"  class="img-fluid mb-3">
+                                <p>{{ __('After you print or check the data from the results of your visit at Midwife Nurhalimah, it is hoped that you will press the exit button, this is to prevent leakage of your personal data.') }}</p>
+                                <img src="{{ app()->getLocale()=='id' ? asset('dist/img/help/id/5.png') : asset('dist/img/help/en/5.png')  }}" alt="{{ __('Sign Out') }}"  class="img-fluid mb-3">
+                                <p>{{ __('For other information you can contact the administrator or can look at') }} <a href="/#faq">F.A.Q</a>.</p>
+                                {{ __('Regards') }}
+                                <br><br><br>
+                                {{ config('app.name') }} <br>
+                                <a href="/#contact">{{ config('app.url') }}</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">{{ __('Close') }}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @endif
+      
+
+
        @include('components.dashboard.footer')
 
         <!-- Control Sidebar -->
@@ -149,6 +194,16 @@ style="font-family: 'Nunito';">
     <script src={{ asset("plugins/datatables-buttons/js/buttons.html5.min.js") }}></script>
     <script src={{ asset("plugins/datatables-buttons/js/buttons.print.min.js") }}></script>
     <script src={{ asset("plugins/datatables-buttons/js/buttons.colVis.min.js") }}></script>
+
+    @if(auth()->user()->role->slug == 'patient')
+        @if(!auth()->user()->patient)
+        <script type="text/javascript">
+            $(window).on('load', function() {
+                $('#modal_question').modal('show');
+            });
+        </script>
+        @endif
+    @endif
 
     @yield('scripts')
     <script>

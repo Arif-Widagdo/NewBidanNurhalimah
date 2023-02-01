@@ -6,20 +6,15 @@
          <li class="nav-item">
              <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
          </li>
-         {{-- @if(auth()->user()->role->slug === 'administrator')
-         <li class="nav-item d-none d-sm-inline-block">
-             <a href="" class="nav-link">{{ __('Data Master') }}</a>
-         </li>
-
-         @elseif(auth()->user()->role->slug === 'patient')
-         <li class="nav-item d-none d-sm-inline-block">
-             <a href="" class="nav-link">{{ __('Dashboard') }}</a>
-         </li>
-         @endif --}}
         @if(auth()->user()->role->slug === 'patient' && !request()->is('patient/dashboard'))
         <li class="nav-item d-none d-sm-inline-block">
             <a href="{{ route('dashboard') }}" class="nav-link {{ request()->is('patient/dashboard') ? 'active' : '' }}">{{ __('Dashboard') }}</a>
         </li>
+            @if(!auth()->user()->patient)
+            <li class="nav-item d-none d-sm-inline-block">
+                <a href="#" class="nav-link" data-toggle="modal" data-target="#modal_question">{{ __('Help') }}</a>
+            </li>
+            @endif
         @endif 
      </ul>
 

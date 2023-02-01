@@ -64,7 +64,11 @@
                                     <td>
                                         {{ Carbon\Carbon::parse($user->created_at)->translatedFormat('d/m/Y') }}</td>
                                     <td class="text-center">
-                                        {{ $user->role->name }}
+                                        @if($user->role->slug == 'patient')
+                                            {{ __('Acceptor') }}
+                                        @else
+                                            {{ $user->staff->position->name }}
+                                        @endif
                                     </td>
                                     <td class="text-center">
                                         @if($user->status == 'actived')
@@ -80,20 +84,26 @@
                                                  <i class="fas fa-ellipsis-v"></i>
                                                 </button>
                                                 <div class="dropdown-menu" role="menu">
-                                                    @if($user->staff)
-                                                            <a href="#" class="dropdown-item" data-toggle="modal" data-target="#modal-edit-staff{{ $user->id }}">{{ __('Edit') }}</a>
-                                                    @else
-                                                        @if ($user->patient)
-                                                            <a href="{{ route('acceptors.index', $user->patient->no_rm) }}" class="dropdown-item">{{ __('Show') }}</a>
-                                                        @endif
+                                                        
+                                                    @if ($user->patient)
+                                                        <a href="{{ route('acceptors.index', $user->patient->no_rm) }}" class="dropdown-item">{{ __('Show') }}</a>
+                                                        <a href="#" class="dropdown-item" data-toggle="modal" data-target="#modal-edit-patient{{ $user->id }}">{{ __('Edit') }}</a>
+                                                        <div class="dropdown-divider"></div>
                                                     @endif
 
                                                     @if($user->staff)
+                                                        <a href="#" class="dropdown-item" data-toggle="modal" data-target="#modal-show-staff{{ $user->staff->employe_id }}">{{ __('Show') }}</a>
                                                         <a href="#" class="dropdown-item" data-toggle="modal" data-target="#modal-edit-staff{{ $user->id }}">{{ __('Edit') }}</a>
+                                                        <div class="dropdown-divider"></div>
                                                     @endif
-                                                  
-                                                  <div class="dropdown-divider"></div>
-                                                  <a href="#" class="dropdown-item">{{ __('Remove') }}</a>
+                                                    <a class="dropdown-item" id="btn_delete_user{{ $loop->iteration }}" style="cursor: pointer">{{ __('Remove') }}</a>
+                                                    <form method="post" class="d-none">
+                                                        @method('delete')
+                                                        @csrf
+                                                        <button formaction="{{ route('users.destroy', $user->id) }}" class="d-none" id="form_delete_user{{ $loop->iteration }}">
+                                                            {{ __('Remove') }} <i class="fas fa-solid fa-trash-alt ml-2"></i>
+                                                        </button>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
@@ -112,10 +122,14 @@
     <!-- /.row -->
 
 
+    @if($user->staff)
+        @include('admin.user_management.partials._modal_show_staff')
+        @include('admin.user_management.partials._modal_edit_staff')
+    @endif
 
-    {{-- @include('admin.user_management.partials._modal_show_staff') --}}
-    @include('admin.user_management.partials._modal_edit_staff')
-   
+    @include('admin.user_management.partials._modal_edit_patient')
+
+    
 
 
     @section('scripts')
@@ -264,7 +278,75 @@
         const countUser = document.querySelector('#countUser');
 
         for (let i = 1; i <= countUser.value; i++) {
-            $('#btn_delete'+i).on('click',function(e){
+            $('#form_edit_staff' + i).on('submit', function (e) {
+                e.preventDefault();
+                $.ajax({
+                    url: $(this).attr('action'),
+                    method: $(this).attr('method'),
+                    data: new FormData(this),
+                    processData: false,
+                    dataType: 'json',
+                    contentType: false,
+                    beforeSend: function () {
+                        $(document).find('span.error-text').text('');
+                    },
+                    success: function (data) {
+                        if (data.status == 0) {
+                            $.each(data.error, function (prefix, val) {
+                                $('span.' + prefix + '_error').text(val[0]);
+                                $('input.error_input_' + prefix).addClass('is-invalid');
+                                $('select.error_input_' + prefix).addClass('is-invalid');
+                            });
+                            alertToastInfo(data.msg)
+                        } else {
+                            $('#form_edit_staff' + i)[0].reset();
+                            setTimeout(function () {
+                                location.reload(true);
+                            }, 1000);
+                            alertToastSuccess(data.msg)
+                        }
+                    },
+                    error: function (xhr) {
+                        Swal.fire(xhr.statusText, '{{ __('Wait a few minutes to try again ') }}', 'error')
+                    }
+                });
+            });
+
+            $('#form_edit_patient' + i).on('submit', function (e) {
+                e.preventDefault();
+                $.ajax({
+                    url: $(this).attr('action'),
+                    method: $(this).attr('method'),
+                    data: new FormData(this),
+                    processData: false,
+                    dataType: 'json',
+                    contentType: false,
+                    beforeSend: function () {
+                        $(document).find('span.error-text').text('');
+                    },
+                    success: function (data) {
+                        if (data.status == 0) {
+                            $.each(data.error, function (prefix, val) {
+                                $('span.' + prefix + '_error').text(val[0]);
+                                $('input.error_input_' + prefix).addClass('is-invalid');
+                                $('select.error_input_' + prefix).addClass('is-invalid');
+                            });
+                            alertToastInfo(data.msg)
+                        } else {
+                            $('#form_edit_patient' + i)[0].reset();
+                            setTimeout(function () {
+                                location.reload(true);
+                            }, 1000);
+                            alertToastSuccess(data.msg)
+                        }
+                    },
+                    error: function (xhr) {
+                        Swal.fire(xhr.statusText, '{{ __('Wait a few minutes to try again ') }}', 'error')
+                    }
+                });
+            });
+
+            $('#btn_delete_user' + i).on('click', function (e) {
                 e.preventDefault();
                 swal.fire({
                     title: "{{ __('Are you sure?') }}",
@@ -277,31 +359,13 @@
                     confirmButtonText: "{{ __('Yes, deleted it') }}",
                     cancelButtonText: "{{ __('Cancel') }}"
                 }).then((result) => {
-                    if (result.isConfirmed){
-                        $("#form_delete_user"+i).click();
+                    if (result.isConfirmed) {
+                        $("#form_delete_user" + i).click();
                     }
                 });
             });
         }
 
-        $('#btn_delete_all').on('click',function(e){
-            e.preventDefault();
-            swal.fire({
-                title: "{{ __('Are you sure?') }}",
-                text: "{{ __('You wont be able to revert this') }}",
-                icon: 'warning',
-                iconColor: '#FD7E14',
-                showCancelButton: true,
-                confirmButtonColor: '#007BFF',
-                cancelButtonColor: '#DC3545',
-                confirmButtonText: "{{ __('Yes, deleted it') }}",
-                cancelButtonText: "{{ __('Cancel') }}"
-            }).then((result) => {
-                if (result.isConfirmed){
-                    $("#form_deleteAll_user").click();
-                }
-            });
-        });
 
     </script>
     @endsection

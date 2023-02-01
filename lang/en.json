@@ -116,7 +116,7 @@
 
     "Patient Registration" : "Patient Registration",
     "Patient List" : "Patient List",
-    "Patient Registration Form" : "Patient Registration Form",
+    "Patient Registration Form" : "Acceptor Registration Form",
     "Hes not yet 17 years old, you cant enter the data wrong, right?" : "He's not yet 17 years old, you can't enter the data wrong, right?",
     "Patient Data Failed to Create" : "Patient Data Failed to Create",
     "Patient Data Created Successfully" : "Patient Data Created Successfully",
@@ -347,7 +347,7 @@
 
 
 
-    "Change Password" : "Change Passwordi",
+    "Change Password" : "Change Password",
     "Active" : "Active",
     "Not Active" : "Not Active",
     "Users Management" : "Users Management",
@@ -388,6 +388,7 @@
     "Registration user successfully" : "Registration User successfuly!",
     "Somethin went Wrong, creating user" : "Somethin went wrong Registration User!",
     "User successfully deleted" : "User successfully deleted!",
+    "User failed to delete" : "User failed to delete",
     "Are you sure?" : "Are you sure?",
     "User Management" : "User Management",
    
@@ -458,7 +459,7 @@
     "Number of Acceptor Registration by Month" : "Number of Acceptor Registration by Month",
     "Number of Acceptors Based on Birth Control Users" : "Number of Acceptors Based on Birth Control Users",
     "Have you ever registered for the family planning program at Midwife Nurhalimah?" : "Have you ever registered for the family planning program at Midwife Nurhalimah?",
-  
+    "Employee Account Edit Form" : "Employee Account Edit Form",
     
    
     "Date" : "Date",
@@ -545,5 +546,18 @@
     "Cancel" : "Cancel",
     "Wait a few minutes to try again" : "Wait a few minutes to try again!",
     "User successfully updated" : "User successfully updated",
-    "User failed update" : "User failed update"
+    "User failed update" : "User failed update",
+    "user account deleted successfully" : "User account deleted successfully",
+    "user account failed to delete" : "User account failed to delete",
+    "Patient Account Edit Form" : "Patient Account Edit Form",
+
+
+    "For other information you can contact the administrator or can look at" : "For other information you can contact the administrator or can look at",
+    "After you print or check the data from the results of your visit at Midwife Nurhalimah, it is hoped that you will press the exit button, this is to prevent leakage of your personal data." : "After you print or check the data from the results of your visit at Midwife Nurhalimah, it is hoped that you will press the exit button, this is to prevent leakage of your personal data.",
+    "If you have completed your required personal data. then the system will direct you to the dashboard page. On this Dashboard page you can view and print data from the results of your visit to Midwife Nurhalimah after participating in the Acceptor program." : "If you have completed your required personal data. then the system will direct you to the dashboard page. On this Dashboard page you can view and print data from the results of your visit to Midwife Nurhalimah after participating in the Acceptor program.",
+    "On the profile page, besides you can complete or change your personal data, you can also change the password for the account that you have created, you can find the feature to change the password on the bottom page of the profile menu. You can scroll through the arrows to find the change password form." : "On the profile page, besides you can complete or change your personal data, you can also change the password for the account that you have created, you can find the feature to change the password on the bottom page of the profile menu. You can scroll through the arrows to find the change password form.",
+    "If you register for the first time on this website you will be presented with a Profile page, on that profile page you can complete or change your personal data and also your partners data." : "If you register for the first time on this website you will be presented with a Profile page, on that profile page you can complete or change your personal data and also your partner's data.",
+    "If when using this application there is something that you are confused about, please read the following guide or contact the administrator to more quickly solve the problem at hand." : "If when using this application there is something that you are confused about, please read the following guide or contact the administrator to more quickly solve the problem at hand.",
+    "This floating capital or card is made to help the user or application users" : "This floating capital or card is made to help the user or application users",
+    "Welcome to the Help Menu" : "Welcome to the Help Menu"
 }
