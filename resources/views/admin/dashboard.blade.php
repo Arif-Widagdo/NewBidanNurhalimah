@@ -9,12 +9,6 @@
         </ol>
     </x-slot>
 
-    <div class="row">
-        @foreach ($patientJan as $janu)
-        {{ $janu->acccount }}
-        @endforeach
-    </div>
-
     <!-- Small boxes (Stat box) -->
     <div class="row">
         <div class="col-lg-4 col-6">
@@ -220,92 +214,6 @@
                 }
                 }
             })
-
-            // var $sallaryChat = $('#sallary-chart')
-            // // eslint-disable-next-line no-unused-vars
-            // var sallaryChat = new Chart($sallaryChat, {
-            //     type: 'bar',
-            //     data: {
-            //         labels: [
-            //           "{{ __('January') }}", 
-            //           "{{ __('February') }}",
-            //           "{{ __('March') }}",
-            //           "{{ __('April') }}",
-            //           "{{ __('May') }}",
-            //           "{{ __('June') }}",
-            //           "{{ __('July') }}",
-            //           "{{ __('August') }}",
-            //           "{{ __('September') }}",
-            //           "{{ __('October') }}",
-            //           "{{ __('November') }}",
-            //           "{{ __('December') }}",
-            //            ],
-            //         datasets: [{
-            //                 backgroundColor: '#007BFF',
-            //                 borderColor: '#007BFF',
-            //                 data: [
-            //                     {{ $patientJan }},
-            //                     {{ $patientFeb }},
-            //                     {{ $patientMar }},
-            //                     {{ $patientApr }},
-            //                     {{ $patientMei }},
-            //                     {{ $patientJun }},
-            //                     {{ $patientJul }},
-            //                     {{ $patientAug }},
-            //                     {{ $patientSep }},
-            //                     {{ $patientOct }},
-            //                     {{ $patientNov }},
-            //                     {{ $patientDes }}
-            //                 ]
-            //             },
-            //         ]
-            //     },
-            //     options: {
-            //         maintainAspectRatio: false,
-            //         tooltips: {
-            //             mode: mode,
-            //             intersect: intersect
-            //         },
-            //         hover: {
-            //             mode: mode,
-            //             intersect: intersect
-            //         },
-            //         legend: {
-            //             display: false
-            //         },
-            //         scales: {
-            //             yAxes: [{
-            //                 // display: false,
-            //                 gridLines: {
-            //                     display: true,
-            //                     lineWidth: '4px',
-            //                     color: 'rgba(0, 0, 0, .2)',
-            //                     zeroLineColor: 'transparent'  
-            //                 },
-            //                 ticks: $.extend({
-            //                     beginAtZero: true,
-
-            //                     // Include a dollar sign in the ticks
-            //                     callback: function (value) {
-            //                         if (value >= 1000) {
-            //                             value /= 1000
-            //                             value += 'k'
-            //                         }
-            //                         return value
-            //                         // return 'Rp.' + value
-            //                     }
-            //                 }, ticksStyle)
-            //             }],
-            //             xAxes: [{
-            //                 display: true,
-            //                 gridLines: {
-            //                     display: false
-            //                 },
-            //                 ticks: ticksStyle
-            //             }]
-            //         }
-            //     }
-            // });
 
             //-------------
             //- DONUT CHART -
