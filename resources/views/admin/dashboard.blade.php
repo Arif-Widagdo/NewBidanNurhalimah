@@ -64,6 +64,18 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
+                    <div class="d-flex">
+                        <p class="d-flex flex-column">
+                          <span class="text-bold text-lg">{{ $increasePatient }} {{ __('Acceptor') }}</span>
+                          <span>{{ __('Registration Over Time') }}</span>
+                        </p>
+                        <p class="ml-auto d-flex flex-column text-right">
+                          <span class="text-success">
+                            <i class="fas fa-arrow-up"></i> {{ $presentase }}%
+                          </span>
+                          <span class="text-muted">{{ __('Until now') }}</span>
+                        </p>
+                    </div>
                     <!-- /.d-flex -->
                     <div class="position-relative mb-4">
                         <canvas id="sales-chart" height="310"></canvas>
@@ -196,7 +208,6 @@
                     },
                     ticks: $.extend({
                         beginAtZero: true,
-
                         // Include a dollar sign in the ticks
                         callback: function (value) {
                         if (value >= 1000) {

@@ -114,8 +114,8 @@
 
 
 
-    "Patient Registration" : "Patient Registration",
-    "Patient List" : "Patient List",
+    "Patient Registration" : "Acceptors Registration",
+    "Patient List" : "Patient Acceptor",
     "Patient Registration Form" : "Acceptor Registration Form",
     "Hes not yet 17 years old, you cant enter the data wrong, right?" : "He's not yet 17 years old, you can't enter the data wrong, right?",
     "Patient Data Failed to Create" : "Patient Data Failed to Create",
@@ -488,6 +488,15 @@
     "October" : "OCT",
     "November" : "NOV",
     "December": "DEC",
+
+    "Registration Over Time" : "Registration Over Time",
+    "Until now" : "Until now",
+    "The time for your return visit has come, come immediately to Midwife Nurhalimah to carry out an examination on time today" : "The time for your return visit has come, come immediately to Midwife Nurhalimah to carry out an examination on time today",
+    "Your return visit time has passed the due date" : "Your return visit time has passed the due date",
+    "that has been set, lets immediately come to Midwife Nurhalimah to do an examination" : "that has been set, let's immediately come to Midwife Nurhalimah to do an examination",
+    "Thank you for participating in the family planning program with Midwife Nurhalimah," : "Thank you for participating in the family planning program with Midwife Nurhalimah,",
+    "to ensure that the tools/drugs used are working properly, please visit Midwife Nurhalimah again to carry out a timely examination on" : "to ensure that the tools/drugs used are working properly, please visit Midwife Nurhalimah again to carry out a timely examination on",
+    "which has been specified" : "which has been specified",
 
   
 

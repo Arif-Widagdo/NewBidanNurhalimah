@@ -54,6 +54,8 @@
         </div>
     @endif --}}
 
+    
+    @if($return_date != null)
     <div class="row">
         <div class="col-12">
             <div class="alert alert-dismissible
@@ -68,22 +70,25 @@
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                 <h5 class="text-bold"><i class="icon fas fa-info"></i> Informasi Kunjugan Kembali!</h5>
                 @if($return_date->return_date == Date("Y-m-j") )
-                    <p>
-                        Waktu kunjungan kembali kamu telah tiba, ayo segera datang ke Bidan Nurhalimah untuk melakukan pemeriksaan dengan tepat waktu pada waktu pada hari ini <span class="text-bold"{{ Carbon\Carbon::parse($return_date->return_date)->translatedFormat('d F Y') }}</span>
-                    </p>
+                    <h5>
+                        {{ __('The time for your return visit has come, come immediately to Midwife Nurhalimah to carry out an examination on time today') }}
+                         <span class="text-bold bg-info px-2">{{ Carbon\Carbon::parse($return_date->return_date)->translatedFormat('d F Y') }}</span>
+                    </h5>
                     @elseif($return_date->return_date < Date("Y-m-j"))
-                    <p>
-                        Waktu kunjungan kembali kamu yang telah ditetapkan pada <span class="text-bold">{{Carbon\Carbon::parse($return_date->return_date)->translatedFormat('d F Y') }}</span> telah melewati waktu sekarang, ayo segera datang ke Bidan Nurhalimah untuk melakukan pemeriksaan.
-                    </p>
+                    <h5>
+                        {{ __('Your return visit time has passed the due date') }} <span class="text-bold bg-dark px-2">{{Carbon\Carbon::parse($return_date->return_date)->translatedFormat('d F Y') }}</span> {{ __('that has been set, lets immediately come to Midwife Nurhalimah to do an examination') }}
+                        
+                    </h5>
                     @else
-                    <p>
-                        Terima kasih telah mengikuti program akseptor di Bidan Nurhalimah, <br>
-                        untuk memastikan Alat/Obat yang digunakan berjalan dengan baik, silahkan silahkan kunjungikembali Bidan Nurhalimah untuk melakukan pemeriksaan dengan tepat waktu pada <span class="text-bold">{{ Carbon\Carbon::parse($return_date->return_date)->translatedFormat('d F Y') }}</span> yang telah ditentukan
-                    </p>
+                    <h5>
+                        {{ __('Thank you for participating in the family planning program with Midwife Nurhalimah,') }} <br>
+                        {{ __('to ensure that the tools/drugs used are working properly, please visit Midwife Nurhalimah again to carry out a timely examination on') }} <span class="text-bold bg-danger px-2">{{ Carbon\Carbon::parse($return_date->return_date)->translatedFormat('d F Y') }}</span> {{ __('which has been specified') }}
+                    </h5>
                 @endif
             </div>
         </div>
     </div>
+    @endif
 
 
     @if(auth()->user()->patient)

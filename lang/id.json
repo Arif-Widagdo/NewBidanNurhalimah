@@ -115,8 +115,8 @@
   
 
 
-    "Patient Registration" : "Pendaftaran Pasien",
-    "Patient List" : "Daftar Pasien",
+    "Patient Registration" : "Pendaftaran Akseptor",
+    "Patient List" : "Daftar Akseptor",
     "Patient Registration Form" : "Formulir Pendaftaran Akseptor KB",
     "Hes not yet 17 years old, you cant enter the data wrong, right?" : "Dia belum genap 17 tahun, tidak mungkin salah input data kan?",
     "Patient Data Failed to Create" : "Data Pasien Gagal Dibuat",
@@ -509,6 +509,19 @@
     "October" : "OKT",
     "November" : "NOV",
     "December": "DES",
+
+    
+    "Registration Over Time" : "Registrasi Seiring Waktu",
+    "Until now" : "Sampai Sekarang",
+  
+    "The time for your return visit has come, come immediately to Midwife Nurhalimah to carry out an examination on time today" : "Waktu kunjungan kembali kamu telah tiba, ayo segera datang ke Bidan Nurhalimah untuk melakukan pemeriksaan dengan tepat waktu pada hari ini",
+    "Your return visit time has passed the due date" : "Waktu kunjungan kembali kamu sudah terlewat melebihi tanggal",
+
+    "that has been set, lets immediately come to Midwife Nurhalimah to do an examination" : "yang telah ditetapkan, ayo segera datang ke Bidan Nurhalimah untuk melakukan pemeriksaan.",
+   
+    "Thank you for participating in the family planning program with Midwife Nurhalimah," : "Terima kasih telah mengikuti program keluarga berencana bersama Bidan Nurhalimah,",
+    "to ensure that the tools/drugs used are working properly, please visit Midwife Nurhalimah again to carry out a timely examination on" : "untuk memastikan Alat/Obat yang digunakan berjalan dengan baik, silahkan kunjungikembali Bidan Nurhalimah untuk melakukan pemeriksaan dengan tepat waktu pada",
+    "which has been specified" : "yang telah ditentukan",
    
 
 
