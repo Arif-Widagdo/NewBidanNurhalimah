@@ -64,7 +64,7 @@ class PatientManagementController extends Controller
         ];
 
         if ($request->has('create_account')) {
-            $validator['username'] = 'required|alpha_num|unique:users,username';
+            $validator['username'] = 'required|min:8|alpha_num|unique:users,username';
             $validator['email'] = ['required', 'string', 'email', 'max:255', 'unique:' . User::class];
         }
         $validated = Validator::make($request->all(), $validator);
@@ -137,17 +137,17 @@ class PatientManagementController extends Controller
         $user = User::where('id', $request->user_id)->first();
         if ($user) {
             if ($user->username != $request->username) {
-                $validator['username'] = 'required|alpha_num|unique:users,username';
+                $validator['username'] = 'required|min:8|alpha_num|unique:users,username';
                 $validator['email'] = ['required', 'string', 'email', 'max:255'];
                 $validator['status'] = ['required'];
             } elseif ($user->email != $request->email) {
-                $validator['username'] = 'required|alpha_num|unique:users,username';
+                $validator['username'] = 'required|min:8|alpha_num|unique:users,username';
                 $validator['email'] = ['required', 'string', 'email', 'max:255'];
                 $validator['status'] = ['required'];
             }
         } else {
             if ($request->email != '' || $request->username != '' || $request->status != '') {
-                $validator['username'] = 'required|alpha_num|unique:users,username';
+                $validator['username'] = 'required|min:8|alpha_num|unique:users,username';
                 $validator['email'] = ['required', 'string', 'email', 'max:255', 'unique:' . User::class];
                 $validator['status'] = ['required', 'in:actived,blocked'];
             }

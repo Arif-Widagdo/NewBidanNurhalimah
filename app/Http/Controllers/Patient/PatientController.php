@@ -20,7 +20,12 @@ class PatientController extends Controller
         } else {
             // $patient =  Patient::where('user_id', '=', auth()->user()->id)->first();
 
+            $patient = Patient::where('user_id', auth()->user()->id)->first();
+            $return_date = Acceptor::where('patient_id', $patient->id)->orderBy('return_date', 'desc')->first(['return_date']);
+
+
             return view('patient.dashboard', [
+                'return_date' => $return_date
                 // 'patient' => $patient,
                 // 'acceptors' => Acceptor::where('patient_id', $patient->id)->orderBy('attendance_date', 'ASC')->get()
             ]);

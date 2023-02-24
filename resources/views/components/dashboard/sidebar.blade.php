@@ -154,14 +154,34 @@
                 <!------------------------------
                 --- End Admin/ Start Midwife ---
                 -------------------------------->
-                <li class="nav-item">
-                    <a href="{{ route('patients.index') }}" class="nav-link {{ request()->is('patients') || request()->is('patients/create') ? 'active' : '' }}">
+                <li class="nav-item {{ request()->is('patients') || request()->is('patients/create') || request()->is('staff/acceptor-weekly') ? 'menu-open' : '' }}">
+                    <a class="nav-link {{ request()->is('patients') || request()->is('patients/create') || request()->is('staff/acceptor-weekly') ? 'active' : '' }}" style="cursor: pointer;">
                         <i class="nav-icon fas fa-hospital-user"></i>
                         <p>
                             {{ __('Acceptors') }}
                         </p>
+                        <i class="right fas fa-angle-left"></i></p>
                     </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('staff.dashboard') }}" class="nav-link {{ request()->is('staff/acceptor-weekly') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>
+                                    {{ __('Acceptor of the week') }}
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('patients.index') }}" class="nav-link {{ request()->is('patients') || request()->is('patients/create') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>
+                                    {{ __('Acceptor List') }}
+                                </p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
+                
                 <li class="nav-item">
                     <a href="{{ route('birth-controls.index') }}" class="nav-link {{ request()->is('birth-controls') ? 'active' : '' }}">
                         <i class="fas fa-prescription-bottle-alt nav-icon"></i>

@@ -80,7 +80,7 @@
                                             @endif
                                             <small class="d-flex flex-column">
                                                 <span>{{ __('Created date') }}</span>
-                                                <span>{{ $staff->account->created_at }}</span>
+                                                <span>{{ $staff->account->created_at != '' ? Carbon\Carbon::parse($staff->account->created_at)->translatedFormat('d F Y h:i a') : '-' }}</span>
                                             </small>
                                         @else
                                         <div class="text-center mx-auto">

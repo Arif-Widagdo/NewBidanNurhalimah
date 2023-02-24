@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{{ asset('plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
      <!-- Data Range -->
     <link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker.css') }}">
-     <!-- Fixed Data Table -->
+    <!-- Fixed Data Table -->
     <link rel="stylesheet" href="{{ asset('plugins/datatables-fixedcolumns/css/fixedColumns.bootstrap4.min.css') }}">
     @endsection
 
@@ -105,7 +105,9 @@
                                         @endif
                                         <small class="d-flex flex-column">
                                             <span>{{ __('Created date') }}</span>
-                                            <span>{{ $patient->account->created_at }}</span>
+                                            <span>
+                                                {{ $patient->account->created_at != '' ? Carbon\Carbon::parse($patient->account->created_at)->translatedFormat('d F Y h:i a') : '-' }}
+                                                </span>
                                         </small>
                                         @else
                                         <div class="text-center">

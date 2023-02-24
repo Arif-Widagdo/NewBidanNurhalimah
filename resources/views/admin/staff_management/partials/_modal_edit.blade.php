@@ -76,7 +76,7 @@
                                                 </label>
                                                 <div class="col-lg-8">
                                                     <select class="form-control error_input_status" style="width: 100%;" name="status" id="status">
-                                                        <option selected="selected" disabled>{{ __('Select status') }}</option>
+                                                        <option selected="selected" disabled>{{ __('Select Status') }}</option>
                                                         <option {{ $staff_edit->user_id != '' && $staff_edit->account->status == 'actived' ? "selected='selected'" : '-' }} value="actived">{{ __('Active') }}</option>
                                                         <option {{ $staff_edit->user_id != '' && $staff_edit->account->status == 'blocked' ? "selected='selected'" : '-' }} value="blocked">{{ __('Blocked') }}</option>
                                                     </select>

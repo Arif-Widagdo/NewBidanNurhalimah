@@ -111,7 +111,7 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     // --- Auth Staff ---
     // ------------------
     Route::group(['prefix' => 'staff', 'middleware' => 'isStaff'], function () {
-        Route::get('/dashboard', [StaffController::class, 'dashboard'])->name('staff.dashboard');
+        Route::get('/acceptor-weekly', [StaffController::class, 'dashboard'])->name('staff.dashboard');
         Route::get('/profile', [ProfileController::class, 'edit'])->name('staff.profile.edit');
     });
 

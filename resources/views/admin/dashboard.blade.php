@@ -64,16 +64,19 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <div class="d-flex">
-                        <p class="d-flex flex-column">
-                            {{-- <span class="text-bold text-lg"> Rp. {{ number_format($salaryThisMonth,2,',','.') }}</span>
-                            <span>{{ __('Salary must be issued in') }} <strong>{{ $month }}, {{ $year }}</strong></span> --}}
-                        </p>
-                    </div>
                     <!-- /.d-flex -->
                     <div class="position-relative mb-4">
                         <canvas id="sales-chart" height="310"></canvas>
                     </div>
+
+                    <div class="d-flex flex-row justify-content-end">
+                        <span class="mr-2">
+                          <i class="fas fa-square text-gray"></i> {{ __('Last Year') }}
+                        </span>
+                        <span>
+                            <i class="fas fa-square text-primary"></i> {{ __('This Year') }}
+                          </span>
+                      </div>
                 </div>
                 <!-- ./card-body -->
             </div>
@@ -132,39 +135,39 @@
                 ],
                 datasets: [
                     {
-                    backgroundColor: '#007bff',
-                    borderColor: '#007bff',
-                    data: [
-                        {{ $patientJan->count() }},
-                        {{ $patientFeb->count() }},
-                        {{ $patientMar->count() }},
-                        {{ $patientApr->count() }},
-                        {{ $patientMei->count() }},
-                        {{ $patientJun->count() }},
-                        {{ $patientJul->count() }},
-                        {{ $patientAug->count() }},
-                        {{ $patientSep->count() }},
-                        {{ $patientOct->count() }},
-                        {{ $patientNov->count() }},
-                        {{ $patientDes->count() }}
-                    ]
-                    },
-                    {
                     backgroundColor: '#ced4da',
                     borderColor: '#ced4da',
                     data: [
-                        {{ $userJan }},
-                        {{ $userFeb }},
-                        {{ $userMar }},
-                        {{ $userApr }},
-                        {{ $userMei }},
-                        {{ $userJun }},
-                        {{ $userJul }},
-                        {{ $userAug }},
-                        {{ $userSep }},
-                        {{ $userOct }},
-                        {{ $userNov }},
-                        {{ $userDes }}
+                        {{ $patientJanLastYear->count() }},
+                        {{ $patientFebLastYear->count() }},
+                        {{ $patientMarLastYear->count() }},
+                        {{ $patientAprLastYear->count() }},
+                        {{ $patientMeiLastYear->count() }},
+                        {{ $patientJunLastYear->count() }},
+                        {{ $patientJulLastYear->count() }},
+                        {{ $patientAugLastYear->count() }},
+                        {{ $patientSepLastYear->count() }},
+                        {{ $patientOctLastYear->count() }},
+                        {{ $patientNovLastYear->count() }},
+                        {{ $patientDesLastYear->count() }}
+                    ]
+                    },
+                    {
+                    backgroundColor: '#007bff',
+                    borderColor: '#007bff',
+                    data: [
+                        {{ $patientJanThisYear->count() }},
+                        {{ $patientFebThisYear->count() }},
+                        {{ $patientMarThisYear->count() }},
+                        {{ $patientAprThisYear->count() }},
+                        {{ $patientMeiThisYear->count() }},
+                        {{ $patientJunThisYear->count() }},
+                        {{ $patientJulThisYear->count() }},
+                        {{ $patientAugThisYear->count() }},
+                        {{ $patientSepThisYear->count() }},
+                        {{ $patientOctThisYear->count() }},
+                        {{ $patientNovThisYear->count() }},
+                        {{ $patientDesThisYear->count() }}
                         ]
                     }
                 ]

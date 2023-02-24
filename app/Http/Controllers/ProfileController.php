@@ -12,6 +12,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\Acceptor;
 use App\Models\Graduated;
 use App\Models\Patient;
 use App\Models\Staff;
@@ -45,8 +46,17 @@ class ProfileController extends Controller
                     ->diff(Carbon::now())
                     ->format('%y ' . __('Years') . ', %m ' . __('Months') . ' ' . __('and') . '  %d ' . __('Days'));
             }
+            $patient = Patient::where('user_id', auth()->user()->id)->first();
+
+            $return_date = null;
+
+            if ($patient) {
+                $return_date = Acceptor::where('patient_id', $patient->id)->orderBy('return_date', 'desc')->first(['return_date']);
+            }
+
 
             return view('profile.patient.edit', [
+                'return_date' => $return_date,
                 'works' => Work::orderBy('name')->get(),
                 'graduateds' => Graduated::orderBy('name')->get(),
                 'user' => $request->user(),

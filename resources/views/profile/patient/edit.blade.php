@@ -22,6 +22,39 @@
         </ol>
     </x-slot>
 
+    @if($return_date != null)
+    <div class="row">
+        <div class="col-12">
+            <div class="alert alert-dismissible
+            @if($return_date->return_date == Date("Y-m-j") )
+            alert-warning
+            @elseif($return_date->return_date < Date("Y-m-j"))
+            alert-danger
+            @else
+            alert-info
+            @endif
+            ">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <h5 class="text-bold"><i class="icon fas fa-info"></i> Informasi Kunjugan Kembali!</h5>
+                @if($return_date->return_date == Date("Y-m-j") )
+                    <p>
+                        Waktu kunjungan kembali kamu telah tiba, ayo segera datang ke Bidan Nurhalimah untukmelakukan pemeriksaan dengan tepat waktu pada waktu pada hari ini <span class="text-bold"{{ Carbon\Carbon::parse($return_date->return_date)->translatedFormat('d F Y') }}</span>
+                    </p>
+                    @elseif($return_date->return_date < Date("Y-m-j"))
+                    <p>
+                        Waktu kunjungan kembali kamu yang telah ditetapkan pada <span class="text-bold">{{Carbon\Carbon::parse($return_date->return_date)->translatedFormat('d F Y') }}</span> telahmelewati waktu sekarang, ayo segera datang ke Bidan Nurhalimah untuk melakukan pemeriksaan.
+                    </p>
+                    @else
+                    <p>
+                        Terima kasih telah mengikuti program akseptor di Bidan Nurhalimah, <br>
+                        untuk memastikan Alat/Obat yang digunakan berjalan dengan baik, silahkan silahkan kunjungikembali Bidan Nurhalimah untuk melakukan pemeriksaan dengan tepat waktu pada <span class="text-bold">{{ Carbon\Carbon::parse($return_date->return_date)->translatedFormat('d F Y') }}</span> yang telah ditentukan
+                    </p>
+                @endif
+            </div>
+        </div>
+    </div>
+    @endif
+
     <div class="row">
         <div class="col-12">
             <div class="card card-widget widget-user-2 card-outline card-primary">
@@ -102,6 +135,7 @@
             </div>
         </div>
     </div>
+   
 
    
 

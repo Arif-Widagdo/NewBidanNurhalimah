@@ -14,6 +14,78 @@
         </ol>
     </x-slot>
 
+    {{-- @if($return_date)
+        <div class="modal fade" id="modal_return_date">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header
+                    @if($return_date->return_date == Date("Y-m-j") )
+                    bg-warning
+                    @elseif($return_date->return_date < Date("Y-m-j"))
+                    bg-danger
+                    @else
+                    bg-info
+                    @endif
+                    ">
+                        <h5 class="modal-title"><i class="icon fas fa-info"></i> Informasi Kunjugan Kembali!</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        @if($return_date->return_date == Date("Y-m-j") )
+                        <p>
+                            Waktu kunjungan kembali kamu telah tiba, ayo segera datang ke Bidan Nurhalimah untuk melakukan pemeriksaan dengan tepat waktu pada waktu pada hari ini <span class="text-bold">{{ Carbon\Carbon::parse($return_date->return_date)->translatedFormat('d F Y') }}</span>
+                        </p>
+                        @elseif($return_date->return_date < Date("Y-m-j"))
+                        <p>
+                            Waktu kunjungan kembali kamu yang telah ditetapkan pada <span class="text-bold">{{ Carbon\Carbon::parse($return_date->return_date)->translatedFormat('d F Y') }}</span> telah melewati waktu sekarang, ayo segera datang ke Bidan Nurhalimah untuk melakukan pemeriksaan.
+                        </p>
+                        @else
+                        <p>
+                            Terima kasih telah mengikuti program akseptor di Bidan Nurhalimah, <br>
+                            untuk memastikan Alat/Obat yang digunakan berjalan dengan baik, silahkan silahkan kunjungi kembali Bidan Nurhalimah untuk melakukan pemeriksaan dengan tepat waktu pada waktu <span class="text-bold">{{ Carbon\Carbon::parse($return_date->return_date)->translatedFormat('d F Y') }}</span> yang telah ditentukan
+                        </p>
+                        @endif
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif --}}
+
+    <div class="row">
+        <div class="col-12">
+            <div class="alert alert-dismissible
+            @if($return_date->return_date == Date("Y-m-j") )
+            alert-warning
+            @elseif($return_date->return_date < Date("Y-m-j"))
+            alert-danger
+            @else
+            alert-info
+            @endif
+            ">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <h5 class="text-bold"><i class="icon fas fa-info"></i> Informasi Kunjugan Kembali!</h5>
+                @if($return_date->return_date == Date("Y-m-j") )
+                    <p>
+                        Waktu kunjungan kembali kamu telah tiba, ayo segera datang ke Bidan Nurhalimah untuk melakukan pemeriksaan dengan tepat waktu pada waktu pada hari ini <span class="text-bold"{{ Carbon\Carbon::parse($return_date->return_date)->translatedFormat('d F Y') }}</span>
+                    </p>
+                    @elseif($return_date->return_date < Date("Y-m-j"))
+                    <p>
+                        Waktu kunjungan kembali kamu yang telah ditetapkan pada <span class="text-bold">{{Carbon\Carbon::parse($return_date->return_date)->translatedFormat('d F Y') }}</span> telah melewati waktu sekarang, ayo segera datang ke Bidan Nurhalimah untuk melakukan pemeriksaan.
+                    </p>
+                    @else
+                    <p>
+                        Terima kasih telah mengikuti program akseptor di Bidan Nurhalimah, <br>
+                        untuk memastikan Alat/Obat yang digunakan berjalan dengan baik, silahkan silahkan kunjungikembali Bidan Nurhalimah untuk melakukan pemeriksaan dengan tepat waktu pada <span class="text-bold">{{ Carbon\Carbon::parse($return_date->return_date)->translatedFormat('d F Y') }}</span> yang telah ditentukan
+                    </p>
+                @endif
+            </div>
+        </div>
+    </div>
+
+
     @if(auth()->user()->patient)
     <div class="row">
         <div class="col-12">
@@ -70,7 +142,7 @@
                                 <td>
                                     {{ $acceptor->description != '' ? $acceptor->description : '-' }}
                                 </td>
-                                <td>
+                                <td @if(Date("Y-m-j") ==  $acceptor->return_date) class="bg-warning" @endif>
                                     {{ $acceptor->return_date != '' ? Carbon\Carbon::parse($acceptor->return_date)->translatedFormat('d F Y') : '-' }}
                                 </td>
                             </tr>
@@ -85,8 +157,18 @@
     
 
     @section('scripts')
+    @if($return_date)
+        <script type="text/javascript">
+            $(window).on('load', function() {
+                $('#modal_return_date').modal('show');
+            });
+        </script>
+    @endif
+    
     <script src="{{ asset('plugins/datatables-fixedcolumns/js/dataTables.fixedColumns.min.js') }}"></script>
     <script>
+
+
        
         $("#table-works").DataTable({
             "scrollX": true,
